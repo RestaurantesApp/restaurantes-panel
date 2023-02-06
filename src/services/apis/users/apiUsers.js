@@ -3,7 +3,7 @@ import buildRequest from '../buildRequest';
 import { typesEndpoint } from '../../../common/types';
 
 export const apiGetUsers = async params => {
-  const url = `${process.env.REACT_APP_api}${typesEndpoint.getUsers}`;
+  const url = `${process.env.REACT_APP_API}${typesEndpoint.getUsers}`;
   const method = 'get';
   const dataResponse = {
     success: false,
@@ -29,7 +29,7 @@ export const apiGetUsers = async params => {
 };
 
 export const apiGetUser = async params => {
-  const url = `${process.env.REACT_APP_api}${typesEndpoint.getUser}`;
+  const url = `${process.env.REACT_APP_API}${typesEndpoint.getUser}`;
   const method = 'get';
   const dataResponse = {
     success: false,
@@ -57,7 +57,7 @@ export const apiGetUser = async params => {
 };
 
 export const apiPostUser = async params => {
-  const url = `${process.env.REACT_APP_api}${typesEndpoint.postUser}`;
+  const url = `${process.env.REACT_APP_API}${typesEndpoint.postUser}`;
   const method = 'post';
   const dataResponse = {
     success: false,
@@ -87,7 +87,7 @@ export const apiPostUser = async params => {
 };
 
 export const apiPatchUser = async params => {
-  const url = `${process.env.REACT_APP_api}${typesEndpoint.patchUser}`;
+  const url = `${process.env.REACT_APP_API}${typesEndpoint.patchUser}`;
   const method = 'patch';
   const dataResponse = {
     success: false,
@@ -118,7 +118,7 @@ export const apiPatchUser = async params => {
 };
 
 export const apiDeleteUser = async params => {
-  const url = `${process.env.REACT_APP_api}${typesEndpoint.deleteUser}`;
+  const url = `${process.env.REACT_APP_API}${typesEndpoint.deleteUser}`;
   const method = 'delete';
   const dataResponse = {
     success: false,

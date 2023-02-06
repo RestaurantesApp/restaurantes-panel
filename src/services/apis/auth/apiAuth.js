@@ -3,7 +3,7 @@ import buildRequest from '../buildRequest';
 import { typesEndpoint } from '../../../common/types';
 
 export const apiLogin = async params => {
-  const url = `${process.env.REACT_APP_api}${typesEndpoint.login}`;
+  const url = `${process.env.REACT_APP_API}${typesEndpoint.login}`;
   const method = 'post';
   const dataResponse = {
     success: false,
