@@ -1,0 +1,119 @@
+.color-general {
+  color: #0081a7;
+}
+
+.color-primary {
+  color: #00afb9;
+}
+
+.color-secondary {
+  color: #f07167;
+}
+
+.color-optional {
+  color: #fed9b7;
+}
+
+.color-neutral {
+  color: #fdfcdc;
+}
+
+.color-gray {
+  color: #6c757d;
+}
+
+.color-ligth-gray {
+  color: #bebebe;
+}
+
+.color-green {
+  color: #22bb33;
+}
+
+.color-red {
+  color: #f32013;
+}
+
+.color-orange {
+  color: #ffcc00;
+}
+
+.bg-general {
+  background-color: #0081a7;
+}
+
+.bg-primary {
+  background-color: #00afb9;
+}
+
+.bg-secondary {
+  background-color: #f07167;
+}
+
+.bg-optional {
+  background-color: #fed9b7;
+}
+
+.bg-neutral {
+  background-color: #fdfcdc;
+}
+
+.bg-gray {
+  background-color: #6c757d;
+}
+
+.bg-ligth-gray {
+  background-color: #bebebe;
+}
+
+.bg-green {
+  background-color: #22bb33;
+}
+
+.bg-red {
+  background-color: #f32013;
+}
+
+.bg-orange {
+  background-color: #ffcc00;
+}
+
+.fill-general {
+  fill: #0081a7;
+}
+
+.fill-primary {
+  fill: #00afb9;
+}
+
+.fill-secondary {
+  fill: #f07167;
+}
+
+.fill-optional {
+  fill: #fed9b7;
+}
+
+.fill-neutral {
+  fill: #fdfcdc;
+}
+
+.fill-gray {
+  fill: #6c757d;
+}
+
+.fill-ligth-gray {
+  fill: #bebebe;
+}
+
+.fill-green {
+  fill: #22bb33;
+}
+
+.fill-red {
+  fill: #f32013;
+}
+
+.fill-orange {
+  fill: #ffcc00;
+}

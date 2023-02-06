@@ -1,0 +1,16 @@
+.drawer-item-color:hover {
+  background-color: #ffffff1a;
+  border-radius: 10px;
+}
+.drawer-item-color {
+  color: #fff;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 10px;
+  margin: 5px 0;
+}
+
+.drawer-item-color-select {
+  background-color: #ffffff1a;
+  font-weight: bold;
+}
