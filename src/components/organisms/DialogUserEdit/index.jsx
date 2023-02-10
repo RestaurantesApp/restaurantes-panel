@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 // Hooks
 import { useForm } from '../../../hooks/others';
@@ -19,6 +19,7 @@ import { typesValidation } from '../../../common/types';
 // Core
 import { formValidEditUser } from '../../../core/validations';
 import { apiGetUser, apiPatchUser } from '../../../services/apis';
+import { AuthContext } from '../../../hooks/context';
 
 const DialogUserEdit = ({
   idUser = '',
@@ -26,6 +27,7 @@ const DialogUserEdit = ({
   setOpen = () => null,
   onDismiss = () => null,
 }) => {
+  const { auth } = useContext(AuthContext);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -50,6 +52,7 @@ const DialogUserEdit = ({
     password: false,
     confirmPassword: false,
   });
+  const { token } = auth;
 
   useEffect(() => {
     if (open) {
@@ -73,12 +76,13 @@ const DialogUserEdit = ({
 
   const loadUser = async () => {
     setLoader(true);
-    const params = { idUser };
+    const params = { idUser, token };
     const response = await apiGetUser(params);
     const { success, message, data } = response;
+    console.log(data);
     if (success) {
-      setName(data.user.name);
-      setEmail(data.user.email);
+      setName(data.name);
+      setEmail(data.email);
       setPassword('');
       setConfirmPassword('');
     } else {

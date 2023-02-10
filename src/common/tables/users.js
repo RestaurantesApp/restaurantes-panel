@@ -11,4 +11,8 @@ export const columnsUsers = [
     Header: 'Email',
     accessor: 'email',
   },
+  {
+    Header: 'Rol',
+    accessor: 'role',
+  },
 ];

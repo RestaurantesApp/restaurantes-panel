@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 // Components
 import { Divider } from '@mui/material';
@@ -16,10 +16,12 @@ import { typesTableActions } from '../../../common/types';
 
 // Services
 import { apiGetUsers } from '../../../services/apis';
+import { AuthContext } from '../../../hooks/context';
 
 const { tableEdit, tableDelete } = typesTableActions;
 
 const Configuration = () => {
+  const { auth } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [idUser, setIdUser] = useState('');
   const [showAdd, setShowAdd] = useState(false);
@@ -32,6 +34,7 @@ const Configuration = () => {
     description: '',
     severity: 'info',
   });
+  const { token } = auth;
 
   useEffect(() => {
     loadUsers();
@@ -45,10 +48,12 @@ const Configuration = () => {
   const loadUsers = async () => {
     resetForm();
     setLoader(true);
-    const response = await apiGetUsers();
+    const params = { token };
+    const response = await apiGetUsers(params);
     const { success, message, data } = response;
     if (success) {
-      setUsers(data.users);
+      console.log(data);
+      setUsers(data);
     } else {
       setShowAlert(true);
       setAlert({

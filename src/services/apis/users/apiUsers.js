@@ -1,10 +1,9 @@
 import axios from 'axios';
-import buildRequest from '../buildRequest';
+import buildRequest, { buildToken } from '../buildRequest';
 import { typesEndpoint } from '../../../common/types';
 
 export const apiGetUsers = async params => {
-  const url = `${process.env.REACT_APP_API}${typesEndpoint.getUsers}`;
-  const method = 'get';
+  const url = `${process.env.REACT_APP_API}users`;
   const dataResponse = {
     success: false,
     statusCode: 0,
@@ -12,24 +11,26 @@ export const apiGetUsers = async params => {
     data: [],
   };
 
-  const request = {};
-
   try {
-    const response = await axios[method](url, buildRequest(request));
+    const response = await axios.get(url, buildToken('es', params.token));
     const { status, data } = response;
     dataResponse.success = true;
     dataResponse.data = data.data;
     dataResponse.statusCode = status;
   } catch (error) {
-    dataResponse.message = error.response.data?.message;
     dataResponse.data = error;
-    dataResponse.statusCode = error.response?.status;
+    if (!error.response?.status || !error.response?.data.message) {
+      dataResponse.message = `Error inesperado. Código: ${error.code}`;
+      return dataResponse;
+    }
+    dataResponse.message = error.response.data.message;
+    dataResponse.statusCode = error.response.status;
   }
   return dataResponse;
 };
 
 export const apiGetUser = async params => {
-  const url = `${process.env.REACT_APP_API}${typesEndpoint.getUser}`;
+  const url = `${process.env.REACT_APP_API}users/${params.idUser}`;
   const method = 'get';
   const dataResponse = {
     success: false,
@@ -38,20 +39,20 @@ export const apiGetUser = async params => {
     data: [],
   };
 
-  const request = {
-    idUser: params.idUser,
-  };
-
   try {
-    const response = await axios[method](url, buildRequest(request));
+    const response = await axios[method](url, buildToken('es', params.token));
     const { status, data } = response;
     dataResponse.success = true;
     dataResponse.data = data.data;
     dataResponse.statusCode = status;
   } catch (error) {
-    dataResponse.message = error.response.data?.message;
     dataResponse.data = error;
-    dataResponse.statusCode = error.response?.status;
+    if (!error.response?.status || !error.response?.data.message) {
+      dataResponse.message = `Error inesperado. Código: ${error.code}`;
+      return dataResponse;
+    }
+    dataResponse.message = error.response.data.message;
+    dataResponse.statusCode = error.response.status;
   }
   return dataResponse;
 };
@@ -79,9 +80,13 @@ export const apiPostUser = async params => {
     dataResponse.data = data.data;
     dataResponse.statusCode = status;
   } catch (error) {
-    dataResponse.message = error.response.data?.message;
     dataResponse.data = error;
-    dataResponse.statusCode = error.response?.status;
+    if (!error.response?.status || !error.response?.data.message) {
+      dataResponse.message = `Error inesperado. Código: ${error.code}`;
+      return dataResponse;
+    }
+    dataResponse.message = error.response.data.message;
+    dataResponse.statusCode = error.response.status;
   }
   return dataResponse;
 };
@@ -110,9 +115,13 @@ export const apiPatchUser = async params => {
     dataResponse.data = data.data;
     dataResponse.statusCode = status;
   } catch (error) {
-    dataResponse.message = error.response.data?.message;
     dataResponse.data = error;
-    dataResponse.statusCode = error.response?.status;
+    if (!error.response?.status || !error.response?.data.message) {
+      dataResponse.message = `Error inesperado. Código: ${error.code}`;
+      return dataResponse;
+    }
+    dataResponse.message = error.response.data.message;
+    dataResponse.statusCode = error.response.status;
   }
   return dataResponse;
 };
@@ -138,9 +147,13 @@ export const apiDeleteUser = async params => {
     dataResponse.data = data.data;
     dataResponse.statusCode = status;
   } catch (error) {
-    dataResponse.message = error.response.data?.message;
     dataResponse.data = error;
-    dataResponse.statusCode = error.response?.status;
+    if (!error.response?.status || !error.response?.data.message) {
+      dataResponse.message = `Error inesperado. Código: ${error.code}`;
+      return dataResponse;
+    }
+    dataResponse.message = error.response.data.message;
+    dataResponse.statusCode = error.response.status;
   }
   return dataResponse;
 };
