@@ -13,9 +13,7 @@ import {
   ComponentsLoader,
   ComponentsTable,
   ComponentsText,
-  Configuration,
   Home,
-  Productos,
   Users,
 } from '../../pages';
 import { DashboardLayout } from '../../templates';
@@ -35,10 +33,8 @@ export const DashboardRouter = () => {
         <Route path="/componentsLoader" element={<ComponentsLoader />} />
         <Route path="/componentsTable" element={<ComponentsTable />} />
         <Route path="/componentsText" element={<ComponentsText />} />
-        <Route path="/configuration" element={<Configuration />} />
         <Route path="/users" element={<Users />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/productos" element={<Productos />} />
         <Route path="*" element={<Navigate to="/page-error" replace />} />
       </Routes>
     </DashboardLayout>

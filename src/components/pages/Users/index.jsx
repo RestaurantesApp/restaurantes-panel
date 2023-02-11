@@ -20,7 +20,7 @@ import { AuthContext } from '../../../hooks/context';
 
 const { tableEdit, tableDelete } = typesTableActions;
 
-const Configuration = () => {
+const Users = () => {
   const { auth } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [idUser, setIdUser] = useState('');
@@ -132,4 +132,4 @@ const Configuration = () => {
   );
 };
 
-export default Configuration;
+export default Users;

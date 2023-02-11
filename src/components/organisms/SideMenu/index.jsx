@@ -17,6 +17,7 @@ import { ReactComponent as HomeIcon } from '../../../assets/icons/HomeIcon.svg';
 import ExtensionIcon from '@mui/icons-material/Extension';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ScienceIcon from '@mui/icons-material/Science';
+import PeopleIcon from '@mui/icons-material/People';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 
 // Styles
@@ -37,18 +38,8 @@ const SideMenu = ({ onChange = () => null }) => {
     onChange();
   };
 
-  const handleConfiguration = () => {
-    navigate('/dashboard/configuration');
-    onChange();
-  };
-
   const handleUsers = () => {
     navigate('/dashboard/users');
-    onChange();
-  };
-
-  const handleProductos = () => {
-    navigate('/dashboard/productos');
     onChange();
   };
 
@@ -121,22 +112,10 @@ const SideMenu = ({ onChange = () => null }) => {
             isSelected={location.pathname === '/dashboard/home'}
           />
           <DrawerItem
-            text={'Configuraciones'}
-            onClick={handleConfiguration}
-            icon={<SettingsIcon className="text-white" />}
-            isSelected={location.pathname === '/dashboard/configuration'}
-          />
-          <DrawerItem
             text={'Usuarios'}
             onClick={handleUsers}
-            icon={<SettingsIcon className="text-white" />}
+            icon={<PeopleIcon className="text-white" />}
             isSelected={location.pathname === '/dashboard/users'}
-          />
-          <DrawerItem
-            text={'Productos'}
-            onClick={handleProductos}
-            icon={<SettingsIcon className="text-white" />}
-            isSelected={location.pathname === '/dashboard/productos'}
           />
           <DrawerItem
             text={'Componentes 1'}
