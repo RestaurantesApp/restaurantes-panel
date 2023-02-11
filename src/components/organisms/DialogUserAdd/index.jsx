@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 // Hooks
 import { useForm } from '../../../hooks/others';
+import { AuthContext } from '../../../hooks/context';
 
 // Components
 import { DialogActions, DialogContent } from '@mui/material';
@@ -10,6 +11,7 @@ import {
   AlertCustom,
   ButtonCustom,
   Loader,
+  SelectCustom,
   TextInputCustom,
 } from '../../atoms';
 
@@ -25,10 +27,12 @@ const DialogUserAdd = ({
   setOpen = () => null,
   onDismiss = () => null,
 }) => {
+  const { auth } = useContext(AuthContext);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [role, setRole] = useState('');
   const [loader, setLoader] = useState(false);
   const [enabledValid, setEnabledValid] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -49,6 +53,7 @@ const DialogUserAdd = ({
     password: false,
     confirmPassword: false,
   });
+  const { token } = auth;
 
   useEffect(() => {
     if (!open) {
@@ -62,10 +67,12 @@ const DialogUserAdd = ({
     setEmail('');
     setPassword('');
     setConfirmPassword('');
+    setRole('');
     setLoader(false);
     setShowAlert(false);
     resetFormErrors();
     resetFormSuccess();
+    setEnabledValid(false);
   };
 
   const handleAccept = async () => {
@@ -77,6 +84,8 @@ const DialogUserAdd = ({
         name,
         email,
         password,
+        role,
+        token,
       };
       const response = await apiPostUser(params);
       const { success, message } = response;
@@ -183,6 +192,12 @@ const DialogUserAdd = ({
             required
             msgError={formErrors.confirmPassword}
             success={formSuccess.confirmPassword}
+          />
+          <SelectCustom
+            name="Rol"
+            options={auth.roles}
+            value={role}
+            setValue={setRole}
           />
           {loader && <Loader mode="modal" />}
         </div>

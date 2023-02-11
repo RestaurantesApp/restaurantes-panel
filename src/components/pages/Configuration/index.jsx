@@ -52,7 +52,6 @@ const Configuration = () => {
     const response = await apiGetUsers(params);
     const { success, message, data } = response;
     if (success) {
-      console.log(data);
       setUsers(data);
     } else {
       setShowAlert(true);

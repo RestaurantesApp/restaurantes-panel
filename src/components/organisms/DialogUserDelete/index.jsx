@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+
+// Hooks
+import { AuthContext } from '../../../hooks/context';
 
 // Components
 import { DialogActions, DialogContent } from '@mui/material';
@@ -14,6 +17,7 @@ const DialogUserDelete = ({
   setOpen = () => null,
   onDismiss = () => null,
 }) => {
+  const { auth } = useContext(AuthContext);
   const [loader, setLoader] = useState(false);
   const [name, setName] = useState('');
   const [showAlert, setShowAlert] = useState(false);
@@ -22,6 +26,7 @@ const DialogUserDelete = ({
     description: '',
     severity: 'info',
   });
+  const { token } = auth;
 
   useEffect(() => {
     if (open) {
@@ -40,11 +45,11 @@ const DialogUserDelete = ({
 
   const loadUser = async () => {
     setLoader(true);
-    const params = { idUser };
+    const params = { idUser, token };
     const response = await apiGetUser(params);
     const { success, message, data } = response;
     if (success) {
-      setName(data.user.name);
+      setName(data.name);
     } else {
       setShowAlert(true);
       setAlert({
@@ -58,7 +63,7 @@ const DialogUserDelete = ({
 
   const handleAccept = async () => {
     setLoader(true);
-    const params = { idUser };
+    const params = { idUser, token };
     const response = await apiDeleteUser(params);
     const { success, message } = response;
     if (success) {

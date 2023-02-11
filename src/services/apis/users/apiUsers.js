@@ -1,6 +1,5 @@
 import axios from 'axios';
-import buildRequest, { buildToken } from '../buildRequest';
-import { typesEndpoint } from '../../../common/types';
+import { buildToken } from '../buildRequest';
 
 export const apiGetUsers = async params => {
   const url = `${process.env.REACT_APP_API}users`;
@@ -58,8 +57,7 @@ export const apiGetUser = async params => {
 };
 
 export const apiPostUser = async params => {
-  const url = `${process.env.REACT_APP_API}${typesEndpoint.postUser}`;
-  const method = 'post';
+  const url = `${process.env.REACT_APP_API}users`;
   const dataResponse = {
     success: false,
     statusCode: 0,
@@ -71,10 +69,15 @@ export const apiPostUser = async params => {
     name: params.name,
     email: params.email,
     password: params.password,
+    role: params.role,
   };
 
   try {
-    const response = await axios[method](url, request, buildRequest());
+    const response = await axios.post(
+      url,
+      request,
+      buildToken('es', params.token),
+    );
     const { status, data } = response;
     dataResponse.success = true;
     dataResponse.data = data.data;
@@ -92,8 +95,7 @@ export const apiPostUser = async params => {
 };
 
 export const apiPatchUser = async params => {
-  const url = `${process.env.REACT_APP_API}${typesEndpoint.patchUser}`;
-  const method = 'patch';
+  const url = `${process.env.REACT_APP_API}users/${params.idUser}`;
   const dataResponse = {
     success: false,
     statusCode: 0,
@@ -102,14 +104,18 @@ export const apiPatchUser = async params => {
   };
 
   const request = {
-    idUser: params.idUser,
     name: params.name,
     email: params.email,
-    password: params.password,
+    password: params.password ? params.password : undefined,
+    role: params.role,
   };
 
   try {
-    const response = await axios[method](url, request, buildRequest());
+    const response = await axios.patch(
+      url,
+      request,
+      buildToken('es', params.token),
+    );
     const { status, data } = response;
     dataResponse.success = true;
     dataResponse.data = data.data;
@@ -127,8 +133,7 @@ export const apiPatchUser = async params => {
 };
 
 export const apiDeleteUser = async params => {
-  const url = `${process.env.REACT_APP_API}${typesEndpoint.deleteUser}`;
-  const method = 'delete';
+  const url = `${process.env.REACT_APP_API}users/${params.idUser}`;
   const dataResponse = {
     success: false,
     statusCode: 0,
@@ -136,12 +141,8 @@ export const apiDeleteUser = async params => {
     data: [],
   };
 
-  const request = {
-    idUser: params.idUser,
-  };
-
   try {
-    const response = await axios[method](url, buildRequest(request));
+    const response = await axios.delete(url, buildToken('es', params.token));
     const { status, data } = response;
     dataResponse.success = true;
     dataResponse.data = data.data;

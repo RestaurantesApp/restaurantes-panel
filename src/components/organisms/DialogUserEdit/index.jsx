@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 
 // Hooks
 import { useForm } from '../../../hooks/others';
+import { AuthContext } from '../../../hooks/context';
 
 // Components
 import { DialogActions, DialogContent } from '@mui/material';
@@ -10,6 +11,7 @@ import {
   AlertCustom,
   ButtonCustom,
   Loader,
+  SelectCustom,
   TextInputCustom,
 } from '../../atoms';
 
@@ -19,7 +21,6 @@ import { typesValidation } from '../../../common/types';
 // Core
 import { formValidEditUser } from '../../../core/validations';
 import { apiGetUser, apiPatchUser } from '../../../services/apis';
-import { AuthContext } from '../../../hooks/context';
 
 const DialogUserEdit = ({
   idUser = '',
@@ -32,6 +33,7 @@ const DialogUserEdit = ({
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [role, setRole] = useState('');
   const [loader, setLoader] = useState(false);
   const [enabledValid, setEnabledValid] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -68,10 +70,12 @@ const DialogUserEdit = ({
     setEmail('');
     setPassword('');
     setConfirmPassword('');
+    setRole('');
     setLoader(false);
     setShowAlert(false);
     resetFormErrors();
     resetFormSuccess();
+    setEnabledValid(false);
   };
 
   const loadUser = async () => {
@@ -79,12 +83,12 @@ const DialogUserEdit = ({
     const params = { idUser, token };
     const response = await apiGetUser(params);
     const { success, message, data } = response;
-    console.log(data);
     if (success) {
       setName(data.name);
       setEmail(data.email);
       setPassword('');
       setConfirmPassword('');
+      setRole(data.role);
     } else {
       setShowAlert(true);
       setAlert({
@@ -106,6 +110,8 @@ const DialogUserEdit = ({
         name,
         email,
         password,
+        role,
+        token,
       };
       const response = await apiPatchUser(params);
       const { success, message } = response;
@@ -210,6 +216,12 @@ const DialogUserEdit = ({
             maxLength={25}
             msgError={formErrors.confirmPassword}
             success={formSuccess.confirmPassword}
+          />
+          <SelectCustom
+            name="Rol"
+            options={auth.roles}
+            value={role}
+            setValue={setRole}
           />
           {loader && <Loader mode="modal" />}
         </div>

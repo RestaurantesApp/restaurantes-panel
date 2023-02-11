@@ -64,6 +64,9 @@ const Login = () => {
       if (success) {
         const payload = {
           personalInfo: data.user,
+          paths: data.paths,
+          methods: data.methods,
+          roles: data.roles,
           token: data.token,
         };
         dispatchAuth({ type: authLogin, payload });

@@ -1,5 +1,4 @@
-export { typesEndpoint } from './typesEndpoint';
-export { typesGlobalState } from './typesGlobalState';
-export { typesTableActions } from './typesTableActions';
-export { typesTableState } from './typesTableState';
-export { typesValidation } from './typesValidation';
+export * from './typesGlobalState';
+export * from './typesTableActions';
+export * from './typesTableState';
+export * from './typesValidation';
