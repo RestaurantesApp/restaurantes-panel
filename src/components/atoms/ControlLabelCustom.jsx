@@ -1,12 +1,12 @@
 import React from 'react';
 import { FormControlLabel } from '@mui/material';
 
-const ControlLabelCustom = ({
-  value = false,
+export const ControlLabelCustom = ({
+  value = undefined,
   children = null,
   name = '',
   align = 'end',
-  clase = '',
+  className = '',
 }) => {
   return (
     <FormControlLabel
@@ -14,9 +14,11 @@ const ControlLabelCustom = ({
       control={children}
       label={name}
       labelPlacement={align}
-      className={clase}
+      className={className}
+      sx={{
+        '&.MuiFormControlLabel-root': { margin: 0 },
+        '& .MuiFormControlLabel-label': { fontFamily: 'poppins' },
+      }}
     />
   );
 };
-
-export default ControlLabelCustom;

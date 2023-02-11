@@ -4,15 +4,18 @@ import React from 'react';
 import { Radio } from '@mui/material';
 
 // Core
-import { renderColor } from '../../../core/utils';
+import { renderColor } from '../../core/utils';
 
-const RadioCustom = ({
+// Styles
+import { colors } from '../themes';
+
+export const RadioCustom = ({
   value = false,
   setValue = () => null,
   disabled = false,
-  size = undefined,
-  typeColor = '',
-  fontSize = null,
+  size = 'medium',
+  typeColor = 'primary',
+  fontSize = undefined,
 }) => {
   const handleChange = () => {
     setValue(!value);
@@ -26,13 +29,9 @@ const RadioCustom = ({
       size={size}
       sx={{
         '& .MuiSvgIcon-root': { fontSize },
-        '&.Mui-checked': {
-          color: renderColor(typeColor),
-        },
-        color: renderColor(typeColor),
+        '&.Mui-checked': { color: renderColor(typeColor) },
+        color: colors['ligth-gray'],
       }}
     />
   );
 };
-
-export default RadioCustom;

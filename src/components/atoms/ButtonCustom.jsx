@@ -4,9 +4,9 @@ import React from 'react';
 import { Button } from '@mui/material';
 
 // Core
-import { renderColor } from '../../../core/utils';
+import { renderColor } from '../../core/utils';
 
-const ButtonCustom = ({
+export const ButtonCustom = ({
   text = '',
   onClick = () => null,
   variant = 'contained',
@@ -14,7 +14,7 @@ const ButtonCustom = ({
   startIcon = null,
   endIcon = null,
   disabled = false,
-  typeColor = '',
+  typeColor = undefined,
   textTransform = 'none',
 }) => {
   return (
@@ -22,12 +22,12 @@ const ButtonCustom = ({
       color="primary"
       variant={variant}
       onClick={onClick}
-      className={`fontTWSemibold px-4 ${className}`}
+      className={`font-poppins font-semibold ${className}`}
       startIcon={startIcon}
       endIcon={endIcon}
       disabled={disabled}
       sx={{
-        textTransform: textTransform,
+        textTransform,
         backgroundColor:
           variant === 'contained' && !disabled
             ? renderColor(typeColor)
@@ -61,5 +61,3 @@ const ButtonCustom = ({
     </Button>
   );
 };
-
-export default ButtonCustom;

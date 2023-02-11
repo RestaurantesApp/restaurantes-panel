@@ -4,22 +4,20 @@ import React from 'react';
 import { IconButton } from '@mui/material';
 
 // Core
-import { renderColor } from '../../../core/utils';
+import { renderColor } from '../../core/utils';
 
-const IconButtonCustom = ({
-  ariaLabel = 'twitter',
+export const IconButtonCustom = ({
   onClick = () => null,
   size = 32,
   className = '',
   icon = null,
   disabled = false,
-  typeColor = '',
-  typeColorHover = '',
+  typeColor = undefined,
+  typeColorHover = undefined,
 }) => {
   return (
     <IconButton
       color="primary"
-      aria-label={ariaLabel}
       disabled={disabled}
       className={className}
       onClick={onClick}
@@ -37,9 +35,6 @@ const IconButtonCustom = ({
         '&:hover.MuiButtonBase-root svg': {
           color: `${renderColor(typeColorHover)}`,
         },
-        '&.MuiTouchRipple-root': {
-          backgroundColor: 'red',
-        },
         color: renderColor(typeColor),
         ':hover': {
           color: `${renderColor(typeColorHover)}`,
@@ -50,5 +45,3 @@ const IconButtonCustom = ({
     </IconButton>
   );
 };
-
-export default IconButtonCustom;

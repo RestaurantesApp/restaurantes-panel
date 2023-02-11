@@ -1,12 +1,11 @@
 import React from 'react';
 import Typography from '@mui/material/Typography';
 
-const TextCustom = ({
+export const TextCustom = ({
   text = '',
   isParagraph = false,
-  variant = '',
+  variant = 'inherit',
   isWrap = false,
-  component = '',
   className = '',
 }) => {
   return (
@@ -14,12 +13,9 @@ const TextCustom = ({
       paragraph={isParagraph}
       noWrap={isWrap}
       variant={variant}
-      component={component}
-      className={className}
+      className={`font-poppins ${className}`}
     >
       {text}
     </Typography>
   );
 };
-
-export default TextCustom;

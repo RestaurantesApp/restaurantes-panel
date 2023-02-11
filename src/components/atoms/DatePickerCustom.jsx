@@ -1,27 +1,25 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 // Components
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { TextCustom } from '../';
+import { TextCustom } from './';
 
 // Styles
-import { colors } from '../../styles/theme';
+import { colors } from '../themes';
 
-const { black, white, gray, ligthGray, green, red, primary } = colors;
-
-const DatePickerCustom = ({
+const Component = ({
   name = '',
-  value = '',
+  value = null,
   setValue = () => null,
+  size = 'medium',
   required = false,
   disabled = false,
   minDate = undefined,
   maxDate = undefined,
-  msgError = '',
-  success = false,
+  msgError = null,
   className = '',
   fontSize = 18,
 }) => {
@@ -43,44 +41,47 @@ const DatePickerCustom = ({
           renderInput={params => (
             <TextField
               label={name}
-              size="large"
+              size={size}
               required={required}
-              style={{ backgroundColor: disabled ? '#e9ecef' : '#FFFFFF' }}
+              style={{
+                backgroundColor: disabled ? colors['ligth-gray'] : colors.white,
+              }}
               sx={{
-                '& legend': {
-                  marginLeft: 2,
-                  fontSize: fontSize * 0.82,
-                },
+                '& legend': { marginLeft: 2, fontSize: fontSize * 0.82 },
                 '& .MuiInputBase-root': {
                   '& fieldset': {
-                    borderRadius: 2,
-                    border: msgError.length > 0 || success ? 2 : 1,
+                    borderRadius: 1,
+                    border: typeof msgError === 'string' ? 2 : 1,
                     borderColor:
-                      msgError.length > 0 ? red : success ? green : gray,
-                    color: black,
+                      typeof msgError !== 'string'
+                        ? colors['dark-gray']
+                        : msgError.length === 0
+                        ? colors.success
+                        : colors.danger,
+                    color: colors.black,
                   },
                   '&.Mui-focused fieldset': {
-                    borderColor: primary,
-                    color: black,
-                    fontSize: fontSize,
+                    borderColor: colors['dark-gray'],
+                    color: colors.black,
+                    fontSize,
                   },
+                  fontFamily: 'poppins',
                 },
-                '& .MuiInputLabel-asterisk': {
-                  display: 'none',
-                },
+                '& .MuiInputLabel-root': { fontFamily: 'poppins' },
+                '& .MuiInputLabel-asterisk': { display: 'none' },
                 '& .MuiInputLabel-shrink': {
                   marginLeft: 2,
-                  color: black,
-                  fontSize: fontSize,
+                  color: colors.black,
+                  fontSize,
                   fontWeight: '600',
                   '& .MuiInputLabel-asterisk': {
-                    color: red,
+                    color: colors.danger,
                     display: 'inline',
                   },
                 },
-                backgroundColor: disabled ? ligthGray : white,
-                borderRadius: 2,
-                marginTop: 1,
+                backgroundColor: disabled ? colors['ligth-gray'] : colors.white,
+                borderRadius: 1,
+                marginTop: 0,
               }}
               {...params}
             />
@@ -88,12 +89,11 @@ const DatePickerCustom = ({
           disabled={disabled}
         />
       </LocalizationProvider>
-      <TextCustom
-        text={msgError}
-        className="text-xs ml-1 mt-1 fontPRegular color-red"
-      />
+      {msgError && (
+        <TextCustom text={msgError} className="text-xs ml-1 mt-1 text-danger" />
+      )}
     </div>
   );
 };
 
-export default DatePickerCustom;
+export const DatePickerCustom = memo(Component);

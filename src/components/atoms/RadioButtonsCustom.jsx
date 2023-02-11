@@ -2,22 +2,25 @@ import React from 'react';
 
 // Components
 import { Radio, RadioGroup } from '@mui/material';
-import { ControlLabelCustom, TextCustom } from '../';
+import { ControlLabelCustom, TextCustom } from './';
 
 // Core
-import { renderColor } from '../../../core/utils';
+import { renderColor } from '../../core/utils';
 
-const RadioButtonsCustom = ({
+// Styles
+import { colors } from '../themes';
+
+export const RadioButtonsCustom = ({
   name = '',
-  value = false,
+  value = '',
   setValue = () => null,
   options = [],
   isRow = false,
   disabled = false,
   msgError = '',
   size = undefined,
-  typeColor = '',
-  fontSize = null,
+  typeColor = 'primary',
+  fontSize = undefined,
   className = '',
   labelClassName = '',
 }) => {
@@ -27,11 +30,9 @@ const RadioButtonsCustom = ({
 
   return (
     <div className={`d-flex flex-column ${className}`}>
-      <label className={`form-label ${labelClassName}`} style={{ margin: 0 }}>
-        {name}
-      </label>
+      <TextCustom text={name} className={`form-label ${labelClassName}`} />
       {msgError.length > 0 && (
-        <TextCustom text={msgError} style={{ color: 'red' }} />
+        <TextCustom text={msgError} className="text-xs ml-1 mt-1 text-danger" />
       )}
       <RadioGroup
         aria-labelledby="demo-controlled-radio-buttons-group"
@@ -47,10 +48,8 @@ const RadioButtonsCustom = ({
               size={size}
               sx={{
                 '& .MuiSvgIcon-root': { fontSize },
-                '&.Mui-checked': {
-                  color: renderColor(typeColor),
-                },
-                color: renderColor(typeColor),
+                '&.Mui-checked': { color: renderColor(typeColor) },
+                color: colors['ligth-gray'],
               }}
             />
           </ControlLabelCustom>
@@ -59,5 +58,3 @@ const RadioButtonsCustom = ({
     </div>
   );
 };
-
-export default RadioButtonsCustom;

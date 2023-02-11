@@ -15,7 +15,6 @@ import { typesGlobalState } from '../../../common/types';
 import { ReactComponent as LogoIcon } from '../../../assets/icons/LogoIcon.svg';
 import { ReactComponent as HomeIcon } from '../../../assets/icons/HomeIcon.svg';
 import ExtensionIcon from '@mui/icons-material/Extension';
-import SettingsIcon from '@mui/icons-material/Settings';
 import ScienceIcon from '@mui/icons-material/Science';
 import PeopleIcon from '@mui/icons-material/People';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';

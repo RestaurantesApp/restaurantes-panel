@@ -2,41 +2,39 @@ import React, { memo } from 'react';
 
 // Components
 import { InputAdornment, TextField } from '@mui/material';
-import { TextCustom, IconButtonCustom } from '../';
+import { TextCustom, IconButtonCustom } from './';
 
 // Core
 import {
   validTextInput,
   validInputInitialNumbers,
-} from '../../../core/validations';
+} from '../../core/validations';
 
 // Styles
-import { colors } from '../../styles/theme';
+import { colors } from '../themes';
 
-const { black, white, gray, ligthGray, green, red, primary } = colors;
-
-const TextInputCustom = ({
+const Component = ({
   name = '',
   value = '',
   setValue = () => null,
   onBlur = () => null,
   onEnter = () => null,
+  size = 'medium',
   placeholder = '',
   type = 'text',
-  typesValidation = '',
+  typesValidation = undefined,
   validInitNumbers = [],
-  maxLength = null,
+  maxLength = undefined,
   className = '',
   iconStart = null,
   iconEnd = null,
   iconMode = 'adornment',
   iconTypeColor = 'primary',
   iconOnClick = () => null,
-  msgError = '',
+  msgError = null,
   disabled = false,
   multiline = false,
   required = false,
-  success = false,
   fontSize = 18,
 }) => {
   const handleOnChange = e => {
@@ -75,13 +73,11 @@ const TextInputCustom = ({
         value={value}
         onChange={handleOnChange}
         onBlur={onBlur}
-        onKeyDown={event => {
-          if (event.code === 'Enter') {
-            onEnter();
-          }
+        onKeyDown={e => {
+          if (e.code === 'Enter' || e.code === 'NumpadEnter') onEnter();
         }}
         variant="outlined"
-        size="large"
+        size={size}
         multiline={multiline}
         minRows={multiline ? '3' : '1'}
         maxRows={multiline ? '4' : '1'}
@@ -98,47 +94,48 @@ const TextInputCustom = ({
           endAdornment: renderIcon(iconEnd),
         }}
         sx={{
-          '& legend': {
-            marginLeft: 2,
-            fontSize: fontSize * 0.82,
-          },
+          '& legend': { marginLeft: 2, fontSize: fontSize * 0.82 },
           '& .MuiInputBase-root': {
             '& fieldset': {
-              borderRadius: 2,
-              border: msgError.length > 0 || success ? 2 : 1,
-              borderColor: msgError.length > 0 ? red : success ? green : gray,
-              color: black,
+              borderRadius: 1,
+              border: typeof msgError === 'string' ? 2 : 1,
+              borderColor:
+                typeof msgError !== 'string'
+                  ? colors['dark-gray']
+                  : msgError.length === 0
+                  ? colors.success
+                  : colors.danger,
+              color: colors.black,
             },
             '&.Mui-focused fieldset': {
-              borderColor: primary,
-              color: black,
-              fontSize: fontSize,
+              borderColor: colors['dark-gray'],
+              color: colors.black,
+              fontSize,
             },
+            fontFamily: 'poppins',
           },
-          '& .MuiInputLabel-asterisk': {
-            color: red,
-          },
+          '& .MuiInputLabel-root': { fontFamily: 'poppins' },
+          '& .MuiInputLabel-asterisk': { color: colors.danger },
           '& .MuiInputLabel-shrink': {
             marginLeft: 2,
-            color: black,
-            fontSize: fontSize,
+            color: colors.black,
+            fontSize,
             fontWeight: '600',
             '& .MuiInputLabel-asterisk': {
-              color: red,
+              color: colors.danger,
               display: 'inline',
             },
           },
-          backgroundColor: disabled ? ligthGray : white,
-          borderRadius: 2,
-          marginTop: 1,
+          backgroundColor: disabled ? colors['ligth-gray'] : colors.white,
+          borderRadius: 1,
+          marginTop: 0,
         }}
       />
-      <TextCustom
-        text={msgError}
-        className="text-xs ml-1 mt-1 fontPRegular color-red"
-      />
+      {msgError && (
+        <TextCustom text={msgError} className="text-xs ml-1 mt-1 text-danger" />
+      )}
     </div>
   );
 };
 
-export default memo(TextInputCustom);
+export const TextInputCustom = memo(Component);

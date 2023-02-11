@@ -4,13 +4,13 @@ import React from 'react';
 import { MenuItem } from '@mui/material';
 
 // Core
-import { colors } from '../../styles/theme';
+import { colors } from '../themes';
 
-const MenuItemCustom = ({ children = null, value = '', ...rest }) => {
+export const MenuItemCustom = ({ children = null, value = '', ...rest }) => {
   return (
     <MenuItem
       value={value}
-      className="fontPRegular"
+      className="font-poppins font-normal"
       sx={{
         '&: hover': {
           backgroundColor: colors.general,
@@ -31,5 +31,3 @@ const MenuItemCustom = ({ children = null, value = '', ...rest }) => {
     </MenuItem>
   );
 };
-
-export default MenuItemCustom;

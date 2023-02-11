@@ -9,8 +9,8 @@ import LocationAnimation from '../../../assets/animations/LocationAnimation.json
 //Styles
 import './styles.css';
 
-const Loader = ({
-  typeAnimation = '',
+export const Loader = ({
+  typeAnimation = 'loader',
   loop = true,
   size = '3rem',
   mode = 'block',
@@ -25,44 +25,39 @@ const Loader = ({
   const lottieRef = useRef();
 
   useEffect(() => {
-    lottieRef.current.setSpeed(speed);
+    if (lottieRef.current) lottieRef.current.setSpeed(speed);
   }, [speed]);
 
   useEffect(() => {
     if (pause) {
-      lottieRef.current.pause();
+      if (lottieRef.current) lottieRef.current.pause();
       setPause(false);
     }
   }, [pause, setPause]);
 
   useEffect(() => {
     if (play) {
-      lottieRef.current.play();
+      if (lottieRef.current) lottieRef.current.play();
       setPlay(false);
     }
   }, [play, setPlay]);
 
   useEffect(() => {
     if (stop) {
-      lottieRef.current.stop();
+      if (lottieRef.current) lottieRef.current.stop();
       setStop(false);
     }
   }, [stop, setStop]);
 
   const renderAnimationData = () => {
-    let data;
     switch (typeAnimation) {
       case 'delivery':
-        data = DeliveryAnimation;
-        break;
+        return DeliveryAnimation;
       case 'location':
-        data = LocationAnimation;
-        break;
+        return LocationAnimation;
       default:
-        data = LoaderCircleAnimation;
-        break;
+        return LoaderCircleAnimation;
     }
-    return data;
   };
 
   return (
@@ -76,5 +71,3 @@ const Loader = ({
     </div>
   );
 };
-
-export default Loader;

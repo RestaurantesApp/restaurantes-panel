@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 // Components
 import { Alert, AlertTitle, Collapse } from '@mui/material';
-import IconButtonCustom from '../IconButtonCustom';
+import { IconButtonCustom } from './';
 
 // Assets
 import CloseIcon from '@mui/icons-material/Close';
 
-const AlertCustom = ({
+export const AlertCustom = ({
   description = '',
   open = false,
   setOpen = () => null,
@@ -15,29 +15,20 @@ const AlertCustom = ({
   title = '',
 }) => {
   const [showMore, setShowMore] = useState(true);
-  const [typeColor, setTypeColor] = useState('');
 
-  useEffect(() => {
-    let color = '';
+  const renderTypeColor = () => {
     switch (severity) {
-      case 'info':
-        color = '';
-        break;
       case 'success':
-        color = 'success';
-        break;
+        return 'success';
       case 'warning':
-        color = 'warning';
-        break;
+        return 'warning';
       case 'error':
-        color = 'danger';
-        break;
+        return 'danger';
+      case 'info':
       default:
-        color = 'info';
-        break;
+        return undefined;
     }
-    setTypeColor(color);
-  }, [severity]);
+  };
 
   const handleClose = () => {
     setOpen(false);
@@ -54,7 +45,7 @@ const AlertCustom = ({
         action={
           <IconButtonCustom
             icon={<CloseIcon fontSize="inherit" />}
-            typeColor={typeColor}
+            typeColor={renderTypeColor()}
             size="1.5rem"
             onClick={handleClose}
           />
@@ -77,5 +68,3 @@ const AlertCustom = ({
     </Collapse>
   );
 };
-
-export default AlertCustom;

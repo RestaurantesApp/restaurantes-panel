@@ -1,19 +1,20 @@
 import React, { memo } from 'react';
 
 // Components
-import { InputLabel, Select } from '@mui/material';
-import { FormControlCustom, MenuItemCustom, TextCustom } from '../';
+import { Select } from '@mui/material';
+import { FormControlCustom, MenuItemCustom, TextCustom } from './';
 
 // Core
-import { colors } from '../../styles/theme';
+import { colors } from '../styles/theme';
 
-const SelectCustom = ({
-  name = null,
+const Component = ({
+  name = '',
   options = [],
   value = '',
   setValue = () => null,
-  msgError = '',
-  success = false,
+  onBlur = () => null,
+  size = 'medium',
+  msgError = null,
   disabled = false,
   required = false,
   fontSize = 18,
@@ -26,43 +27,44 @@ const SelectCustom = ({
 
   return (
     <div className={`flex flex-col ${className}`}>
-      <FormControlCustom required={required}>
-        <InputLabel id="demo-simple-select-label" style={{ fontSize }}>
-          {name}
-        </InputLabel>
+      <FormControlCustom
+        required={required}
+        name={name}
+        size={size}
+        fontSize={fontSize}
+      >
         <Select
           labelId="demo-simple-select-label"
           label={name}
           value={value}
           onChange={handleChange}
+          onBlur={onBlur}
           className="w-full"
-          size="large"
+          size={size}
           disabled={disabled}
           sx={{
-            '& MuiPaper-root': {
-              marginTop: 1,
-            },
+            '& MuiPaper-root': { marginTop: 1 },
             '& legend': {
               marginLeft: 2,
               fontSize: fontSize * 0.82,
             },
             '& fieldset': {
-              borderRadius: 2,
-              border: msgError.length > 0 || success ? 2 : 1,
+              borderRadius: 1,
+              border: typeof msgError === 'string' ? 2 : 1,
               borderColor:
-                msgError.length > 0
-                  ? colors.red
-                  : success
-                  ? colors.green
-                  : colors.gray,
+                typeof msgError !== 'string'
+                  ? colors['dark-gray']
+                  : msgError.length === 0
+                  ? colors.success
+                  : colors.danger,
               color: colors.black,
             },
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: colors.primary,
+              borderColor: colors['dark-gray'],
               color: colors.black,
             },
-            backgroundColor: disabled ? colors.ligthGray : colors.white,
-            borderRadius: 2,
+            backgroundColor: disabled ? colors['ligth-gray'] : colors.white,
+            borderRadius: 1,
           }}
         >
           {options.map((option, index) => (
@@ -72,12 +74,11 @@ const SelectCustom = ({
           ))}
         </Select>
       </FormControlCustom>
-      <TextCustom
-        text={msgError}
-        className="text-xs ml-1 mr-1 fontPRegular text-red"
-      />
+      {msgError && (
+        <TextCustom text={msgError} className="text-xs ml-1 mt-1 text-danger" />
+      )}
     </div>
   );
 };
 
-export default memo(SelectCustom);
+export const SelectCustom = memo(Component);

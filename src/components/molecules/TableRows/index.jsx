@@ -2,7 +2,7 @@ import React from 'react';
 
 // Components
 import { Tooltip } from '@mui/material';
-import { IconButtonCustom, TableState } from '../../atoms';
+import { BadgePoint, IconButtonCustom } from '../../atoms';
 
 // Const
 import { typesTableActions } from '../../../common/types';
@@ -68,7 +68,7 @@ const TableRows = ({
   const renderCells = cell => {
     let element = null;
     if (cell.column.id === 'STATE') {
-      element = <TableState state={cell.value} />;
+      element = <BadgePoint state={cell.value} />;
     } else {
       element = cell.render('Cell');
     }
