@@ -13,6 +13,7 @@ const Component = ({
   open = false,
   setOpen = () => null,
   title = '',
+  maxWidth = 'md',
 }) => {
   const handleClose = () => {
     onDismiss();
@@ -25,13 +26,14 @@ const Component = ({
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
       onClose={() => !disabledDismiss && handleClose()}
-      maxWidth={false}
+      fullWidth
+      maxWidth={maxWidth}
     >
       <DialogTitleCustom
         onClose={handleClose}
         disabledIconClose={disabledIconClose}
       >
-        <TextCustom text={title} className="fontPMedium py-2" />
+        <TextCustom text={title} className="font-medium py-2" />
       </DialogTitleCustom>
       {children}
     </Dialog>

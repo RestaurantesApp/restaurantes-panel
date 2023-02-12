@@ -30,11 +30,13 @@ export const DrawerItem = ({
         isSelected ? 'bg-white/10' : ''
       }`}
     >
-      <div className="w-full py-1 flex cursor-pointer items-center gap-2">
-        <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: 'auto' } }}>
-          {icon}
-        </ListItemIcon>
-        <TextCustom text={text} className="font-light tracking-tight" />
+      <div className="w-full py-1 flex cursor-pointer justify-between">
+        <div className="flex items-center gap-2">
+          <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: 'auto' } }}>
+            {icon}
+          </ListItemIcon>
+          <TextCustom text={text} className="font-light tracking-tight" />
+        </div>
         {isCollapse ? collapse ? <ExpandLess /> : <ExpandMore /> : null}
       </div>
     </ListItem>

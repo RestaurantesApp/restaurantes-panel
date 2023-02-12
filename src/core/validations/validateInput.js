@@ -11,67 +11,41 @@ const {
   regexValidateEmailDomain,
 } = typeRegex;
 
-const {
-  onlyNumber,
-  onlyLetters,
-  onlyLettersExtend,
-  onlyAlphanumeric,
-  onlyAlphanumericExtend,
-  validateEmail,
-  validateEmailDomain,
-} = typesValidation;
-
-export const validTextInput = (value = '', type = '') => {
-  let isValid = true;
+export const validTextInput = (value, type) => {
   switch (type) {
-    case onlyNumber:
-      isValid = regexOnlyNumber.test(value) ? true : false;
-      break;
-    case onlyLetters:
-      isValid = regexOnlyLetters.test(value) ? true : false;
-      break;
-    case onlyLettersExtend:
-      isValid = regexOnlyLettersExtend.test(value) ? true : false;
-      break;
-    case onlyAlphanumeric:
-      isValid = regexAlphanumeric.test(value) ? true : false;
-      break;
-    case onlyAlphanumericExtend:
-      isValid = regexAlphanumericExtend.test(value) ? true : false;
-      break;
+    case typesValidation.onlyNumber:
+      return regexOnlyNumber.test(value);
+    case typesValidation.onlyLetters:
+      return regexOnlyLetters.test(value);
+    case typesValidation.onlyLettersExtend:
+      return regexOnlyLettersExtend.test(value);
+    case typesValidation.onlyAlphanumeric:
+      return regexAlphanumeric.test(value);
+    case typesValidation.onlyAlphanumericExtend:
+      return regexAlphanumericExtend.test(value);
     default:
-      isValid = true;
-      break;
+      return true;
   }
-  return isValid;
 };
 
 export const validInputEmail = (value, type) => {
-  let isValid = true;
   switch (type) {
-    case validateEmail:
-      isValid = regexValidateEmail.test(value) ? true : false;
-      break;
-    case validateEmailDomain:
-      isValid = regexValidateEmailDomain.test(value) ? true : false;
-      break;
+    case typesValidation.validateEmail:
+      return regexValidateEmail.test(value);
+    case typesValidation.validateEmailDomain:
+      return regexValidateEmailDomain.test(value);
     default:
-      isValid = true;
-      break;
+      return true;
   }
-  return isValid;
 };
 
-export const validInputInitialNumbers = (value = '', initialNumbers = []) => {
+export const validInputInitialNumbers = (value, initialNumbers) => {
   let isValid = true;
-  isValid = regexOnlyNumber.test(value) ? true : false;
+  isValid = regexOnlyNumber.test(value);
   if (isValid) {
     let isValidNumber = false;
-    initialNumbers.map(number => {
-      if (number === parseFloat(value.charAt(0))) {
-        isValidNumber = true;
-      }
-      return null;
+    initialNumbers.forEach(number => {
+      if (number === parseFloat(value.charAt(0))) isValidNumber = true;
     });
     isValid = isValidNumber;
   }

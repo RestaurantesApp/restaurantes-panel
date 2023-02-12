@@ -91,7 +91,7 @@ export const DialogUserDelete = ({
       title="Eliminar Usuario"
       onDismiss={onDismiss}
     >
-      <DialogContent style={{ width: 500 }}>
+      <DialogContent>
         <AlertCustom
           title={alert.title}
           description={alert.description}

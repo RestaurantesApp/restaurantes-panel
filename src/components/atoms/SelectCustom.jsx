@@ -5,7 +5,7 @@ import { Select } from '@mui/material';
 import { FormControlCustom, MenuItemCustom, TextCustom } from './';
 
 // Core
-import { colors } from '../styles/theme';
+import { colors } from '../themes';
 
 const Component = ({
   name = '',

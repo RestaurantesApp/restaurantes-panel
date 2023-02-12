@@ -1,108 +1,80 @@
 import { typesValidation } from '../../common/types';
 import { validInputEmail } from './validateInput';
 
-const { validateEmail } = typesValidation;
-
 export const formValidAddUser = user => {
-  const dataResponse = {
+  const response = {
     isValid: true,
     msgValid: {
-      errors: null,
-      success: null,
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
     },
   };
-  let isValid = true;
-  let inputsError = {
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  };
-  let inputsSuccess = {
-    name: true,
-    email: true,
-    password: true,
-    confirmPassword: true,
-  };
   if (!user.name) {
-    inputsError.name = 'Nombre no ha sido asignado.\n';
-    inputsSuccess.name = false;
-    isValid = false;
+    response.msgValid.name = 'Nombre no ha sido asignado.\n';
+    response.isValid = false;
   }
   if (!user.email) {
-    inputsError.email = 'Correo no ha sido asignado.\n';
-    inputsSuccess.email = false;
-    isValid = false;
+    response.msgValid.email = 'Correo no ha sido asignado.\n';
+    response.isValid = false;
   }
   if (!user.password) {
-    inputsError.password = 'Contraseña no ha sido asignada.\n';
-    inputsSuccess.password = false;
-    isValid = false;
+    response.msgValid.password = 'Contraseña no ha sido asignada.\n';
+    response.isValid = false;
   }
   if (!user.confirmPassword) {
-    inputsError.confirmPassword = 'Contraseña no ha sido asignada.\n';
-    inputsSuccess.confirmPassword = false;
-    isValid = false;
+    response.msgValid.confirmPassword = 'Contraseña no ha sido asignada.\n';
+    response.isValid = false;
   }
-  if (!inputsError.email && !validInputEmail(user.email, validateEmail)) {
-    inputsError.email = 'Correo no válido.\n';
-    inputsSuccess.email = false;
-    isValid = false;
+  if (
+    !response.msgValid.email &&
+    !validInputEmail(user.email, typesValidation.validateEmail)
+  ) {
+    response.msgValid.email = 'Correo no válido.\n';
+    response.isValid = false;
   }
-  if (!inputsError.confirmPassword && user.password !== user.confirmPassword) {
-    inputsError.confirmPassword = 'Las contraseñas no coinciden.\n';
-    inputsSuccess.confirmPassword = false;
-    isValid = false;
+  if (
+    !response.msgValid.confirmPassword &&
+    user.password !== user.confirmPassword
+  ) {
+    response.msgValid.confirmPassword = 'Las contraseñas no coinciden.\n';
+    response.isValid = false;
   }
-  dataResponse.isValid = isValid;
-  dataResponse.msgValid.errors = inputsError;
-  dataResponse.msgValid.success = inputsSuccess;
-  return dataResponse;
+  return response;
 };
 
 export const formValidEditUser = user => {
-  const dataResponse = {
+  const response = {
     isValid: true,
     msgValid: {
-      errors: null,
-      success: null,
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
     },
   };
-  let isValid = true;
-  let inputsError = {
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  };
-  let inputsSuccess = {
-    name: true,
-    email: true,
-    password: true,
-    confirmPassword: true,
-  };
   if (!user.name) {
-    inputsError.name = 'Nombre no ha sido asignado.\n';
-    inputsSuccess.name = false;
-    isValid = false;
+    response.msgValid.name = 'Nombre no ha sido asignado.\n';
+    response.isValid = false;
   }
   if (!user.email) {
-    inputsError.email = 'Correo no ha sido asignado.\n';
-    inputsSuccess.email = false;
-    isValid = false;
+    response.msgValid.email = 'Correo no ha sido asignado.\n';
+    response.isValid = false;
   }
-  if (!inputsError.email && !validInputEmail(user.email, validateEmail)) {
-    inputsError.email = 'Correo no válido.\n';
-    inputsSuccess.email = false;
-    isValid = false;
+  if (
+    !response.msgValid.email &&
+    !validInputEmail(user.email, typesValidation.validateEmail)
+  ) {
+    response.msgValid.email = 'Correo no válido.\n';
+    response.isValid = false;
   }
-  if (!inputsError.confirmPassword && user.password !== user.confirmPassword) {
-    inputsError.confirmPassword = 'Las contraseñas no coinciden.\n';
-    inputsSuccess.confirmPassword = false;
-    isValid = false;
+  if (
+    !response.msgValid.confirmPassword &&
+    user.password !== user.confirmPassword
+  ) {
+    response.msgValid.confirmPassword = 'Las contraseñas no coinciden.\n';
+    response.isValid = false;
   }
-  dataResponse.isValid = isValid;
-  dataResponse.msgValid.errors = inputsError;
-  dataResponse.msgValid.success = inputsSuccess;
-  return dataResponse;
+  return response;
 };

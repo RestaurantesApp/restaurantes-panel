@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 
 // Hooks
 import { AuthContext } from '../../hooks/context';
-import { useForm } from '../../hooks/others';
+import useMessage from '../../hooks/others/useMessage';
 
 // Components
 import {
@@ -36,19 +36,14 @@ export const Login = () => {
     description: '',
     severity: 'info',
   });
-  const [formErrors, setFormErrors, resetFormErrors] = useForm({
-    email: '',
-    password: '',
-  });
-  const [formSuccess, setFormSuccess, resetFormSuccess] = useForm({
-    email: false,
-    password: false,
+  const { messages, setMessages, resetMessages } = useMessage({
+    email: null,
+    password: null,
   });
 
   const resetForm = () => {
     setShowAlert(false);
-    resetFormErrors();
-    resetFormSuccess();
+    resetMessages();
     setEmail('');
     setPassword('');
   };
@@ -56,7 +51,8 @@ export const Login = () => {
   const handleLogin = async () => {
     setShowAlert(false);
     setEnabledValid(true);
-    if (handleValidForm()) {
+    const isFormValid = handleValidForm();
+    if (isFormValid) {
       setLoader(true);
       const params = { email, password };
       const response = await apiLogin(params);
@@ -84,12 +80,9 @@ export const Login = () => {
   };
 
   const handleValidForm = () => {
-    const params = { email, password };
-    const responseValid = formValidLogin(params);
-    const { isValid, msgValid } = responseValid;
-    setFormErrors(msgValid.errors);
-    setFormSuccess(msgValid.success);
-    return isValid;
+    const response = formValidLogin({ email, password });
+    setMessages(response.msgValid);
+    return response.isValid;
   };
 
   return (
@@ -115,8 +108,7 @@ export const Login = () => {
               setValue={setEmail}
               onBlur={() => enabledValid && handleValidForm()}
               onEnter={handleLogin}
-              msgError={formErrors.email}
-              success={formSuccess.email}
+              msgError={messages.email}
             />
             <TextInputCustom
               name="Contraseña"
@@ -125,8 +117,7 @@ export const Login = () => {
               setValue={setPassword}
               onBlur={() => enabledValid && handleValidForm()}
               onEnter={handleLogin}
-              msgError={formErrors.password}
-              success={formSuccess.password}
+              msgError={messages.password}
             />
             <ButtonCustom
               text="Ingresar"

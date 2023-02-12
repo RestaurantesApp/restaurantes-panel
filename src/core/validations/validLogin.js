@@ -1,42 +1,30 @@
 import { typesValidation } from '../../common/types';
 import { validInputEmail } from './validateInput';
 
-const { validateEmail } = typesValidation;
-
 export const formValidLogin = user => {
-  const dataResponse = {
+  const response = {
     isValid: true,
     msgValid: {
-      errors: null,
-      success: null,
+      email: null,
+      password: null,
     },
   };
-  let isValid = true;
-  let inputsError = {
-    email: '',
-    password: '',
-  };
-  let inputsSuccess = {
-    email: true,
-    password: true,
-  };
   if (!user.email) {
-    inputsError.email = 'Correo no ha sido asignado.\n';
-    inputsSuccess.email = false;
-    isValid = false;
+    response.msgValid.email = 'Correo no asignado.\n';
+    response.isValid = false;
+  } else {
+    if (!validInputEmail(user.email, typesValidation.validateEmail)) {
+      response.msgValid.email = 'Correo no válido.\n';
+      response.isValid = false;
+    } else {
+      response.msgValid.email = '';
+    }
   }
   if (!user.password) {
-    inputsError.password = 'Contraseña no ha sido asignada.\n';
-    inputsSuccess.password = false;
-    isValid = false;
+    response.msgValid.password = 'Contraseña no asignada.\n';
+    response.isValid = false;
+  } else {
+    response.msgValid.password = '';
   }
-  if (!inputsError.email && !validInputEmail(user.email, validateEmail)) {
-    inputsError.email = 'Correo no válido.\n';
-    inputsSuccess.email = false;
-    isValid = false;
-  }
-  dataResponse.isValid = isValid;
-  dataResponse.msgValid.errors = inputsError;
-  dataResponse.msgValid.success = inputsSuccess;
-  return dataResponse;
+  return response;
 };

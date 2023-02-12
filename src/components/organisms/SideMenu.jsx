@@ -107,18 +107,21 @@ const Component = ({ onChange = () => null }) => {
           <DrawerItem
             text={'Dashboard'}
             onClick={handleHome}
+            className="py-1"
             icon={<HomeIcon fill={white} />}
             isSelected={location.pathname === '/dashboard/home'}
           />
           <DrawerItem
             text={'Usuarios'}
             onClick={handleUsers}
+            className="py-1"
             icon={<PeopleIcon className="text-white" />}
             isSelected={location.pathname === '/dashboard/users'}
           />
           <DrawerItem
             text={'Componentes 1'}
             onClick={() => setShowComponents1(!showComponents1)}
+            className="py-1"
             icon={<ScienceIcon className="text-white" />}
             isCollapse
             collapse={showComponents1}
@@ -128,18 +131,21 @@ const Component = ({ onChange = () => null }) => {
               <DrawerItem
                 text={'Textos y colores'}
                 onClick={handleComponentsText}
+                className="py-1"
                 icon={<ExtensionIcon className="text-white" />}
                 isSelected={location.pathname === '/dashboard/componentsText'}
               />
               <DrawerItem
                 text={'Botones'}
                 onClick={handleComponentsButton}
+                className="py-1"
                 icon={<ExtensionIcon className="text-white" />}
                 isSelected={location.pathname === '/dashboard/componentsButton'}
               />
               <DrawerItem
                 text={'Inputs 1'}
                 onClick={handleComponentsInputs1}
+                className="py-1"
                 icon={<ExtensionIcon className="text-white" />}
                 isSelected={
                   location.pathname === '/dashboard/componentsInputs1'
@@ -148,6 +154,7 @@ const Component = ({ onChange = () => null }) => {
               <DrawerItem
                 text={'Inputs 2'}
                 onClick={handleComponentsInputs2}
+                className="py-1"
                 icon={<ExtensionIcon className="text-white" />}
                 isSelected={
                   location.pathname === '/dashboard/componentsInputs2'
@@ -156,6 +163,7 @@ const Component = ({ onChange = () => null }) => {
               <DrawerItem
                 text={'Inputs 3'}
                 onClick={handleComponentsInputs3}
+                className="py-1"
                 icon={<ExtensionIcon className="text-white" />}
                 isSelected={
                   location.pathname === '/dashboard/componentsInputs3'
@@ -164,6 +172,7 @@ const Component = ({ onChange = () => null }) => {
               <DrawerItem
                 text={'Inputs 4'}
                 onClick={handleComponentsInputs4}
+                className="py-1"
                 icon={<ExtensionIcon className="text-white" />}
                 isSelected={
                   location.pathname === '/dashboard/componentsInputs4'
@@ -174,6 +183,7 @@ const Component = ({ onChange = () => null }) => {
           <DrawerItem
             text={'Componentes 2'}
             onClick={() => setShowComponents2(!showComponents2)}
+            className="py-1"
             icon={<ScienceIcon className="text-white" />}
             isCollapse
             collapse={showComponents2}
@@ -183,24 +193,28 @@ const Component = ({ onChange = () => null }) => {
               <DrawerItem
                 text={'Loaders'}
                 onClick={handleComponentsLoader}
+                className="py-1"
                 icon={<ExtensionIcon className="text-white" />}
                 isSelected={location.pathname === '/dashboard/componentsLoader'}
               />
               <DrawerItem
                 text={'Alerts'}
                 onClick={handleComponentsAlert}
+                className="py-1"
                 icon={<ExtensionIcon className="text-white" />}
                 isSelected={location.pathname === '/dashboard/componentsAlert'}
               />
               <DrawerItem
                 text={'Ventanas Modales'}
                 onClick={handleComponentsDialog}
+                className="py-1"
                 icon={<ExtensionIcon className="text-white" />}
                 isSelected={location.pathname === '/dashboard/componentsDialog'}
               />
               <DrawerItem
                 text={'Tablas'}
                 onClick={handleComponentsTable}
+                className="py-1"
                 icon={<ExtensionIcon className="text-white" />}
                 isSelected={location.pathname === '/dashboard/componentsTable'}
               />
@@ -211,6 +225,7 @@ const Component = ({ onChange = () => null }) => {
           <DrawerItem
             text={'Cerrar sesión'}
             onClick={handleLogout}
+            className="py-1"
             icon={<PowerSettingsNewIcon className="text-white" />}
           />
         </List>

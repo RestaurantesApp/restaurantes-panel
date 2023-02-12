@@ -75,7 +75,7 @@ const Component = ({ open = false, setOpen = () => null }) => {
       disabledDismiss
       disabledIconClose
     >
-      <DialogContent style={{ width: 500 }}>
+      <DialogContent>
         <div className="flex flex-col relative">
           <TextCustom text="Ingrese sus datos" variant="h5" />
           <TextInputCustom

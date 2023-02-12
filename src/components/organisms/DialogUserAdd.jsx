@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 
 // Hooks
-import { useForm } from '../../hooks/others';
+import useMessage from '../../hooks/others/useMessage';
 import { AuthContext } from '../../hooks/context';
 
 // Components
@@ -41,17 +41,11 @@ export const DialogUserAdd = ({
     description: '',
     severity: 'info',
   });
-  const [formErrors, setFormErrors, resetFormErrors] = useForm({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
-  const [formSuccess, setFormSuccess, resetFormSuccess] = useForm({
-    name: false,
-    email: false,
-    password: false,
-    confirmPassword: false,
+  const { messages, setMessages, resetMessages } = useMessage({
+    name: null,
+    email: null,
+    password: null,
+    confirmPassword: null,
   });
   const { token } = auth;
 
@@ -70,8 +64,7 @@ export const DialogUserAdd = ({
     setRole('');
     setLoader(false);
     setShowAlert(false);
-    resetFormErrors();
-    resetFormSuccess();
+    resetMessages();
     setEnabledValid(false);
   };
 
@@ -112,8 +105,7 @@ export const DialogUserAdd = ({
       confirmPassword,
     };
     const response = formValidAddUser(params);
-    setFormErrors(response.msgValid.errors);
-    setFormSuccess(response.msgValid.success);
+    setMessages(response.msgValid);
     return response.isValid;
   };
 
@@ -133,7 +125,7 @@ export const DialogUserAdd = ({
       title="Crear Usuario"
       onDismiss={handleDismiss}
     >
-      <DialogContent style={{ width: 500 }}>
+      <DialogContent>
         <AlertCustom
           title={alert.title}
           description={alert.description}
@@ -152,8 +144,7 @@ export const DialogUserAdd = ({
             maxLength={50}
             required
             typesValidation={typesValidation.onlyLettersExtend}
-            msgError={formErrors.name}
-            success={formSuccess.name}
+            msgError={messages.name}
           />
           <TextInputCustom
             name="Email"
@@ -164,8 +155,7 @@ export const DialogUserAdd = ({
             className="mt-2"
             maxLength={30}
             required
-            msgError={formErrors.email}
-            success={formSuccess.email}
+            msgError={messages.email}
           />
           <TextInputCustom
             name="Contraseña"
@@ -177,8 +167,7 @@ export const DialogUserAdd = ({
             type="password"
             maxLength={25}
             required
-            msgError={formErrors.password}
-            success={formSuccess.password}
+            msgError={messages.password}
           />
           <TextInputCustom
             name="Confirmar contraseña"
@@ -190,14 +179,14 @@ export const DialogUserAdd = ({
             type="password"
             maxLength={25}
             required
-            msgError={formErrors.confirmPassword}
-            success={formSuccess.confirmPassword}
+            msgError={messages.confirmPassword}
           />
           <SelectCustom
             name="Rol"
             options={auth.roles}
             value={role}
             setValue={setRole}
+            className="mt-2"
           />
           {loader && <Loader mode="modal" />}
         </div>

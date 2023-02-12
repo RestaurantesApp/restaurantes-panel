@@ -104,7 +104,7 @@ export const TableRows = ({
                     <IconButtonCustom
                       key={index}
                       icon={renderActions(action)}
-                      typeColor="default"
+                      typeColor="dark-gray"
                       typeColorHover="primary"
                       size="1.5rem"
                       onClick={() =>

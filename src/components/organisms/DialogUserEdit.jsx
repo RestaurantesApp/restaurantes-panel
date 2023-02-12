@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 
 // Hooks
-import { useForm } from '../../hooks/others';
+import useMessage from '../../hooks/others/useMessage';
 import { AuthContext } from '../../hooks/context';
 
 // Components
@@ -42,17 +42,11 @@ export const DialogUserEdit = ({
     description: '',
     severity: 'info',
   });
-  const [formErrors, setFormErrors, resetFormErrors] = useForm({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
-  const [formSuccess, setFormSuccess, resetFormSuccess] = useForm({
-    name: false,
-    email: false,
-    password: false,
-    confirmPassword: false,
+  const { messages, setMessages, resetMessages } = useMessage({
+    name: null,
+    email: null,
+    password: null,
+    confirmPassword: null,
   });
   const { token } = auth;
 
@@ -73,8 +67,7 @@ export const DialogUserEdit = ({
     setRole('');
     setLoader(false);
     setShowAlert(false);
-    resetFormErrors();
-    resetFormSuccess();
+    resetMessages();
     setEnabledValid(false);
   };
 
@@ -138,8 +131,7 @@ export const DialogUserEdit = ({
       confirmPassword,
     };
     const response = formValidEditUser(params);
-    setFormErrors(response.msgValid.errors);
-    setFormSuccess(response.msgValid.success);
+    setMessages(response.msgValid);
     return response.isValid;
   };
 
@@ -159,7 +151,7 @@ export const DialogUserEdit = ({
       title="Editar Usuario"
       onDismiss={handleDismiss}
     >
-      <DialogContent style={{ width: 500 }}>
+      <DialogContent>
         <AlertCustom
           title={alert.title}
           description={alert.description}
@@ -178,8 +170,7 @@ export const DialogUserEdit = ({
             maxLength={50}
             required
             typesValidation={typesValidation.onlyLettersExtend}
-            msgError={formErrors.name}
-            success={formSuccess.name}
+            msgError={messages.name}
           />
           <TextInputCustom
             name="Email"
@@ -190,8 +181,7 @@ export const DialogUserEdit = ({
             className="mt-2"
             maxLength={30}
             required
-            msgError={formErrors.email}
-            success={formSuccess.email}
+            msgError={messages.email}
           />
           <TextInputCustom
             name="Contraseña"
@@ -202,8 +192,7 @@ export const DialogUserEdit = ({
             className="mt-2"
             type="password"
             maxLength={25}
-            msgError={formErrors.password}
-            success={formSuccess.password}
+            msgError={messages.password}
           />
           <TextInputCustom
             name="Confirmar contraseña"
@@ -214,14 +203,14 @@ export const DialogUserEdit = ({
             className="mt-2"
             type="password"
             maxLength={25}
-            msgError={formErrors.confirmPassword}
-            success={formSuccess.confirmPassword}
+            msgError={messages.confirmPassword}
           />
           <SelectCustom
             name="Rol"
             options={auth.roles}
             value={role}
             setValue={setRole}
+            className="mt-2"
           />
           {loader && <Loader mode="modal" />}
         </div>
