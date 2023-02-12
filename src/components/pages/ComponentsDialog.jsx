@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 // Components
-import { DialogActions, DialogContent, Divider } from '@mui/material';
+import { DialogActions, DialogContent, Divider } from '@mui/material'
 import {
   ButtonCustom,
   CheckBoxCustom,
   ControlLabelCustom,
   TextCustom,
-} from '../atoms';
-import { DialogCustom } from '../templates';
-import { DialogTest } from '../organisms';
+} from '../atoms'
+import { DialogCustom } from '../templates'
+import { DialogTest } from '../organisms'
 
 export const ComponentsDialog = () => {
-  const [show1, setShow1] = useState(false);
-  const [show2, setShow2] = useState(false);
-  const [show3, setShow3] = useState(false);
-  const [show4, setShow4] = useState(false);
-  const [show5, setShow5] = useState(false);
-  const [show6, setShow6] = useState(false);
-  const [check1, setCheck1] = useState(false);
-  const [show7, setShow7] = useState(false);
-  const [check2, setCheck2] = useState(false);
-  const [show8, setShow8] = useState(false);
+  const [show1, setShow1] = useState(false)
+  const [show2, setShow2] = useState(false)
+  const [show3, setShow3] = useState(false)
+  const [show4, setShow4] = useState(false)
+  const [show5, setShow5] = useState(false)
+  const [show6, setShow6] = useState(false)
+  const [check1, setCheck1] = useState(false)
+  const [show7, setShow7] = useState(false)
+  const [check2, setCheck2] = useState(false)
+  const [show8, setShow8] = useState(false)
 
   const handleDismiss7 = () => {
-    setCheck2(false);
-  };
+    setCheck2(false)
+  }
 
   return (
     <div className="pb-4">
@@ -237,16 +237,16 @@ export const ComponentsDialog = () => {
             <ButtonCustom
               text="Cancelar"
               onClick={() => {
-                setShow7(false);
-                handleDismiss7();
+                setShow7(false)
+                handleDismiss7()
               }}
               typeColor="secondary"
             />
             <ButtonCustom
               text="Guardar"
               onClick={() => {
-                setShow7(false);
-                handleDismiss7();
+                setShow7(false)
+                handleDismiss7()
               }}
               typeColor="primary"
               disabled={!check2}
@@ -257,5 +257,5 @@ export const ComponentsDialog = () => {
       {/* Ventanas modal avanzada */}
       <DialogTest open={show8} setOpen={setShow8} />
     </div>
-  );
-};
+  )
+}

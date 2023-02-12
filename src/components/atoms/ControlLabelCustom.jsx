@@ -1,5 +1,5 @@
-import React from 'react';
-import { FormControlLabel } from '@mui/material';
+import React from 'react'
+import { FormControlLabel } from '@mui/material'
 
 export const ControlLabelCustom = ({
   value = undefined,
@@ -20,5 +20,5 @@ export const ControlLabelCustom = ({
         '& .MuiFormControlLabel-label': { fontFamily: 'poppins' },
       }}
     />
-  );
-};
+  )
+}

@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 // Components
-import { Divider } from '@mui/material';
-import { TextCustom, TextInputCustom } from '../atoms';
+import { Divider } from '@mui/material'
+import { TextCustom, TextInputCustom } from '../atoms'
 
 // Assets
-import SendIcon from '@mui/icons-material/Send';
-import ReplyIcon from '@mui/icons-material/Reply';
+import SendIcon from '@mui/icons-material/Send'
+import ReplyIcon from '@mui/icons-material/Reply'
 
 export const ComponentsInputs1 = () => {
-  const [inputDefault, setInputDefault] = useState('');
-  const [inputDisabled, setInputDisabled] = useState('');
-  const [inputRequired, setInputRequired] = useState('');
-  const [inputMultiline, setInputMultiline] = useState('');
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [inputError, setInputError] = useState('');
-  const [inputSuccess, setInputSuccess] = useState('');
-  const [inputIconAdornament, setInputIconAdornament] = useState('');
-  const [inputIconButton, setInputIconButton] = useState('');
-  const [inputIconButtonColor, setInputIconButtonColor] = useState('');
+  const [inputDefault, setInputDefault] = useState('')
+  const [inputDisabled, setInputDisabled] = useState('')
+  const [inputRequired, setInputRequired] = useState('')
+  const [inputMultiline, setInputMultiline] = useState('')
+  const [name, setName] = useState('')
+  const [number, setNumber] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [inputError, setInputError] = useState('')
+  const [inputSuccess, setInputSuccess] = useState('')
+  const [inputIconAdornament, setInputIconAdornament] = useState('')
+  const [inputIconButton, setInputIconButton] = useState('')
+  const [inputIconButtonColor, setInputIconButtonColor] = useState('')
 
   return (
     <div className="pb-4">
@@ -138,5 +138,5 @@ export const ComponentsInputs1 = () => {
         <Divider />
       </div>
     </div>
-  );
-};
+  )
+}

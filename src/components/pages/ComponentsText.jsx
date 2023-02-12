@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
 // Components
-import { Divider } from '@mui/material';
-import { TextCustom } from '../atoms';
+import { Divider } from '@mui/material'
+import { TextCustom } from '../atoms'
 
 export const ComponentsText = () => {
   return (
@@ -90,5 +90,5 @@ export const ComponentsText = () => {
         <Divider />
       </div>
     </div>
-  );
-};
+  )
+}

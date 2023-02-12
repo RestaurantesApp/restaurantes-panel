@@ -1,15 +1,15 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react'
 
 // Hooks
-import { AuthContext } from '../../context';
+import { AuthContext } from '../../context'
 
 // Components
-import { DialogActions, DialogContent } from '@mui/material';
-import { DialogCustom } from '../templates';
-import { AlertCustom, ButtonCustom, Loader, TextCustom } from '../atoms';
+import { DialogActions, DialogContent } from '@mui/material'
+import { DialogCustom } from '../templates'
+import { AlertCustom, ButtonCustom, Loader, TextCustom } from '../atoms'
 
 // Services
-import { apiDeleteUser, apiGetUser } from '../../services/apis';
+import { apiDeleteUser, apiGetUser } from '../../services/apis'
 
 export const DialogUserDelete = ({
   idUser = '',
@@ -17,72 +17,72 @@ export const DialogUserDelete = ({
   setOpen = () => null,
   onDismiss = () => null,
 }) => {
-  const { authState } = useContext(AuthContext);
-  const [loader, setLoader] = useState(false);
-  const [name, setName] = useState('');
-  const [showAlert, setShowAlert] = useState(false);
+  const { authState } = useContext(AuthContext)
+  const [loader, setLoader] = useState(false)
+  const [name, setName] = useState('')
+  const [showAlert, setShowAlert] = useState(false)
   const [alert, setAlert] = useState({
     title: '',
     description: '',
     severity: 'info',
-  });
-  const { token } = authState;
+  })
+  const { token } = authState
 
   useEffect(() => {
     if (open) {
-      loadUser();
+      loadUser()
     } else {
-      resetForm();
+      resetForm()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open]);
+  }, [open])
 
   const resetForm = () => {
-    setShowAlert();
-    setName('');
-    setLoader(false);
-  };
+    setShowAlert()
+    setName('')
+    setLoader(false)
+  }
 
   const loadUser = async () => {
-    setLoader(true);
-    const params = { idUser, token };
-    const response = await apiGetUser(params);
-    const { success, message, data } = response;
+    setLoader(true)
+    const params = { idUser, token }
+    const response = await apiGetUser(params)
+    const { success, message, data } = response
     if (success) {
-      setName(data.name);
+      setName(data.name)
     } else {
-      setShowAlert(true);
+      setShowAlert(true)
       setAlert({
         title: 'Error',
         description: message,
         severity: 'warning',
-      });
+      })
     }
-    setLoader(false);
-  };
+    setLoader(false)
+  }
 
   const handleAccept = async () => {
-    setLoader(true);
-    const params = { idUser, token };
-    const response = await apiDeleteUser(params);
-    const { success, message } = response;
+    setLoader(true)
+    const params = { idUser, token }
+    const response = await apiDeleteUser(params)
+    const { success, message } = response
     if (success) {
-      setOpen(false);
-      onDismiss();
+      setOpen(false)
+      onDismiss()
     } else {
-      setShowAlert(true);
+      setShowAlert(true)
       setAlert({
         title: 'Error',
         description: message,
         severity: 'error',
-      });
+      })
     }
-    setLoader(false);
-  };
+    setLoader(false)
+  }
 
   const handleCancel = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   return (
     <DialogCustom
@@ -125,5 +125,5 @@ export const DialogUserDelete = ({
         />
       </DialogActions>
     </DialogCustom>
-  );
-};
+  )
+}

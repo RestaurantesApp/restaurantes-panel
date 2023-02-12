@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
 // Components
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItem from '@mui/material/ListItem'
+import ListItemIcon from '@mui/material/ListItemIcon'
 
 // Assets
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import { TextCustom } from './';
+import ExpandLess from '@mui/icons-material/ExpandLess'
+import ExpandMore from '@mui/icons-material/ExpandMore'
+import { TextCustom } from './'
 
 export const DrawerItem = ({
   text = '',
@@ -19,8 +19,8 @@ export const DrawerItem = ({
   className = '',
 }) => {
   const handleClick = () => {
-    onClick();
-  };
+    onClick()
+  }
 
   return (
     <ListItem
@@ -40,5 +40,5 @@ export const DrawerItem = ({
         {isCollapse ? collapse ? <ExpandLess /> : <ExpandMore /> : null}
       </div>
     </ListItem>
-  );
-};
+  )
+}

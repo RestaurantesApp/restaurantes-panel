@@ -1,3 +1,3 @@
-export * from './validateInput';
-export * from './validLogin';
-export * from './validUser';
+export * from './validateInput'
+export * from './validLogin'
+export * from './validUser'

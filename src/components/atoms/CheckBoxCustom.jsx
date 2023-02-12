@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
 // Components
-import { Checkbox } from '@mui/material';
+import { Checkbox } from '@mui/material'
 
 // Core
-import { renderColor } from '../../core/utils';
-import { colors } from '../themes';
+import { renderColor } from '../../core/utils'
+import { colors } from '../themes'
 
 export const CheckBoxCustom = ({
   name = '',
@@ -18,9 +18,9 @@ export const CheckBoxCustom = ({
   fontSize = undefined,
 }) => {
   const handleChange = event => {
-    setValue(!value);
-    onChange(event);
-  };
+    setValue(!value)
+    onChange(event)
+  }
 
   return (
     <Checkbox
@@ -36,5 +36,5 @@ export const CheckBoxCustom = ({
         color: colors['ligth-gray'],
       }}
     />
-  );
-};
+  )
+}

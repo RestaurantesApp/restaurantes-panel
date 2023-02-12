@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 // Components
-import { Alert, AlertTitle, Collapse } from '@mui/material';
-import { IconButtonCustom } from './';
+import { Alert, AlertTitle, Collapse } from '@mui/material'
+import { IconButtonCustom } from './'
 
 // Assets
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from '@mui/icons-material/Close'
 
 export const AlertCustom = ({
   description = '',
@@ -14,29 +14,29 @@ export const AlertCustom = ({
   severity = '',
   title = '',
 }) => {
-  const [showMore, setShowMore] = useState(true);
+  const [showMore, setShowMore] = useState(true)
 
   const renderTypeColor = () => {
     switch (severity) {
       case 'success':
-        return 'success';
+        return 'success'
       case 'warning':
-        return 'warning';
+        return 'warning'
       case 'error':
-        return 'danger';
+        return 'danger'
       case 'info':
       default:
-        return undefined;
+        return undefined
     }
-  };
+  }
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   const handleShowMore = () => {
-    setShowMore(!showMore);
-  };
+    setShowMore(!showMore)
+  }
 
   return (
     <Collapse in={open}>
@@ -66,5 +66,5 @@ export const AlertCustom = ({
         <Collapse in={showMore}>{description}</Collapse>
       </Alert>
     </Collapse>
-  );
-};
+  )
+}

@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
 // Components
-import { DialogTitle } from '@mui/material';
-import { IconButtonCustom } from '../atoms';
+import { DialogTitle } from '@mui/material'
+import { IconButtonCustom } from '../atoms'
 
 // Assets
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from '@mui/icons-material/Close'
 
 export const DialogTitleCustom = ({
   disabledIconClose = false,
@@ -26,5 +26,5 @@ export const DialogTitleCustom = ({
         )}
       </div>
     </DialogTitle>
-  );
-};
+  )
+}

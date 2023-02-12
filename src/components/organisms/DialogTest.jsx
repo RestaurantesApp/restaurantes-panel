@@ -1,8 +1,8 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react'
 
 // Components
-import { DialogActions, DialogContent, Divider } from '@mui/material';
-import { DialogCustom } from '../templates';
+import { DialogActions, DialogContent, Divider } from '@mui/material'
+import { DialogCustom } from '../templates'
 import {
   ButtonCustom,
   CheckBoxCustom,
@@ -13,59 +13,59 @@ import {
   SelectCustom,
   TextCustom,
   TextInputCustom,
-} from '../atoms';
+} from '../atoms'
 
 // Utils y Const
-import { getLegalDate } from '../../core/utils';
-import { constMaritalStatus, constGenders } from '../../common/constants';
+import { getLegalDate } from '../../core/utils'
+import { constMaritalStatus, constGenders } from '../../common/constants'
 
 const Component = ({ open = false, setOpen = () => null }) => {
-  const [nombres, setNombres] = useState('');
-  const [apellidos, setApellidos] = useState('');
-  const [correo, setCorreo] = useState('');
-  const [contrasena, setContrasena] = useState('');
-  const [confirmContrasena, setConfirmContrasena] = useState('');
-  const [fechaNaicmiento, setFechaNaicmiento] = useState(null);
-  const [genero, setGenero] = useState('');
-  const [estadoCivil, setEstadoCivil] = useState('');
-  const [isConfirm, setIsConfirm] = useState(false);
-  const [loader, setLoader] = useState(false);
-  const [maxDate, setMaxDate] = useState(null);
+  const [nombres, setNombres] = useState('')
+  const [apellidos, setApellidos] = useState('')
+  const [correo, setCorreo] = useState('')
+  const [contrasena, setContrasena] = useState('')
+  const [confirmContrasena, setConfirmContrasena] = useState('')
+  const [fechaNaicmiento, setFechaNaicmiento] = useState(null)
+  const [genero, setGenero] = useState('')
+  const [estadoCivil, setEstadoCivil] = useState('')
+  const [isConfirm, setIsConfirm] = useState(false)
+  const [loader, setLoader] = useState(false)
+  const [maxDate, setMaxDate] = useState(null)
 
   useEffect(() => {
     if (open) {
-      const legalDate = getLegalDate();
-      setMaxDate(legalDate);
+      const legalDate = getLegalDate()
+      setMaxDate(legalDate)
     } else {
-      resetValues();
+      resetValues()
     }
-  }, [open]);
+  }, [open])
 
   const resetValues = () => {
-    setNombres('');
-    setApellidos('');
-    setCorreo('');
-    setContrasena('');
-    setConfirmContrasena('');
-    setFechaNaicmiento(null);
-    setGenero('');
-    setEstadoCivil('');
-    setIsConfirm(false);
-    setMaxDate(null);
-    setLoader(false);
-  };
+    setNombres('')
+    setApellidos('')
+    setCorreo('')
+    setContrasena('')
+    setConfirmContrasena('')
+    setFechaNaicmiento(null)
+    setGenero('')
+    setEstadoCivil('')
+    setIsConfirm(false)
+    setMaxDate(null)
+    setLoader(false)
+  }
 
   const handleAccept = () => {
-    setLoader(true);
+    setLoader(true)
     setTimeout(() => {
-      setLoader(false);
-      setOpen(false);
-    }, 2000);
-  };
+      setLoader(false)
+      setOpen(false)
+    }, 2000)
+  }
 
   const handleCancel = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   return (
     <DialogCustom
@@ -154,7 +154,7 @@ const Component = ({ open = false, setOpen = () => null }) => {
         />
       </DialogActions>
     </DialogCustom>
-  );
-};
+  )
+}
 
-export const DialogTest = memo(Component);
+export const DialogTest = memo(Component)

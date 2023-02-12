@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 // Styles
-import { colors } from '../themes';
+import { colors } from '../themes'
 
 export const BadgePoint = ({
   state = 'UNDEFINED',
@@ -12,32 +12,32 @@ export const BadgePoint = ({
   const renderColor = () => {
     switch (state) {
       case 'ACTIVE':
-        return colors.success;
+        return colors.success
       case 'INACTIVE':
-        return colors.danger;
+        return colors.danger
       case 'VALID':
-        return colors.success;
+        return colors.success
       case 'EXPIRED':
-        return colors.danger;
+        return colors.danger
       default:
-        return colors['dark-gray'];
+        return colors['dark-gray']
     }
-  };
+  }
 
   const renderLabel = () => {
     switch (state) {
       case 'ACTIVE':
-        return 'Activo';
+        return 'Activo'
       case 'INACTIVE':
-        return 'Inactivo';
+        return 'Inactivo'
       case 'VALID':
-        return 'Vigente';
+        return 'Vigente'
       case 'EXPIRED':
-        return 'Expirado';
+        return 'Expirado'
       default:
-        return 'No definido';
+        return 'No definido'
     }
-  };
+  }
 
   return (
     <div className={`flex justify-start items-center ${className}`}>
@@ -52,5 +52,5 @@ export const BadgePoint = ({
       ></div>
       {renderLabel()}
     </div>
-  );
-};
+  )
+}

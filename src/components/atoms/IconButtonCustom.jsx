@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
 // Components
-import { IconButton } from '@mui/material';
+import { IconButton } from '@mui/material'
 
 // Core
-import { renderColor } from '../../core/utils';
+import { renderColor } from '../../core/utils'
 
 export const IconButtonCustom = ({
   onClick = () => null,
@@ -43,5 +43,5 @@ export const IconButtonCustom = ({
     >
       {icon}
     </IconButton>
-  );
-};
+  )
+}

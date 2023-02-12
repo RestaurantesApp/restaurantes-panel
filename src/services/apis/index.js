@@ -1,2 +1,2 @@
-export * from './auth/apiAuth';
-export * from './users/apiUsers';
+export * from './auth/apiAuth'
+export * from './users/apiUsers'

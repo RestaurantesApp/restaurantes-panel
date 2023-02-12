@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
 // Assets
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { ReactComponent as SortIcon } from '../../assets/icons/tablas/SortIcon.svg';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
+import { ReactComponent as SortIcon } from '../../assets/icons/tablas/SortIcon.svg'
 
 export const TableHeaders = ({
   actionColumnTitle = '',
@@ -37,5 +37,5 @@ export const TableHeaders = ({
         </th>
       )}
     </>
-  );
-};
+  )
+}

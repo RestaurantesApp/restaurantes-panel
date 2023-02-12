@@ -3,4 +3,4 @@ export const typesTableState = {
   expired: 'expired',
   enabled: 'enabled',
   disabled: 'disabled',
-};
+}

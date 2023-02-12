@@ -1,17 +1,17 @@
-import React, { memo } from 'react';
+import React, { memo } from 'react'
 
 // Components
-import { InputAdornment, TextField } from '@mui/material';
-import { TextCustom, IconButtonCustom } from './';
+import { InputAdornment, TextField } from '@mui/material'
+import { TextCustom, IconButtonCustom } from './'
 
 // Core
 import {
   validTextInput,
   validInputInitialNumbers,
-} from '../../core/validations';
+} from '../../core/validations'
 
 // Styles
-import { colors } from '../themes';
+import { colors } from '../themes'
 
 const Component = ({
   name = '',
@@ -38,17 +38,17 @@ const Component = ({
   fontSize = 18,
 }) => {
   const handleOnChange = e => {
-    const inputValue = e.target.value;
-    let isValid = true;
+    const inputValue = e.target.value
+    let isValid = true
     if (validInitNumbers.length) {
-      isValid = validInputInitialNumbers(inputValue, validInitNumbers);
+      isValid = validInputInitialNumbers(inputValue, validInitNumbers)
     } else {
-      isValid = validTextInput(inputValue, typesValidation);
+      isValid = validTextInput(inputValue, typesValidation)
     }
     if (isValid || inputValue === '' || !inputValue) {
-      setValue(inputValue);
+      setValue(inputValue)
     }
-  };
+  }
 
   const renderIcon = icon => {
     if (icon) {
@@ -60,11 +60,11 @@ const Component = ({
         />
       ) : (
         <InputAdornment position="start">{icon}</InputAdornment>
-      );
+      )
     } else {
-      return null;
+      return null
     }
-  };
+  }
 
   return (
     <div className={`flex flex-col ${className}`}>
@@ -74,7 +74,7 @@ const Component = ({
         onChange={handleOnChange}
         onBlur={onBlur}
         onKeyDown={e => {
-          if (e.code === 'Enter' || e.code === 'NumpadEnter') onEnter();
+          if (e.code === 'Enter' || e.code === 'NumpadEnter') onEnter()
         }}
         variant="outlined"
         size={size}
@@ -135,7 +135,7 @@ const Component = ({
         <TextCustom text={msgError} className="text-xs ml-1 mt-1 text-danger" />
       )}
     </div>
-  );
-};
+  )
+}
 
-export const TextInputCustom = memo(Component);
+export const TextInputCustom = memo(Component)

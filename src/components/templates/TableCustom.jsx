@@ -1,17 +1,17 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect } from 'react'
 import {
   useTable,
   useSortBy,
   useGlobalFilter,
   usePagination,
-} from 'react-table';
+} from 'react-table'
 
 // Assets
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from '@mui/icons-material/Search'
 
 // Components
-import { TextInputCustom } from '../atoms';
-import { TablePagination, TableHeaders, TableRows } from '../molecules';
+import { TextInputCustom } from '../atoms'
+import { TablePagination, TableHeaders, TableRows } from '../molecules'
 
 const Component = ({
   columns = [],
@@ -58,19 +58,19 @@ const Component = ({
     useGlobalFilter,
     useSortBy,
     usePagination,
-  );
+  )
 
-  const { globalFilter, pageIndex } = state;
+  const { globalFilter, pageIndex } = state
 
   useEffect(() => {
     if (identifierHidden) {
       const columnHide = allColumns.find(
         column => column.id === identifierHidden,
-      );
-      columnHide?.toggleHidden(true);
+      )
+      columnHide?.toggleHidden(true)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   return (
     <div className="w-full">
@@ -123,7 +123,7 @@ const Component = ({
         setIsResetPagina={setIsResetPagina}
       />
     </div>
-  );
-};
+  )
+}
 
-export const TableCustom = memo(Component);
+export const TableCustom = memo(Component)

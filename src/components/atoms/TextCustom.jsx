@@ -1,5 +1,5 @@
-import React from 'react';
-import Typography from '@mui/material/Typography';
+import React from 'react'
+import Typography from '@mui/material/Typography'
 
 export const TextCustom = ({
   text = '',
@@ -17,5 +17,5 @@ export const TextCustom = ({
     >
       {text}
     </Typography>
-  );
-};
+  )
+}

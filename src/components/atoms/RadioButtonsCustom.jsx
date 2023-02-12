@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
 // Components
-import { Radio, RadioGroup } from '@mui/material';
-import { ControlLabelCustom, TextCustom } from './';
+import { Radio, RadioGroup } from '@mui/material'
+import { ControlLabelCustom, TextCustom } from './'
 
 // Core
-import { renderColor } from '../../core/utils';
+import { renderColor } from '../../core/utils'
 
 // Styles
-import { colors } from '../themes';
+import { colors } from '../themes'
 
 export const RadioButtonsCustom = ({
   name = '',
@@ -25,8 +25,8 @@ export const RadioButtonsCustom = ({
   labelClassName = '',
 }) => {
   const handleChange = event => {
-    setValue(event.target.value);
-  };
+    setValue(event.target.value)
+  }
 
   return (
     <div className={`d-flex flex-column ${className}`}>
@@ -56,5 +56,5 @@ export const RadioButtonsCustom = ({
         ))}
       </RadioGroup>
     </div>
-  );
-};
+  )
+}

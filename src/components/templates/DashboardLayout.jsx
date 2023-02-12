@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 // Components
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Drawer from '@mui/material/Drawer';
-import Toolbar from '@mui/material/Toolbar';
-import { HeaderMenu, SideMenu } from '../organisms';
+import Box from '@mui/material/Box'
+import CssBaseline from '@mui/material/CssBaseline'
+import Drawer from '@mui/material/Drawer'
+import Toolbar from '@mui/material/Toolbar'
+import { HeaderMenu, SideMenu } from '../organisms'
 
 // Const
-import { drawerWidth } from '../../common/constants';
+import { drawerWidth } from '../../common/constants'
 
 // Styles
-import { colors } from '../themes';
+import { colors } from '../themes'
 
 export const DashboardLayout = ({ children = null, window = undefined }) => {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   const container =
-    window !== undefined ? () => window().document.body : undefined;
+    window !== undefined ? () => window().document.body : undefined
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+    setMobileOpen(!mobileOpen)
+  }
 
   const handleNavigation = () => {
-    setMobileOpen(false);
-  };
+    setMobileOpen(false)
+  }
 
   return (
     <Box className="flex h-screen">
@@ -86,5 +86,5 @@ export const DashboardLayout = ({ children = null, window = undefined }) => {
         {children}
       </Box>
     </Box>
-  );
-};
+  )
+}

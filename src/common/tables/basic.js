@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import dayjs from 'dayjs'
 
 export const columnsBasic = [
   {
@@ -17,8 +17,8 @@ export const columnsBasic = [
     Header: 'Fecha de Nacimiento',
     accessor: 'date_of_birth',
     Cell: ({ value }) => {
-      const dateFormat = dayjs(new Date(value)).format('DD/MM/YYYY');
-      return dateFormat;
+      const dateFormat = dayjs(new Date(value)).format('DD/MM/YYYY')
+      return dateFormat
     },
   },
   {
@@ -29,7 +29,7 @@ export const columnsBasic = [
     Header: 'Telefono',
     accessor: 'phone',
   },
-];
+]
 
 export const columnsBasic2 = [
   {
@@ -44,7 +44,7 @@ export const columnsBasic2 = [
     Header: 'Segundo Nombre',
     accessor: 'last_name',
   },
-];
+]
 
 export const columnsBasic3 = [
   {
@@ -63,4 +63,4 @@ export const columnsBasic3 = [
     Header: 'Estado',
     accessor: 'STATE',
   },
-];
+]

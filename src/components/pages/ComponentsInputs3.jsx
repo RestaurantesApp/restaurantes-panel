@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 // Components
-import { Divider } from '@mui/material';
-import { DatePickerCustom, SelectCustom, TextCustom } from '../atoms';
+import { Divider } from '@mui/material'
+import { DatePickerCustom, SelectCustom, TextCustom } from '../atoms'
 
 // Const
-import { constGenders } from '../../common/constants';
+import { constGenders } from '../../common/constants'
 
 export const ComponentsInputs3 = () => {
-  const [genero1, setGenero1] = useState('');
-  const [genero2, setGenero2] = useState('');
-  const [genero3, setGenero3] = useState('');
-  const [genero4, setGenero4] = useState('');
-  const [genero5, setGenero5] = useState('');
-  const [genero6, setGenero6] = useState('');
-  const [fecha1, setFecha1] = useState(null);
-  const [fecha2, setFecha2] = useState(null);
-  const [fecha3, setFecha3] = useState(null);
-  const [fecha4, setFecha4] = useState(null);
-  const [fecha5, setFecha5] = useState(null);
-  const [fecha6, setFecha6] = useState(null);
-  const [fecha7, setFecha7] = useState(null);
-  const [fecha8, setFecha8] = useState(null);
+  const [genero1, setGenero1] = useState('')
+  const [genero2, setGenero2] = useState('')
+  const [genero3, setGenero3] = useState('')
+  const [genero4, setGenero4] = useState('')
+  const [genero5, setGenero5] = useState('')
+  const [genero6, setGenero6] = useState('')
+  const [fecha1, setFecha1] = useState(null)
+  const [fecha2, setFecha2] = useState(null)
+  const [fecha3, setFecha3] = useState(null)
+  const [fecha4, setFecha4] = useState(null)
+  const [fecha5, setFecha5] = useState(null)
+  const [fecha6, setFecha6] = useState(null)
+  const [fecha7, setFecha7] = useState(null)
+  const [fecha8, setFecha8] = useState(null)
 
   return (
     <div className="pb-4 flex flex-col">
@@ -146,5 +146,5 @@ export const ComponentsInputs3 = () => {
         <Divider />
       </div>
     </div>
-  );
-};
+  )
+}

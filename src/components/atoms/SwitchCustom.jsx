@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
 // Components
-import { Switch } from '@mui/material';
+import { Switch } from '@mui/material'
 
 // Core
-import { renderColor } from '../../core/utils';
+import { renderColor } from '../../core/utils'
 
 export const SwitchCustom = ({
   value = false,
@@ -14,8 +14,8 @@ export const SwitchCustom = ({
   typeColor = undefined,
 }) => {
   const handleChange = () => {
-    setValue(!value);
-  };
+    setValue(!value)
+  }
 
   return (
     <Switch
@@ -34,5 +34,5 @@ export const SwitchCustom = ({
         },
       }}
     />
-  );
-};
+  )
+}

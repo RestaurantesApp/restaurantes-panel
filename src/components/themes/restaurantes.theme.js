@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles'
 
 export const restaurantesTheme = createTheme({
   breakpoints: {
@@ -10,4 +10,4 @@ export const restaurantesTheme = createTheme({
       xl: 1280,
     },
   },
-});
+})

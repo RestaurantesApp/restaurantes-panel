@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
 // Components
-import { Radio } from '@mui/material';
+import { Radio } from '@mui/material'
 
 // Core
-import { renderColor } from '../../core/utils';
+import { renderColor } from '../../core/utils'
 
 // Styles
-import { colors } from '../themes';
+import { colors } from '../themes'
 
 export const RadioCustom = ({
   value = false,
@@ -18,8 +18,8 @@ export const RadioCustom = ({
   fontSize = undefined,
 }) => {
   const handleChange = () => {
-    setValue(!value);
-  };
+    setValue(!value)
+  }
 
   return (
     <Radio
@@ -33,5 +33,5 @@ export const RadioCustom = ({
         color: colors['ligth-gray'],
       }}
     />
-  );
-};
+  )
+}

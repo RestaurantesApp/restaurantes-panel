@@ -1,14 +1,14 @@
-import React, { memo } from 'react';
+import React, { memo } from 'react'
 
 // Components
-import TextField from '@mui/material/TextField';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { TextCustom } from './';
+import TextField from '@mui/material/TextField'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+import { TextCustom } from './'
 
 // Styles
-import { colors } from '../themes';
+import { colors } from '../themes'
 
 const Component = ({
   name = '',
@@ -24,8 +24,8 @@ const Component = ({
   fontSize = 18,
 }) => {
   const handleChange = inputValue => {
-    setValue(inputValue);
-  };
+    setValue(inputValue)
+  }
 
   return (
     <div className={`flex flex-col ${className}`}>
@@ -93,7 +93,7 @@ const Component = ({
         <TextCustom text={msgError} className="text-xs ml-1 mt-1 text-danger" />
       )}
     </div>
-  );
-};
+  )
+}
 
-export const DatePickerCustom = memo(Component);
+export const DatePickerCustom = memo(Component)

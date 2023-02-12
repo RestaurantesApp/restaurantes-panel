@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
 // Components
-import { MenuItem } from '@mui/material';
+import { MenuItem } from '@mui/material'
 
 // Core
-import { colors } from '../themes';
+import { colors } from '../themes'
 
 export const MenuItemCustom = ({ children = null, value = '', ...rest }) => {
   return (
@@ -29,5 +29,5 @@ export const MenuItemCustom = ({ children = null, value = '', ...rest }) => {
     >
       {children}
     </MenuItem>
-  );
-};
+  )
+}

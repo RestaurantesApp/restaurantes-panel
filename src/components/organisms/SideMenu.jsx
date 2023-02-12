@@ -1,101 +1,101 @@
-import React, { memo, useContext, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { memo, useContext, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 // Hooks
-import { AuthContext } from '../../context';
+import { AuthContext } from '../../context'
 
 // Components
-import { Collapse, List } from '@mui/material';
-import { DrawerItem } from '../atoms';
+import { Collapse, List } from '@mui/material'
+import { DrawerItem } from '../atoms'
 
 // Const
-import { typesGlobalState } from '../../common/types';
+import { typesGlobalState } from '../../common/types'
 
 // Assets
-import { ReactComponent as LogoIcon } from '../../assets/icons/LogoIcon.svg';
-import { ReactComponent as HomeIcon } from '../../assets/icons/HomeIcon.svg';
-import ExtensionIcon from '@mui/icons-material/Extension';
-import ScienceIcon from '@mui/icons-material/Science';
-import PeopleIcon from '@mui/icons-material/People';
-import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import { ReactComponent as LogoIcon } from '../../assets/icons/LogoIcon.svg'
+import { ReactComponent as HomeIcon } from '../../assets/icons/HomeIcon.svg'
+import ExtensionIcon from '@mui/icons-material/Extension'
+import ScienceIcon from '@mui/icons-material/Science'
+import PeopleIcon from '@mui/icons-material/People'
+import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew'
 
 // Styles
-import { colors } from '../themes';
+import { colors } from '../themes'
 
-const { white } = colors;
-const { authLogout } = typesGlobalState;
+const { white } = colors
+const { authLogout } = typesGlobalState
 
 const Component = ({ onChange = () => null }) => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const { authDispatch } = useContext(AuthContext);
-  const [showComponents1, setShowComponents1] = useState(false);
-  const [showComponents2, setShowComponents2] = useState(false);
+  const location = useLocation()
+  const navigate = useNavigate()
+  const { authDispatch } = useContext(AuthContext)
+  const [showComponents1, setShowComponents1] = useState(false)
+  const [showComponents2, setShowComponents2] = useState(false)
 
   const handleHome = () => {
-    navigate('/dashboard/home');
-    onChange();
-  };
+    navigate('/dashboard/home')
+    onChange()
+  }
 
   const handleUsers = () => {
-    navigate('/dashboard/users');
-    onChange();
-  };
+    navigate('/dashboard/users')
+    onChange()
+  }
 
   const handleLogout = () => {
-    authDispatch({ type: authLogout });
-    onChange();
-  };
+    authDispatch({ type: authLogout })
+    onChange()
+  }
 
   const handleComponentsText = () => {
-    navigate('/dashboard/componentsText');
-    onChange();
-  };
+    navigate('/dashboard/componentsText')
+    onChange()
+  }
 
   const handleComponentsButton = () => {
-    navigate('/dashboard/componentsButton');
-    onChange();
-  };
+    navigate('/dashboard/componentsButton')
+    onChange()
+  }
 
   const handleComponentsInputs1 = () => {
-    navigate('/dashboard/componentsInputs1');
-    onChange();
-  };
+    navigate('/dashboard/componentsInputs1')
+    onChange()
+  }
 
   const handleComponentsInputs2 = () => {
-    navigate('/dashboard/componentsInputs2');
-    onChange();
-  };
+    navigate('/dashboard/componentsInputs2')
+    onChange()
+  }
 
   const handleComponentsInputs3 = () => {
-    navigate('/dashboard/componentsInputs3');
-    onChange();
-  };
+    navigate('/dashboard/componentsInputs3')
+    onChange()
+  }
 
   const handleComponentsInputs4 = () => {
-    navigate('/dashboard/componentsInputs4');
-    onChange();
-  };
+    navigate('/dashboard/componentsInputs4')
+    onChange()
+  }
 
   const handleComponentsLoader = () => {
-    navigate('/dashboard/componentsLoader');
-    onChange();
-  };
+    navigate('/dashboard/componentsLoader')
+    onChange()
+  }
 
   const handleComponentsAlert = () => {
-    navigate('/dashboard/componentsAlert');
-    onChange();
-  };
+    navigate('/dashboard/componentsAlert')
+    onChange()
+  }
 
   const handleComponentsDialog = () => {
-    navigate('/dashboard/componentsDialog');
-    onChange();
-  };
+    navigate('/dashboard/componentsDialog')
+    onChange()
+  }
 
   const handleComponentsTable = () => {
-    navigate('/dashboard/componentsTable');
-    onChange();
-  };
+    navigate('/dashboard/componentsTable')
+    onChange()
+  }
 
   return (
     <div className="flex flex-col h-full p-4">
@@ -231,7 +231,7 @@ const Component = ({ onChange = () => null }) => {
         </List>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export const SideMenu = memo(Component);
+export const SideMenu = memo(Component)

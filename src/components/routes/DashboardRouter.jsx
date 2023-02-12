@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import React from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 // Components
 import {
@@ -15,8 +15,8 @@ import {
   ComponentsText,
   Home,
   Users,
-} from '../pages';
-import { DashboardLayout } from '../templates';
+} from '../pages'
+import { DashboardLayout } from '../templates'
 
 export const DashboardRouter = () => {
   return (
@@ -38,5 +38,5 @@ export const DashboardRouter = () => {
         <Route path="*" element={<Navigate to="/page-error" replace />} />
       </Routes>
     </DashboardLayout>
-  );
-};
+  )
+}

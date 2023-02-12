@@ -15,4 +15,4 @@ export const columnsUsers = [
     Header: 'Rol',
     accessor: 'role',
   },
-];
+]

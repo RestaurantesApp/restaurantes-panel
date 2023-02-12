@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 // Components
-import { Divider } from '@mui/material';
+import { Divider } from '@mui/material'
 import {
   CheckBoxCustom,
   ControlLabelCustom,
@@ -9,26 +9,26 @@ import {
   RadioCustom,
   SwitchCustom,
   TextCustom,
-} from '../atoms';
+} from '../atoms'
 
 // Const
-import { constGenders, constIdentityTypes } from '../../common/constants';
+import { constGenders, constIdentityTypes } from '../../common/constants'
 
 export const ComponentsInputs4 = () => {
-  const [check1, setCheck1] = useState(false);
-  const [check2, setCheck2] = useState(true);
-  const [check3, setCheck3] = useState(false);
-  const [check4, setCheck4] = useState(true);
-  const [radio1, setRadio1] = useState(false);
-  const [radio2, setRadio2] = useState(true);
-  const [radio3, setRadio3] = useState(false);
-  const [radio4, setRadio4] = useState(true);
-  const [genero, setGenero] = useState('');
-  const [tipoIdentidad, setTipoIdentidad] = useState('');
-  const [switch1, setSwitch1] = useState(false);
-  const [switch2, setSwitch2] = useState(true);
-  const [switch3, setSwitch3] = useState(false);
-  const [switch4, setSwitch4] = useState(true);
+  const [check1, setCheck1] = useState(false)
+  const [check2, setCheck2] = useState(true)
+  const [check3, setCheck3] = useState(false)
+  const [check4, setCheck4] = useState(true)
+  const [radio1, setRadio1] = useState(false)
+  const [radio2, setRadio2] = useState(true)
+  const [radio3, setRadio3] = useState(false)
+  const [radio4, setRadio4] = useState(true)
+  const [genero, setGenero] = useState('')
+  const [tipoIdentidad, setTipoIdentidad] = useState('')
+  const [switch1, setSwitch1] = useState(false)
+  const [switch2, setSwitch2] = useState(true)
+  const [switch3, setSwitch3] = useState(false)
+  const [switch4, setSwitch4] = useState(true)
 
   return (
     <div className="pb-4 flex flex-col">
@@ -293,5 +293,5 @@ export const ComponentsInputs4 = () => {
         <Divider />
       </div>
     </div>
-  );
-};
+  )
+}

@@ -1,81 +1,81 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react'
 
 // Hooks
-import { AuthContext } from '../../context';
+import { AuthContext } from '../../context'
 
 // Components
-import { Divider } from '@mui/material';
-import { AlertCustom, ButtonCustom, Loader, TextCustom } from '../atoms';
-import { DialogUserAdd, DialogUserDelete, DialogUserEdit } from '../organisms';
-import { TableCustom } from '../templates';
+import { Divider } from '@mui/material'
+import { AlertCustom, ButtonCustom, Loader, TextCustom } from '../atoms'
+import { DialogUserAdd, DialogUserDelete, DialogUserEdit } from '../organisms'
+import { TableCustom } from '../templates'
 
 // Const
-import { columnsUsers } from '../../common/tables';
-import { typesTableActions } from '../../common/types';
+import { columnsUsers } from '../../common/tables'
+import { typesTableActions } from '../../common/types'
 
 // Services
-import { apiGetUsers } from '../../services/apis';
+import { apiGetUsers } from '../../services/apis'
 
-const { tableEdit, tableDelete } = typesTableActions;
+const { tableEdit, tableDelete } = typesTableActions
 
 export const Users = () => {
-  const { authState } = useContext(AuthContext);
-  const [users, setUsers] = useState([]);
-  const [idUser, setIdUser] = useState('');
-  const [showAdd, setShowAdd] = useState(false);
-  const [showEdit, setShowEdit] = useState(false);
-  const [showDelete, setShowDelete] = useState(false);
-  const [loader, setLoader] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
+  const { authState } = useContext(AuthContext)
+  const [users, setUsers] = useState([])
+  const [idUser, setIdUser] = useState('')
+  const [showAdd, setShowAdd] = useState(false)
+  const [showEdit, setShowEdit] = useState(false)
+  const [showDelete, setShowDelete] = useState(false)
+  const [loader, setLoader] = useState(false)
+  const [showAlert, setShowAlert] = useState(false)
   const [alert, setAlert] = useState({
     title: '',
     description: '',
     severity: 'info',
-  });
-  const { token } = authState;
+  })
+  const { token } = authState
 
   useEffect(() => {
-    loadUsers();
+    loadUsers()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   const resetForm = () => {
-    setShowAlert(false);
-  };
+    setShowAlert(false)
+  }
 
   const loadUsers = async () => {
-    resetForm();
-    setLoader(true);
-    const params = { token };
-    const response = await apiGetUsers(params);
-    const { success, message, data } = response;
+    resetForm()
+    setLoader(true)
+    const params = { token }
+    const response = await apiGetUsers(params)
+    const { success, message, data } = response
     if (success) {
-      setUsers(data);
+      setUsers(data)
     } else {
-      setShowAlert(true);
+      setShowAlert(true)
       setAlert({
         title: 'Error',
         description: message,
         severity: 'error',
-      });
+      })
     }
-    setLoader(false);
-  };
+    setLoader(false)
+  }
 
   const handleTableActions = (action, id, obj) => {
-    setIdUser(id);
+    setIdUser(id)
     switch (action) {
       case tableEdit:
-        setShowEdit(true);
-        break;
+        setShowEdit(true)
+        break
       case tableDelete:
-        setShowDelete(true);
-        break;
+        setShowDelete(true)
+        break
       default:
-        setIdUser('');
-        break;
+        setIdUser('')
+        break
     }
-  };
+  }
 
   return (
     <div className="pb-4 flex flex-col">
@@ -127,5 +127,5 @@ export const Users = () => {
         onDismiss={loadUsers}
       />
     </div>
-  );
-};
+  )
+}

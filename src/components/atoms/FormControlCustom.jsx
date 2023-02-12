@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
 // Components
-import { FormControl, InputLabel } from '@mui/material';
+import { FormControl, InputLabel } from '@mui/material'
 
 // Core
-import { colors } from '../themes';
+import { colors } from '../themes'
 
 export const FormControlCustom = ({
   children = null,
@@ -36,5 +36,5 @@ export const FormControlCustom = ({
       </InputLabel>
       {children}
     </FormControl>
-  );
-};
+  )
+}

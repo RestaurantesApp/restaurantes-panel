@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
 // Assets
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 
 // Styles
-import { IconButtonCustom } from '../atoms';
+import { IconButtonCustom } from '../atoms'
 
 // Utils
-import { getPagination } from '../../core/utils';
+import { getPagination } from '../../core/utils'
 
 export const TablePagination = ({
   canPreviousPage = false,
@@ -21,20 +21,20 @@ export const TablePagination = ({
   isResetPagina = false,
   setIsResetPagina = () => null,
 }) => {
-  const [pagesShow, setPagesShow] = useState([]);
+  const [pagesShow, setPagesShow] = useState([])
 
   useEffect(() => {
-    const pagination = getPagination(pageOptions, pageIndex, 2);
-    setPagesShow(pagination);
-  }, [pageOptions, pageIndex]);
+    const pagination = getPagination(pageOptions, pageIndex, 2)
+    setPagesShow(pagination)
+  }, [pageOptions, pageIndex])
 
   useEffect(() => {
     if (isResetPagina) {
-      setIsResetPagina(false);
-      gotoPage(0);
+      setIsResetPagina(false)
+      gotoPage(0)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isResetPagina]);
+  }, [isResetPagina])
 
   return (
     <div className="flex justify-center items-center mt-5">
@@ -64,5 +64,5 @@ export const TablePagination = ({
         size="small"
       />
     </div>
-  );
-};
+  )
+}

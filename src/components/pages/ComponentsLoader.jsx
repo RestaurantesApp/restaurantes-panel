@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 // Components
-import { Divider } from '@mui/material';
-import { ButtonCustom, Loader, TextCustom } from '../atoms';
+import { Divider } from '@mui/material'
+import { ButtonCustom, Loader, TextCustom } from '../atoms'
 
 export const ComponentsLoader = () => {
-  const [pause, setPause] = useState(false);
-  const [play, setPlay] = useState(true);
-  const [stop, setStop] = useState(false);
+  const [pause, setPause] = useState(false)
+  const [play, setPlay] = useState(true)
+  const [stop, setStop] = useState(false)
 
   const handlePausa = () => {
-    setPause(true);
-  };
+    setPause(true)
+  }
 
   const handlePlay = () => {
-    setPlay(true);
-  };
+    setPlay(true)
+  }
 
   const handleStop = () => {
-    setStop(true);
-  };
+    setStop(true)
+  }
 
   return (
     <div className="pb-4 flex flex-col">
@@ -177,5 +177,5 @@ export const ComponentsLoader = () => {
         />
       </div>
     </div>
-  );
-};
+  )
+}

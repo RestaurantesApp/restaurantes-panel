@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
 // Components
-import { Divider } from '@mui/material';
-import { ButtonCustom, IconButtonCustom, TextCustom } from '../atoms';
+import { Divider } from '@mui/material'
+import { ButtonCustom, IconButtonCustom, TextCustom } from '../atoms'
 
 // Assets
-import SendIcon from '@mui/icons-material/Send';
-import ReplyIcon from '@mui/icons-material/Reply';
-import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send'
+import ReplyIcon from '@mui/icons-material/Reply'
+import DeleteIcon from '@mui/icons-material/Delete'
 
 export const ComponentsButton = () => {
   return (
@@ -387,5 +387,5 @@ export const ComponentsButton = () => {
         <Divider />
       </div>
     </div>
-  );
-};
+  )
+}

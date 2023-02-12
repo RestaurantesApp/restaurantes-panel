@@ -1,5 +1,5 @@
-import { typeRegex } from './regex';
-import { typesValidation } from '../../common/types';
+import { typeRegex } from './regex'
+import { typesValidation } from '../../common/types'
 
 const {
   regexOnlyNumber,
@@ -9,45 +9,45 @@ const {
   regexAlphanumericExtend,
   regexValidateEmail,
   regexValidateEmailDomain,
-} = typeRegex;
+} = typeRegex
 
 export const validTextInput = (value, type) => {
   switch (type) {
     case typesValidation.onlyNumber:
-      return regexOnlyNumber.test(value);
+      return regexOnlyNumber.test(value)
     case typesValidation.onlyLetters:
-      return regexOnlyLetters.test(value);
+      return regexOnlyLetters.test(value)
     case typesValidation.onlyLettersExtend:
-      return regexOnlyLettersExtend.test(value);
+      return regexOnlyLettersExtend.test(value)
     case typesValidation.onlyAlphanumeric:
-      return regexAlphanumeric.test(value);
+      return regexAlphanumeric.test(value)
     case typesValidation.onlyAlphanumericExtend:
-      return regexAlphanumericExtend.test(value);
+      return regexAlphanumericExtend.test(value)
     default:
-      return true;
+      return true
   }
-};
+}
 
 export const validInputEmail = (value, type) => {
   switch (type) {
     case typesValidation.validateEmail:
-      return regexValidateEmail.test(value);
+      return regexValidateEmail.test(value)
     case typesValidation.validateEmailDomain:
-      return regexValidateEmailDomain.test(value);
+      return regexValidateEmailDomain.test(value)
     default:
-      return true;
+      return true
   }
-};
+}
 
 export const validInputInitialNumbers = (value, initialNumbers) => {
-  let isValid = true;
-  isValid = regexOnlyNumber.test(value);
+  let isValid = true
+  isValid = regexOnlyNumber.test(value)
   if (isValid) {
-    let isValidNumber = false;
+    let isValidNumber = false
     initialNumbers.forEach(number => {
-      if (number === parseFloat(value.charAt(0))) isValidNumber = true;
-    });
-    isValid = isValidNumber;
+      if (number === parseFloat(value.charAt(0))) isValidNumber = true
+    })
+    isValid = isValidNumber
   }
-  return isValid;
-};
+  return isValid
+}

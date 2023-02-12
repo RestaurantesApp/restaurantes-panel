@@ -1,20 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext } from 'react'
 
 // Hooks
-import { AuthContext } from '../../context';
+import { AuthContext } from '../../context'
 
 // Components
-import {
-  HashRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from 'react-router-dom';
-import { Login, Error404 } from '../pages';
-import { DashboardRouter, PrivateRoute, PublicRoute } from './';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { Login, Error404 } from '../pages'
+import { DashboardRouter, PrivateRoute, PublicRoute } from './'
 
 export const AppRouter = () => {
-  const { authState } = useContext(AuthContext);
+  const { authState } = useContext(AuthContext)
 
   return (
     <Router>
@@ -37,5 +32,5 @@ export const AppRouter = () => {
         <Route path="*" element={<Navigate to="/page-error" replace />} />
       </Routes>
     </Router>
-  );
-};
+  )
+}

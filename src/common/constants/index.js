@@ -1,2 +1,2 @@
-export * from './const';
-export * from './fakeData';
+export * from './const'
+export * from './fakeData'

@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react'
 
 // Hooks
-import { useMessage } from '../../hooks';
-import { AuthContext } from '../../context';
+import { useMessage } from '../../hooks'
+import { AuthContext } from '../../context'
 
 // Components
 import {
@@ -11,52 +11,52 @@ import {
   Loader,
   TextCustom,
   TextInputCustom,
-} from '../atoms';
+} from '../atoms'
 
 // Const
-import { typesGlobalState } from '../../common/types';
+import { typesGlobalState } from '../../common/types'
 
 // Core
-import { formValidLogin } from '../../core/validations';
-import { apiLogin } from '../../services/apis';
+import { formValidLogin } from '../../core/validations'
+import { apiLogin } from '../../services/apis'
 
-const { authLogin } = typesGlobalState;
+const { authLogin } = typesGlobalState
 
 export const Login = () => {
-  const { authDispatch } = useContext(AuthContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { authDispatch } = useContext(AuthContext)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   // Validations
-  const [loader, setLoader] = useState(false);
-  const [enabledValid, setEnabledValid] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
+  const [loader, setLoader] = useState(false)
+  const [enabledValid, setEnabledValid] = useState(false)
+  const [showAlert, setShowAlert] = useState(false)
   const [alert, setAlert] = useState({
     title: '',
     description: '',
     severity: 'info',
-  });
+  })
   const { messages, setMessages, resetMessages } = useMessage({
     email: null,
     password: null,
-  });
+  })
 
   const resetForm = () => {
-    setShowAlert(false);
-    resetMessages();
-    setEmail('');
-    setPassword('');
-  };
+    setShowAlert(false)
+    resetMessages()
+    setEmail('')
+    setPassword('')
+  }
 
   const handleLogin = async () => {
-    setShowAlert(false);
-    setEnabledValid(true);
-    const isFormValid = handleValidForm();
+    setShowAlert(false)
+    setEnabledValid(true)
+    const isFormValid = handleValidForm()
     if (isFormValid) {
-      setLoader(true);
-      const params = { email, password };
-      const response = await apiLogin(params);
-      const { success, message, data } = response;
+      setLoader(true)
+      const params = { email, password }
+      const response = await apiLogin(params)
+      const { success, message, data } = response
       if (success) {
         const payload = {
           personalInfo: data.user,
@@ -64,26 +64,26 @@ export const Login = () => {
           methods: data.methods,
           roles: data.roles,
           token: data.token,
-        };
-        authDispatch({ type: authLogin, payload });
-        resetForm();
+        }
+        authDispatch({ type: authLogin, payload })
+        resetForm()
       } else {
-        setShowAlert(true);
+        setShowAlert(true)
         setAlert({
           title: 'Error',
           description: message,
           severity: 'error',
-        });
+        })
       }
-      setLoader(false);
+      setLoader(false)
     }
-  };
+  }
 
   const handleValidForm = () => {
-    const response = formValidLogin({ email, password });
-    setMessages(response.msgValid);
-    return response.isValid;
-  };
+    const response = formValidLogin({ email, password })
+    setMessages(response.msgValid)
+    return response.isValid
+  }
 
   return (
     <div className="w-screen min-h-screen flex justify-center items-center bg-general p-8">
@@ -130,5 +130,5 @@ export const Login = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

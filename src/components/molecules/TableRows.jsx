@@ -1,19 +1,19 @@
-import React from 'react';
+import React from 'react'
 
 // Components
-import { Tooltip } from '@mui/material';
-import { BadgePoint, IconButtonCustom } from '../atoms';
+import { Tooltip } from '@mui/material'
+import { BadgePoint, IconButtonCustom } from '../atoms'
 
 // Const
-import { typesTableActions } from '../../common/types';
+import { typesTableActions } from '../../common/types'
 
 // Assets
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import VisibilityIcon from '@mui/icons-material/Visibility'
+import AddIcon from '@mui/icons-material/Add'
+import EditIcon from '@mui/icons-material/Edit'
+import DeleteIcon from '@mui/icons-material/Delete'
 
-const { tableView, tableAdd, tableEdit, tableDelete } = typesTableActions;
+const { tableView, tableAdd, tableEdit, tableDelete } = typesTableActions
 
 export const TableRows = ({
   actionClick = () => null,
@@ -24,61 +24,61 @@ export const TableRows = ({
   prepareRow = () => null,
 }) => {
   const renderActions = action => {
-    let actionIcon = null;
+    let actionIcon = null
     switch (action) {
       case tableView:
         actionIcon = (
           <Tooltip title="Ver">
             <VisibilityIcon />
           </Tooltip>
-        );
-        break;
+        )
+        break
       case tableAdd:
         actionIcon = (
           <Tooltip title="Agregar">
             <AddIcon />
           </Tooltip>
-        );
-        break;
+        )
+        break
       case tableEdit:
         actionIcon = (
           <Tooltip title="Editar">
             <EditIcon />
           </Tooltip>
-        );
-        break;
+        )
+        break
       case tableDelete:
         actionIcon = (
           <Tooltip title="Eliminar">
             <DeleteIcon />
           </Tooltip>
-        );
-        break;
+        )
+        break
       default:
         actionIcon = (
           <Tooltip title="Delete">
             <VisibilityIcon />
           </Tooltip>
-        );
-        break;
+        )
+        break
     }
-    return actionIcon;
-  };
+    return actionIcon
+  }
 
   const renderCells = cell => {
-    let element = null;
+    let element = null
     if (cell.column.id === 'STATE') {
-      element = <BadgePoint state={cell.value} />;
+      element = <BadgePoint state={cell.value} />
     } else {
-      element = cell.render('Cell');
+      element = cell.render('Cell')
     }
-    return element;
-  };
+    return element
+  }
 
   return (
     <>
       {page.map(row => {
-        prepareRow(row);
+        prepareRow(row)
         return (
           <tr
             className="hover:bg-gray-200 even:bg-gray-100"
@@ -95,10 +95,10 @@ export const TableRows = ({
             {isActions && (
               <td className="border-b border-gray-300 px-3 flex justify-end">
                 {actions.map((action, index) => {
-                  let rowEnabled = row.original.ENABLED;
-                  let enabled = true;
+                  let rowEnabled = row.original.ENABLED
+                  let enabled = true
                   if (typeof rowEnabled === 'boolean') {
-                    enabled = rowEnabled;
+                    enabled = rowEnabled
                   }
                   return (
                     <IconButtonCustom
@@ -116,13 +116,13 @@ export const TableRows = ({
                       }
                       disabled={!enabled}
                     />
-                  );
+                  )
                 })}
               </td>
             )}
           </tr>
-        );
+        )
       })}
     </>
-  );
-};
+  )
+}

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 // Components
-import { Typography } from '@mui/material';
+import { Typography } from '@mui/material'
 
 export const Home = () => {
   return (
@@ -14,5 +14,5 @@ export const Home = () => {
         Hola Mundo
       </Typography>
     </div>
-  );
-};
+  )
+}

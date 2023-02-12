@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
 // Components
-import { Button } from '@mui/material';
+import { Button } from '@mui/material'
 
 // Core
-import { renderColor } from '../../core/utils';
+import { renderColor } from '../../core/utils'
 
 export const ButtonCustom = ({
   text = '',
@@ -59,5 +59,5 @@ export const ButtonCustom = ({
     >
       {text}
     </Button>
-  );
-};
+  )
+}

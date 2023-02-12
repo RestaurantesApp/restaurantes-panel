@@ -1,17 +1,17 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect } from 'react'
 
 // Hooks
-import { AuthContext, authReducer, AUTH_INITIAL_STATE } from './';
+import { AuthContext, authReducer, AUTH_INITIAL_STATE } from './'
 
 // Const
-import { typesGlobalState } from '../common/types';
+import { typesGlobalState } from '../common/types'
 
 export const AuthProvider = ({ children }) => {
-  const [authState, authDispatch] = useReducer(authReducer, AUTH_INITIAL_STATE);
+  const [authState, authDispatch] = useReducer(authReducer, AUTH_INITIAL_STATE)
 
   useEffect(() => {
-    authDispatch({ type: typesGlobalState.authLogout });
-  }, []);
+    authDispatch({ type: typesGlobalState.authLogout })
+  }, [])
 
   return (
     <AuthContext.Provider
@@ -22,5 +22,5 @@ export const AuthProvider = ({ children }) => {
     >
       {children}
     </AuthContext.Provider>
-  );
-};
+  )
+}

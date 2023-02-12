@@ -1,23 +1,19 @@
-import React from 'react';
+import React from 'react'
 
 // Components
-import { Divider } from '@mui/material';
-import { TextCustom } from '../atoms';
-import { TableCustom } from '../templates';
+import { Divider } from '@mui/material'
+import { TextCustom } from '../atoms'
+import { TableCustom } from '../templates'
 
 // Const
-import {
-  columnsBasic,
-  columnsBasic2,
-  columnsBasic3,
-} from '../../common/tables';
-import { typesTableActions } from '../../common/types';
+import { columnsBasic, columnsBasic2, columnsBasic3 } from '../../common/tables'
+import { typesTableActions } from '../../common/types'
 
 // Fake Data
-import users from '../../common/tables/users.json';
-import usersMin from '../../common/tables/users-min.json';
+import users from '../../common/tables/users.json'
+import usersMin from '../../common/tables/users-min.json'
 
-const { tableAdd, tableEdit, tableDelete, tableView } = typesTableActions;
+const { tableAdd, tableEdit, tableDelete, tableView } = typesTableActions
 
 export const ComponentsTable = () => {
   return (
@@ -120,5 +116,5 @@ export const ComponentsTable = () => {
       </div>
       <Divider />
     </div>
-  );
-};
+  )
+}

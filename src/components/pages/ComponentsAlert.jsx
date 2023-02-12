@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 // Components
-import { Divider } from '@mui/material';
-import { AlertCustom, ButtonCustom, TextCustom } from '../atoms';
+import { Divider } from '@mui/material'
+import { AlertCustom, ButtonCustom, TextCustom } from '../atoms'
 
 export const ComponentsAlert = () => {
-  const [alertInfo, setAlertInfo] = useState(true);
-  const [alertSuccess, setAlertSuccess] = useState(true);
-  const [alertWarning, setAlertWarning] = useState(true);
-  const [alertError, setAlertError] = useState(true);
+  const [alertInfo, setAlertInfo] = useState(true)
+  const [alertSuccess, setAlertSuccess] = useState(true)
+  const [alertWarning, setAlertWarning] = useState(true)
+  const [alertError, setAlertError] = useState(true)
 
   const handleShowAlerts = () => {
-    setAlertInfo(true);
-    setAlertSuccess(true);
-    setAlertWarning(true);
-    setAlertError(true);
-  };
+    setAlertInfo(true)
+    setAlertSuccess(true)
+    setAlertWarning(true)
+    setAlertError(true)
+  }
 
   return (
     <div className="pb-4 flex flex-col">
@@ -63,5 +63,5 @@ export const ComponentsAlert = () => {
         className="mt-4 w-40"
       />
     </div>
-  );
-};
+  )
+}

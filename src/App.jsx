@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
 // Hooks
-import { AuthProvider } from './context';
+import { AuthProvider } from './context'
 
 // Components
-import { AppRouter } from './components/routes';
-import { CssBaseline, ThemeProvider } from '@mui/material';
+import { AppRouter } from './components/routes'
+import { CssBaseline, ThemeProvider } from '@mui/material'
 
 // Styles
-import { restaurantesTheme } from './components/themes';
+import { restaurantesTheme } from './components/themes'
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
         <AppRouter />
       </ThemeProvider>
     </AuthProvider>
-  );
-};
+  )
+}
 
-export default App;
+export default App

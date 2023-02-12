@@ -1,4 +1,4 @@
-const availableDomains = `yahoo|hotmail|gmail|live|outlook`;
+const availableDomains = `yahoo|hotmail|gmail|live|outlook`
 
 export const typeRegex = {
   // Base validations
@@ -14,4 +14,4 @@ export const typeRegex = {
   regexValidateEmailDomain: new RegExp(
     `(\\W|^)[\\w.\\-]{0,33}@(${availableDomains})(\\.com|\\.es|\\.hn)(\\W|$)`,
   ),
-};
+}

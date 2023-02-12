@@ -3,4 +3,4 @@ export const typesTableActions = {
   tableAdd: 'tableAdd',
   tableEdit: 'tableEdit',
   tableDelete: 'tableDelete',
-};
+}

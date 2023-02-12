@@ -1,11 +1,11 @@
-import React, { memo } from 'react';
+import React, { memo } from 'react'
 
 // Components
-import { Select } from '@mui/material';
-import { FormControlCustom, MenuItemCustom, TextCustom } from './';
+import { Select } from '@mui/material'
+import { FormControlCustom, MenuItemCustom, TextCustom } from './'
 
 // Core
-import { colors } from '../themes';
+import { colors } from '../themes'
 
 const Component = ({
   name = '',
@@ -21,9 +21,9 @@ const Component = ({
   className = '',
 }) => {
   const handleChange = event => {
-    const inputValue = event.target.value;
-    setValue(inputValue);
-  };
+    const inputValue = event.target.value
+    setValue(inputValue)
+  }
 
   return (
     <div className={`flex flex-col ${className}`}>
@@ -78,7 +78,7 @@ const Component = ({
         <TextCustom text={msgError} className="text-xs ml-1 mt-1 text-danger" />
       )}
     </div>
-  );
-};
+  )
+}
 
-export const SelectCustom = memo(Component);
+export const SelectCustom = memo(Component)

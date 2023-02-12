@@ -1,19 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext } from 'react'
 
 // Hooks
-import { AuthContext } from '../../context';
+import { AuthContext } from '../../context'
 
 // Components
-import { AppBar, IconButton, Toolbar } from '@mui/material';
-import { TextCustom } from '../atoms';
+import { AppBar, IconButton, Toolbar } from '@mui/material'
+import { TextCustom } from '../atoms'
 
 // Assets
-import Avatar from '../../assets/images/Avatar.png';
-import MenuIcon from '@mui/icons-material/Menu';
+import Avatar from '../../assets/images/Avatar.png'
+import MenuIcon from '@mui/icons-material/Menu'
 
 export const HeaderMenu = ({ drawerWidth, handleDrawerToggle }) => {
-  const { authState } = useContext(AuthContext);
-  const { personalInfo } = authState;
+  const { authState } = useContext(AuthContext)
+  const { personalInfo } = authState
 
   return (
     <AppBar
@@ -42,5 +42,5 @@ export const HeaderMenu = ({ drawerWidth, handleDrawerToggle }) => {
         </div>
       </Toolbar>
     </AppBar>
-  );
-};
+  )
+}

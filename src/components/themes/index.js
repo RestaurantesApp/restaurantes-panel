@@ -1,2 +1,2 @@
-export * from './colors';
-export * from './restaurantes.theme';
+export * from './colors'
+export * from './restaurantes.theme'

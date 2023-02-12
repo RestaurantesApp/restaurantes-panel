@@ -1,54 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 // Components
-import { Divider } from '@mui/material';
-import { TextCustom, TextInputCustom } from '../atoms';
+import { Divider } from '@mui/material'
+import { TextCustom, TextInputCustom } from '../atoms'
 
 // Const
-import { typesValidation } from '../../common/types';
+import { typesValidation } from '../../common/types'
 
 // Core
-import { validInputEmail } from '../../core/validations';
+import { validInputEmail } from '../../core/validations'
 
 export const ComponentsInputs2 = () => {
-  const [inputDefault, setInputDefault] = useState('');
-  const [iOnlyNumbers, setIOnlyNumbers] = useState('');
-  const [iOnlyLetters, setIOnlyLetters] = useState('');
-  const [iOnlyLettersExtend, setIOnlyLettersExtend] = useState('');
-  const [iOnlyAlphanumeric, setIOnlyAlphanumeric] = useState('');
-  const [iOnlyAlphanumericExtend, setIOnlyAlphanumericExtend] = useState('');
-  const [iMaxLength, setIMaxLength] = useState('');
-  const [phoneNumberHN, setPhoneNumberHN] = useState('');
-  const [email, setEmail] = useState('');
-  const [emailMsgError, setEmailMsgError] = useState(null);
-  const [emailDomain, setEmailDomain] = useState('');
-  const [emailDomainMsgError, setEmailDomainMsgError] = useState(null);
+  const [inputDefault, setInputDefault] = useState('')
+  const [iOnlyNumbers, setIOnlyNumbers] = useState('')
+  const [iOnlyLetters, setIOnlyLetters] = useState('')
+  const [iOnlyLettersExtend, setIOnlyLettersExtend] = useState('')
+  const [iOnlyAlphanumeric, setIOnlyAlphanumeric] = useState('')
+  const [iOnlyAlphanumericExtend, setIOnlyAlphanumericExtend] = useState('')
+  const [iMaxLength, setIMaxLength] = useState('')
+  const [phoneNumberHN, setPhoneNumberHN] = useState('')
+  const [email, setEmail] = useState('')
+  const [emailMsgError, setEmailMsgError] = useState(null)
+  const [emailDomain, setEmailDomain] = useState('')
+  const [emailDomainMsgError, setEmailDomainMsgError] = useState(null)
 
   const handleValidEmail = () => {
     if (email) {
-      const isValid = validInputEmail(email, 'validateEmail');
+      const isValid = validInputEmail(email, 'validateEmail')
       if (isValid) {
-        setEmailMsgError('');
+        setEmailMsgError('')
       } else {
-        setEmailMsgError('Correo no válido');
+        setEmailMsgError('Correo no válido')
       }
     } else {
-      setEmailMsgError(null);
+      setEmailMsgError(null)
     }
-  };
+  }
 
   const handleValidEmailDomain = () => {
     if (emailDomain) {
-      const isValid = validInputEmail(emailDomain, 'validateEmailDomain');
+      const isValid = validInputEmail(emailDomain, 'validateEmailDomain')
       if (isValid) {
-        setEmailDomainMsgError('');
+        setEmailDomainMsgError('')
       } else {
-        setEmailDomainMsgError('Correo no válido');
+        setEmailDomainMsgError('Correo no válido')
       }
     } else {
-      setEmailDomainMsgError(null);
+      setEmailDomainMsgError(null)
     }
-  };
+  }
 
   return (
     <div className="pb-4">
@@ -151,5 +151,5 @@ export const ComponentsInputs2 = () => {
         <Divider />
       </div>
     </div>
-  );
-};
+  )
+}

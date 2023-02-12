@@ -1,13 +1,13 @@
-import React, { useEffect, useRef } from 'react';
-import Lottie from 'lottie-react';
+import React, { useEffect, useRef } from 'react'
+import Lottie from 'lottie-react'
 
 // Assets
-import DeliveryAnimation from '../../../assets/animations/DeliveryAnimation.json';
-import LoaderCircleAnimation from '../../../assets/animations/LoaderCircleAnimation.json';
-import LocationAnimation from '../../../assets/animations/LocationAnimation.json';
+import DeliveryAnimation from '../../../assets/animations/DeliveryAnimation.json'
+import LoaderCircleAnimation from '../../../assets/animations/LoaderCircleAnimation.json'
+import LocationAnimation from '../../../assets/animations/LocationAnimation.json'
 
 //Styles
-import './styles.css';
+import './styles.css'
 
 export const Loader = ({
   typeAnimation = 'loader',
@@ -22,43 +22,43 @@ export const Loader = ({
   stop = false,
   setStop = () => null,
 }) => {
-  const lottieRef = useRef();
+  const lottieRef = useRef()
 
   useEffect(() => {
-    if (lottieRef.current) lottieRef.current.setSpeed(speed);
-  }, [speed]);
+    if (lottieRef.current) lottieRef.current.setSpeed(speed)
+  }, [speed])
 
   useEffect(() => {
     if (pause) {
-      if (lottieRef.current) lottieRef.current.pause();
-      setPause(false);
+      if (lottieRef.current) lottieRef.current.pause()
+      setPause(false)
     }
-  }, [pause, setPause]);
+  }, [pause, setPause])
 
   useEffect(() => {
     if (play) {
-      if (lottieRef.current) lottieRef.current.play();
-      setPlay(false);
+      if (lottieRef.current) lottieRef.current.play()
+      setPlay(false)
     }
-  }, [play, setPlay]);
+  }, [play, setPlay])
 
   useEffect(() => {
     if (stop) {
-      if (lottieRef.current) lottieRef.current.stop();
-      setStop(false);
+      if (lottieRef.current) lottieRef.current.stop()
+      setStop(false)
     }
-  }, [stop, setStop]);
+  }, [stop, setStop])
 
   const renderAnimationData = () => {
     switch (typeAnimation) {
       case 'delivery':
-        return DeliveryAnimation;
+        return DeliveryAnimation
       case 'location':
-        return LocationAnimation;
+        return LocationAnimation
       default:
-        return LoaderCircleAnimation;
+        return LoaderCircleAnimation
     }
-  };
+  }
 
   return (
     <div className={mode === 'modal' ? 'loader-modal' : ''}>
@@ -69,5 +69,5 @@ export const Loader = ({
         style={{ width: size, height: size }}
       />
     </div>
-  );
-};
+  )
+}

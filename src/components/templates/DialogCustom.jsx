@@ -1,9 +1,9 @@
-import React, { memo } from 'react';
+import React, { memo } from 'react'
 
 // Components
-import { Dialog } from '@mui/material';
-import { TextCustom } from '../atoms';
-import { DialogTitleCustom } from '../molecules';
+import { Dialog } from '@mui/material'
+import { TextCustom } from '../atoms'
+import { DialogTitleCustom } from '../molecules'
 
 const Component = ({
   children = null,
@@ -16,10 +16,10 @@ const Component = ({
   maxWidth = 'md',
 }) => {
   const handleClose = () => {
-    onDismiss();
-    setOpen(false);
-    return false;
-  };
+    onDismiss()
+    setOpen(false)
+    return false
+  }
   return (
     <Dialog
       open={open}
@@ -37,7 +37,7 @@ const Component = ({
       </DialogTitleCustom>
       {children}
     </Dialog>
-  );
-};
+  )
+}
 
-export const DialogCustom = memo(Component);
+export const DialogCustom = memo(Component)
