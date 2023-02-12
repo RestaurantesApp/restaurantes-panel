@@ -1,4 +1,4 @@
-export { default as AppRouter } from './AppRouter';
-export { default as DashboardRouter } from './DashboardRouter';
-export { default as PrivateRoute } from './PrivateRoute';
-export { default as PublicRoute } from './PublicRoute';
+export * from './AppRouter';
+export * from './DashboardRouter';
+export * from './PrivateRoute';
+export * from './PublicRoute';
