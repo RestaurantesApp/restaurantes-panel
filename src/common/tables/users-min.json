@@ -8,7 +8,7 @@
     "age": 45,
     "country": "Argentina",
     "phone": "6844103517",
-    "STATE": "ACTIVO"
+    "STATE": "ACTIVE"
   },
   {
     "id": 2,
@@ -19,7 +19,7 @@
     "age": 30,
     "country": "Greece",
     "phone": "8429683893",
-    "STATE": "EXPIRADO"
+    "STATE": "EXPIRED"
   },
   {
     "id": 3,
@@ -30,7 +30,7 @@
     "age": 48,
     "country": "Czech Republic",
     "phone": "8672773997",
-    "STATE": "INACTIVO"
+    "STATE": "INACTIVE"
   },
   {
     "id": 4,
@@ -41,7 +41,7 @@
     "age": 54,
     "country": "Equatorial Guinea",
     "phone": "4257971694",
-    "STATE": "ACTIVO"
+    "STATE": "ACTIVE"
   },
   {
     "id": 5,
@@ -52,7 +52,7 @@
     "age": 57,
     "country": "Russia",
     "phone": "3932158370",
-    "STATE": "VIGENTE"
+    "STATE": "VALID"
   },
   {
     "id": 6,
@@ -63,7 +63,7 @@
     "age": 53,
     "country": "Ethiopia",
     "phone": "5094928131",
-    "STATE": "EXPIRADO"
+    "STATE": "EXPIRED"
   },
   {
     "id": 7,
@@ -74,7 +74,7 @@
     "age": 21,
     "country": "Indonesia",
     "phone": "1216713219",
-    "STATE": "VIGENTE"
+    "STATE": "VALID"
   },
   {
     "id": 8,
@@ -85,7 +85,7 @@
     "age": 47,
     "country": "Ukraine",
     "phone": "6895680771",
-    "STATE": "INACTIVO"
+    "STATE": "INACTIVE"
   },
   {
     "id": 9,
@@ -96,7 +96,7 @@
     "age": 24,
     "country": "United Arab Emirates",
     "phone": "2117090201",
-    "STATE": "EXPIRADO"
+    "STATE": "EXPIRED"
   },
   {
     "id": 10,
@@ -107,6 +107,6 @@
     "age": 39,
     "country": "Ukraine",
     "phone": "5863355971",
-    "STATE": "ACTIVO"
+    "STATE": "ACTIVE"
   }
 ]
