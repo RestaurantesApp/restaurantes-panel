@@ -1,7 +1,3 @@
-export {
-  validTextInput,
-  validInputEmail,
-  validInputInitialNumbers,
-} from './validateInput';
-export { formValidLogin } from './validLogin';
-export { formValidAddUser, formValidEditUser } from './validUser';
+export * from './validateInput';
+export * from './validLogin';
+export * from './validUser';

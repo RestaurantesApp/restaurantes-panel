@@ -1,8 +1,2 @@
-export { apiLogin } from './auth/apiAuth';
-export {
-  apiGetUsers,
-  apiGetUser,
-  apiPostUser,
-  apiPatchUser,
-  apiDeleteUser,
-} from './users/apiUsers';
+export * from './auth/apiAuth';
+export * from './users/apiUsers';
