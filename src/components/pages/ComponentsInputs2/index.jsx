@@ -20,51 +20,44 @@ const ComponentsInputs2 = () => {
   const [iMaxLength, setIMaxLength] = useState('');
   const [phoneNumberHN, setPhoneNumberHN] = useState('');
   const [email, setEmail] = useState('');
-  const [emailMsgError, setEmailMsgError] = useState('');
-  const [emailSuccess, setEmailSuccess] = useState(false);
+  const [emailMsgError, setEmailMsgError] = useState(null);
   const [emailDomain, setEmailDomain] = useState('');
-  const [emailDomainMsgError, setEmailDomainMsgError] = useState('');
-  const [emailDomainSuccess, setEmailDomainSuccess] = useState(false);
+  const [emailDomainMsgError, setEmailDomainMsgError] = useState(null);
 
   const handleValidEmail = () => {
     if (email) {
-      const isValid = validInputEmail(email, typesValidation.validateEmail);
+      const isValid = validInputEmail(email, 'validateEmail');
       if (isValid) {
-        setEmailSuccess(true);
         setEmailMsgError('');
       } else {
-        setEmailSuccess(false);
         setEmailMsgError('Correo no válido');
       }
     } else {
-      setEmailMsgError('');
-      setEmailSuccess(false);
+      setEmailMsgError(null);
     }
   };
 
   const handleValidEmailDomain = () => {
-    if (email) {
-      const isValid = validInputEmail(
-        emailDomain,
-        typesValidation.validateEmailDomain,
-      );
+    if (emailDomain) {
+      const isValid = validInputEmail(emailDomain, 'validateEmailDomain');
       if (isValid) {
-        setEmailDomainSuccess(true);
         setEmailDomainMsgError('');
       } else {
-        setEmailDomainSuccess(false);
         setEmailDomainMsgError('Correo no válido');
       }
     } else {
-      setEmailDomainMsgError('');
-      setEmailDomainSuccess(false);
+      setEmailDomainMsgError(null);
     }
   };
 
   return (
     <div className="pb-4">
-      <TextCustom text="Validaciones para TextInputs" className="text-6xl" />
-      <Divider />
+      <TextCustom
+        text="Validaciones para TextInputs"
+        className="text-3xl font-bold"
+        variant="h1"
+      />
+      <Divider className="border-2 border-black" />
       {/* Validaciones de TextInputs */}
       <div className="px-4 pt-4">
         <TextCustom text="Validaciones de escritura" className="text-3xl" />
@@ -137,7 +130,6 @@ const ComponentsInputs2 = () => {
             onBlur={handleValidEmail}
             type="email"
             msgError={emailMsgError}
-            success={emailSuccess}
           />
           <TextInputCustom
             value={emailDomain}
@@ -146,7 +138,6 @@ const ComponentsInputs2 = () => {
             onBlur={handleValidEmailDomain}
             type="email"
             msgError={emailDomainMsgError}
-            success={emailDomainSuccess}
           />
           <TextCustom
             text="Solo correos con dominios: yahoo, hotmail, gmail, live, outlook"

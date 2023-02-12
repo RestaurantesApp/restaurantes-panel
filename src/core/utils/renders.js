@@ -1,34 +1,24 @@
-import { colors } from '../../components/styles/theme';
-
-const { primary, secondary, green, red, orange, gray, white } = colors;
+import { colors } from '../../components/themes';
 
 export const renderColor = (typeColor = '') => {
-  let customColor = undefined;
   switch (typeColor) {
     case 'primary':
-      customColor = primary;
-      break;
+      return colors.primary;
     case 'secondary':
-      customColor = secondary;
-      break;
+      return colors.secondary;
     case 'success':
-      customColor = green;
-      break;
+      return colors.success;
     case 'danger':
-      customColor = red;
-      break;
+      return colors.danger;
     case 'warning':
-      customColor = orange;
-      break;
-    case 'default':
-      customColor = gray;
-      break;
+      return colors.warning;
+    case 'dark-gray':
+      return colors['dark-gray'];
+    case 'silver':
+      return colors.silver;
     case 'white':
-      customColor = white;
-      break;
+      return colors.white;
     default:
-      customColor = undefined;
-      break;
+      return undefined;
   }
-  return customColor;
 };

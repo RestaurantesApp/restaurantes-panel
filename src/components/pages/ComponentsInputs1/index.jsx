@@ -25,8 +25,12 @@ const ComponentsInputs1 = () => {
 
   return (
     <div className="pb-4">
-      <TextCustom text="Componentes para TextInputs" className="text-6xl" />
-      <Divider />
+      <TextCustom
+        text="Componentes para TextInputs"
+        className="text-3xl font-bold"
+        variant="h1"
+      />
+      <Divider className="border-2 border-black" />
       {/* Variante de TextInputs */}
       <div className="px-4 pt-4">
         <TextCustom text="Variantes de TextInputs" className="text-3xl" />
@@ -36,6 +40,12 @@ const ComponentsInputs1 = () => {
             value={inputDefault}
             setValue={setInputDefault}
             name="Por defecto"
+          />
+          <TextInputCustom
+            value={inputDefault}
+            setValue={setInputDefault}
+            name="Tamaño pequeño: small"
+            size="small"
           />
           <TextInputCustom
             value={inputDisabled}
@@ -84,7 +94,7 @@ const ComponentsInputs1 = () => {
             value={inputSuccess}
             setValue={setInputSuccess}
             name="Exitoso"
-            success
+            msgError=""
           />
         </div>
         <Divider />

@@ -12,8 +12,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 const ComponentsButton = () => {
   return (
     <div className="pb-4">
-      <TextCustom text="Componentes para botones" className="text-6xl" />
-      <Divider />
+      <TextCustom
+        text="Componentes para botones"
+        className="text-3xl font-bold"
+        variant="h1"
+      />
+      <Divider className="border-2 border-black" />
       <ButtonCustom text="Por defecto" />
       {/* Variante de Botones */}
       <div className="px-4 pt-4">
@@ -39,8 +43,8 @@ const ComponentsButton = () => {
       <div className="px-4 pt-4">
         <TextCustom text="Colores" className="text-3xl" />
         <Divider />
-        <div className="flex flex-col gap-1">
-          <div className="flex gap-1">
+        <div className="flex flex-col gap-8">
+          <div className="flex gap-1 flex-wrap">
             <ButtonCustom text="Por defecto" />
             <ButtonCustom text="Por defecto" variant="outlined" />
             <ButtonCustom text="Por defecto" variant="text" />
@@ -48,7 +52,7 @@ const ComponentsButton = () => {
             <ButtonCustom text="Por defecto" variant="outlined" disabled />
             <ButtonCustom text="Por defecto" variant="text" disabled />
           </div>
-          <div className="flex gap-1">
+          <div className="flex gap-1 flex-wrap">
             <ButtonCustom text="Primario" typeColor="primary" />
             <ButtonCustom
               text="Primario"
@@ -70,7 +74,7 @@ const ComponentsButton = () => {
               disabled
             />
           </div>
-          <div className="flex gap-1">
+          <div className="flex gap-1 flex-wrap">
             <ButtonCustom text="Secundario" typeColor="secondary" />
             <ButtonCustom
               text="Secundario"
@@ -96,7 +100,7 @@ const ComponentsButton = () => {
               disabled
             />
           </div>
-          <div className="flex gap-1">
+          <div className="flex gap-1 flex-wrap">
             <ButtonCustom text="Exitoso" typeColor="success" />
             <ButtonCustom
               text="Exitoso"
@@ -118,7 +122,7 @@ const ComponentsButton = () => {
               disabled
             />
           </div>
-          <div className="flex gap-1">
+          <div className="flex gap-1 flex-wrap">
             <ButtonCustom text="Alerta" typeColor="danger" />
             <ButtonCustom text="Alerta" typeColor="danger" variant="outlined" />
             <ButtonCustom text="Alerta" typeColor="danger" variant="text" />
@@ -136,7 +140,7 @@ const ComponentsButton = () => {
               disabled
             />
           </div>
-          <div className="flex gap-1">
+          <div className="flex gap-1 flex-wrap">
             <ButtonCustom text="Advertencia" typeColor="warning" />
             <ButtonCustom
               text="Advertencia"
@@ -162,20 +166,24 @@ const ComponentsButton = () => {
               disabled
             />
           </div>
-          <div className="flex gap-1">
-            <ButtonCustom text="Gris" typeColor="default" />
-            <ButtonCustom text="Gris" typeColor="default" variant="outlined" />
-            <ButtonCustom text="Gris" typeColor="default" variant="text" />
-            <ButtonCustom text="Gris" typeColor="default" disabled />
+          <div className="flex gap-1 flex-wrap">
+            <ButtonCustom text="Gris" typeColor="dark-gray" />
             <ButtonCustom
               text="Gris"
-              typeColor="default"
+              typeColor="dark-gray"
+              variant="outlined"
+            />
+            <ButtonCustom text="Gris" typeColor="dark-gray" variant="text" />
+            <ButtonCustom text="Gris" typeColor="dark-gray" disabled />
+            <ButtonCustom
+              text="Gris"
+              typeColor="dark-gray"
               variant="outlined"
               disabled
             />
             <ButtonCustom
               text="Gris"
-              typeColor="default"
+              typeColor="dark-gray"
               variant="text"
               disabled
             />
@@ -196,12 +204,12 @@ const ComponentsButton = () => {
           <ButtonCustom
             text="Outlined"
             variant="outlined"
-            endIcon={<SendIcon className="text-gray-600" />}
+            endIcon={<SendIcon className="text-dark-gray" />}
           />
           <ButtonCustom
             text="Text"
             variant="text"
-            endIcon={<SendIcon className="text-gray-600" />}
+            endIcon={<SendIcon className="text-dark-gray" />}
           />
           <ButtonCustom
             text="Contained"
@@ -211,12 +219,12 @@ const ComponentsButton = () => {
           <ButtonCustom
             text="Outlined"
             variant="outlined"
-            startIcon={<ReplyIcon className="text-gray-600" />}
+            startIcon={<ReplyIcon className="text-dark-gray" />}
           />
           <ButtonCustom
             text="Text"
             variant="text"
-            startIcon={<ReplyIcon className="text-gray-600" />}
+            startIcon={<ReplyIcon className="text-dark-gray" />}
           />
         </div>
         <Divider />
@@ -283,7 +291,7 @@ const ComponentsButton = () => {
             <TextCustom text="Icon Button Advertencia" />
           </div>
           <div className="flex items-center">
-            <IconButtonCustom icon={<DeleteIcon />} typeColor="default" />
+            <IconButtonCustom icon={<DeleteIcon />} typeColor="dark-gray" />
             <TextCustom text="Icon Button Gris" />
           </div>
         </div>
@@ -295,13 +303,16 @@ const ComponentsButton = () => {
         <Divider />
         <div className="flex flex-col gap-1">
           <div className="flex items-center">
-            <IconButtonCustom icon={<DeleteIcon />} typeColorHover="default" />
+            <IconButtonCustom
+              icon={<DeleteIcon />}
+              typeColorHover="dark-gray"
+            />
             <TextCustom text="Icon Button Por Defecto con hover Gris" />
           </div>
           <div className="flex items-center">
             <IconButtonCustom
               icon={<DeleteIcon />}
-              typeColorHover="default"
+              typeColorHover="dark-gray"
               disabled
             />
             <TextCustom text="Icon Button Deshabilitado" />
@@ -309,7 +320,7 @@ const ComponentsButton = () => {
           <div className="flex items-center">
             <IconButtonCustom
               icon={<DeleteIcon />}
-              typeColor="default"
+              typeColor="dark-gray"
               typeColorHover="primary"
             />
             <TextCustom text="Icon Button Gris con hover Primario" />
@@ -317,7 +328,7 @@ const ComponentsButton = () => {
           <div className="flex items-center">
             <IconButtonCustom
               icon={<DeleteIcon />}
-              typeColor="default"
+              typeColor="dark-gray"
               typeColorHover="secondary"
             />
             <TextCustom text="Icon Button Gris con hover Secundario" />
@@ -325,7 +336,7 @@ const ComponentsButton = () => {
           <div className="flex items-center">
             <IconButtonCustom
               icon={<DeleteIcon />}
-              typeColor="default"
+              typeColor="dark-gray"
               typeColorHover="success"
             />
             <TextCustom text="Icon Button Gris con hover Exitoso" />
@@ -333,7 +344,7 @@ const ComponentsButton = () => {
           <div className="flex items-center">
             <IconButtonCustom
               icon={<DeleteIcon />}
-              typeColor="default"
+              typeColor="dark-gray"
               typeColorHover="danger"
             />
             <TextCustom text="Icon Button Gris con hover Alerta" />
@@ -341,7 +352,7 @@ const ComponentsButton = () => {
           <div className="flex items-center">
             <IconButtonCustom
               icon={<DeleteIcon />}
-              typeColor="default"
+              typeColor="dark-gray"
               typeColorHover="warning"
             />
             <TextCustom text="Icon Button Gris con hover Advertencia" />
@@ -350,7 +361,7 @@ const ComponentsButton = () => {
             <IconButtonCustom
               icon={<DeleteIcon />}
               typeColor="primary"
-              typeColorHover="default"
+              typeColorHover="dark-gray"
             />
             <TextCustom text="Icon Button Primario con hover Gris" />
           </div>
@@ -366,20 +377,12 @@ const ComponentsButton = () => {
             <TextCustom text="Tamaños de botones:" />
             <div className="flex items-center">
               <IconButtonCustom icon={<DeleteIcon />} size={16} />
-              <IconButtonCustom icon={<DeleteIcon />} size={'1rem'} />
               <IconButtonCustom icon={<DeleteIcon />} />
-              <IconButtonCustom icon={<DeleteIcon />} size={'2rem'} />
               <IconButtonCustom icon={<DeleteIcon />} size={48} />
-              <IconButtonCustom icon={<DeleteIcon />} size={'3rem'} />
               <IconButtonCustom icon={<DeleteIcon />} size={64} />
-              <IconButtonCustom icon={<DeleteIcon />} size={'4rem'} />
             </div>
           </div>
-          <TextCustom text="Medidas: 16px, 1rem, 32px, 2rem, 40px, 3rem, 48px, 4rem" />
-          <TextCustom
-            text="Se aconseja usar las medidas rem"
-            className="italic"
-          />
+          <TextCustom text="Medidas: 16px, 32px, 40px, 48px" />
         </div>
         <Divider />
       </div>

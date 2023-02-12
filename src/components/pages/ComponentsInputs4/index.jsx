@@ -12,7 +12,7 @@ import {
 } from '../../atoms';
 
 // Const
-import { constGeneros, constTiposIdentidad } from '../../../common/constants';
+import { constGenders, constIdentityTypes } from '../../../common/constants';
 
 const ComponentsInputs4 = () => {
   const [check1, setCheck1] = useState(false);
@@ -32,8 +32,8 @@ const ComponentsInputs4 = () => {
 
   return (
     <div className="pb-4 flex flex-col">
-      <TextCustom text="CheckBox" className="text-6xl" />
-      <Divider />
+      <TextCustom text="CheckBox" className="text-3xl font-bold" variant="h1" />
+      <Divider className="border-2 border-black" />
       {/* Estados */}
       <div className="px-4 pt-4">
         <TextCustom text="Estados" className="text-3xl" />
@@ -77,8 +77,8 @@ const ComponentsInputs4 = () => {
           <CheckBoxCustom typeColor="danger" />
           <CheckBoxCustom value typeColor="warning" />
           <CheckBoxCustom typeColor="warning" />
-          <CheckBoxCustom value typeColor="default" />
-          <CheckBoxCustom typeColor="default" />
+          <CheckBoxCustom value typeColor="dark-gray" />
+          <CheckBoxCustom typeColor="dark-gray" />
         </div>
         <Divider />
       </div>
@@ -106,8 +106,12 @@ const ComponentsInputs4 = () => {
         <Divider />
       </div>
       <Divider />
-      <TextCustom text="RadioButtons" className="text-6xl mt-4" />
-      <Divider />
+      <TextCustom
+        text="RadioButtons"
+        className="text-3xl font-bold mt-10"
+        variant="h1"
+      />
+      <Divider className="border-2 border-black" />
       {/* Estados */}
       <div className="px-4 pt-4">
         <TextCustom text="Estados" className="text-3xl" />
@@ -151,8 +155,8 @@ const ComponentsInputs4 = () => {
           <RadioCustom typeColor="danger" />
           <RadioCustom value typeColor="warning" />
           <RadioCustom typeColor="warning" />
-          <RadioCustom value typeColor="default" />
-          <RadioCustom typeColor="default" />
+          <RadioCustom value typeColor="dark-gray" />
+          <RadioCustom typeColor="dark-gray" />
         </div>
         <Divider />
       </div>
@@ -186,14 +190,14 @@ const ComponentsInputs4 = () => {
         <div className="flex flex-col gap-1">
           <RadioButtonsCustom
             name="Elija su genero"
-            options={constGeneros}
+            options={constGenders}
             value={genero}
             setValue={setGenero}
             className="mb-3"
           />
           <RadioButtonsCustom
             name="Elija su tipo de identidad"
-            options={constTiposIdentidad}
+            options={constIdentityTypes}
             value={tipoIdentidad}
             setValue={setTipoIdentidad}
             isRow
@@ -201,8 +205,12 @@ const ComponentsInputs4 = () => {
         </div>
         <Divider />
       </div>
-      <TextCustom text="Switchs" className="text-6xl mt-4" />
-      <Divider />
+      <TextCustom
+        text="Switchs"
+        className="text-3xl font-bold mt-10"
+        variant="h1"
+      />
+      <Divider className="border-2 border-black" />
       {/* Estados */}
       <div className="px-4 pt-4">
         <TextCustom text="Estados" className="text-3xl" />
@@ -255,8 +263,8 @@ const ComponentsInputs4 = () => {
             <SwitchCustom typeColor="warning" />
           </div>
           <div className="flex flex-col">
-            <SwitchCustom value typeColor="default" />
-            <SwitchCustom typeColor="default" />
+            <SwitchCustom value typeColor="dark-gray" />
+            <SwitchCustom typeColor="dark-gray" />
           </div>
         </div>
         <Divider />

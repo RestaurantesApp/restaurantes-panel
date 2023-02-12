@@ -23,8 +23,8 @@ const ComponentsLoader = () => {
 
   return (
     <div className="pb-4 flex flex-col">
-      <TextCustom text="Loaders" className="text-6xl" />
-      <Divider />
+      <TextCustom text="Loaders" className="text-3xl font-bold" variant="h1" />
+      <Divider className="border-2 border-black" />
       {/* Data */}
       <div className="px-4 pt-4">
         <TextCustom text="Data" className="text-3xl" />
@@ -81,7 +81,7 @@ const ComponentsLoader = () => {
           <div className="flex items-center">
             <TextCustom text="3rem:" />
             <Loader />
-            <TextCustom text="por defecto" className="color-red" />
+            <TextCustom text="por defecto" className="text-danger" />
           </div>
           <div className="flex items-center">
             <TextCustom text="4rem:" />
@@ -102,7 +102,7 @@ const ComponentsLoader = () => {
           <div className="flex items-center">
             <TextCustom text="x1:" />
             <Loader speed={1} />
-            <TextCustom text="por defecto" className="color-red" />
+            <TextCustom text="por defecto" className="text-danger" />
           </div>
           <div className="flex items-center">
             <TextCustom text="x2:" />

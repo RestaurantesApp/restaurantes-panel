@@ -17,7 +17,7 @@ import {
 
 // Utils y Const
 import { getLegalDate } from '../../../core/utils';
-import { constEstadosCiviles, constGeneros } from '../../../common/constants';
+import { constMaritalStatus, constGenders } from '../../../common/constants';
 
 const DialogTest = ({ open = false, setOpen = () => null }) => {
   const [nombres, setNombres] = useState('');
@@ -120,7 +120,7 @@ const DialogTest = ({ open = false, setOpen = () => null }) => {
           />
           <RadioButtonsCustom
             name="Genero"
-            options={constGeneros}
+            options={constGenders}
             value={genero}
             setValue={setGenero}
             className="mb-3"
@@ -128,7 +128,7 @@ const DialogTest = ({ open = false, setOpen = () => null }) => {
           />
           <SelectCustom
             name="Estado Civil"
-            options={constEstadosCiviles}
+            options={constMaritalStatus}
             value={estadoCivil}
             setValue={setEstadoCivil}
             className="mb-2"

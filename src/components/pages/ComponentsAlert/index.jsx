@@ -19,8 +19,8 @@ const ComponentsAlert = () => {
 
   return (
     <div className="pb-4 flex flex-col">
-      <TextCustom text="Alerts" className="text-6xl" />
-      <Divider />
+      <TextCustom text="Alerts" className="text-3xl font-bold" variant="h1" />
+      <Divider className="border-2 border-black" />
       {/* Tipos de Alerts */}
       <div className="px-4 pt-4">
         <TextCustom text="Tipos de Alerts" className="text-3xl" />

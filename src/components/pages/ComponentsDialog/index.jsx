@@ -29,8 +29,12 @@ const ComponentsDialog = () => {
 
   return (
     <div className="pb-4">
-      <TextCustom text="Ventanas Modales" className="text-6xl" />
-      <Divider />
+      <TextCustom
+        text="Ventanas Modales"
+        className="text-3xl font-bold"
+        variant="h1"
+      />
+      <Divider className="border-2 border-black" />
       {/* Tipos */}
       <div className="px-4 pt-4">
         <TextCustom text="Tipos" className="text-3xl" />
@@ -172,7 +176,6 @@ const ComponentsDialog = () => {
           <DialogActions>
             <ButtonCustom
               text="Cancelar"
-              color="error"
               onClick={() => setShow5(false)}
               typeColor="secondary"
             />
@@ -205,7 +208,6 @@ const ComponentsDialog = () => {
           <DialogActions>
             <ButtonCustom
               text="Cancelar"
-              color="error"
               onClick={() => setShow6(false)}
               typeColor="secondary"
             />
@@ -234,7 +236,6 @@ const ComponentsDialog = () => {
           <DialogActions>
             <ButtonCustom
               text="Cancelar"
-              color="error"
               onClick={() => {
                 setShow7(false);
                 handleDismiss7();
