@@ -102,12 +102,12 @@ export const DialogUserDelete = ({
         <div className="flex flex-col relative items-center mt-4">
           <TextCustom
             text="¿Esta seguro que desea eliminar este Usuario?"
-            className="fontPRegular"
+            className="font-normal"
           />
-          <TextCustom text={name} className="fontPMedium" />
+          <TextCustom text={name} className="font-medium" />
           <TextCustom
             text="No lo podrá recuperar"
-            className="fontPRegular my-3 color-red"
+            className="font-normal my-3 text-danger"
           />
           {loader && <Loader mode="modal" />}
         </div>

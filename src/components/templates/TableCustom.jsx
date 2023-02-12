@@ -86,7 +86,7 @@ const Component = ({
         </div>
       )}
       <table
-        className="w-full fontPRegular border-collapse"
+        className="w-full font-normal border-collapse"
         {...getTableProps()}
       >
         <thead>

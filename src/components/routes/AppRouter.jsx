@@ -7,10 +7,6 @@ import {
 } from 'react-router-dom';
 import { Login, Error404 } from '../pages';
 
-// Styles
-import '../styles/fonts.css';
-import '../styles/colors.css';
-
 import { DashboardRouter, PrivateRoute, PublicRoute } from './';
 
 export const AppRouter = ({ isAuth = false }) => {

@@ -86,20 +86,20 @@ export const Login = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center bg-slate-700">
+    <div className="w-screen min-h-screen flex justify-center items-center bg-general p-8">
       <div className="flex flex-col w-96 px-6 py-8 rounded-xl bg-white">
         <TextCustom
           text="Inicio de sesión"
-          className="self-center text-2xl fontPBold color-general rounded-lg"
+          className="self-center text-2xl font-bold text-general rounded-lg"
+        />
+        <AlertCustom
+          title={alert.title}
+          description={alert.description}
+          open={showAlert}
+          setOpen={setShowAlert}
+          severity={alert.severity}
         />
         <div className="flex flex-col my-4 relative">
-          <AlertCustom
-            title={alert.title}
-            description={alert.description}
-            open={showAlert}
-            setOpen={setShowAlert}
-            severity={alert.severity}
-          />
           <div className="flex flex-col gap-4 rounded-xl relative">
             <TextInputCustom
               name="Correo"

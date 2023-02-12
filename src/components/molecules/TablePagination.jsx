@@ -48,11 +48,11 @@ export const TablePagination = ({
         <div
           key={index}
           className={`flex justify-center items-center mx-1 w-6 h-6 cursor-pointer rounded-md ${
-            pageIndex === page ? 'text-white bg-general' : 'color-general'
+            pageIndex === page ? 'text-white bg-general' : 'text-general'
           }`}
           onClick={() => page !== '...' && gotoPage(page)}
         >
-          <span className="text-center fontPRegular text-sm">
+          <span className="text-center font-normal text-sm">
             {page !== '...' ? page + 1 : page}
           </span>
         </div>

@@ -159,14 +159,13 @@ export const DialogUserEdit = ({
           setOpen={setShowAlert}
           severity={alert.severity}
         />
-        <div className="flex flex-col relative">
+        <div className="flex flex-col gap-4 relative mt-4">
           <TextInputCustom
             name="Nombre"
             value={name}
             setValue={setName}
             onBlur={() => enabledValid && handleValidForm()}
             onEnter={handleAccept}
-            className="mt-2"
             maxLength={50}
             required
             typesValidation={typesValidation.onlyLettersExtend}
@@ -178,7 +177,6 @@ export const DialogUserEdit = ({
             setValue={setEmail}
             onBlur={() => enabledValid && handleValidForm()}
             onEnter={handleAccept}
-            className="mt-2"
             maxLength={30}
             required
             msgError={messages.email}
@@ -189,7 +187,6 @@ export const DialogUserEdit = ({
             setValue={setPassword}
             onBlur={() => enabledValid && handleValidForm()}
             onEnter={handleAccept}
-            className="mt-2"
             type="password"
             maxLength={25}
             msgError={messages.password}
@@ -200,7 +197,6 @@ export const DialogUserEdit = ({
             setValue={setConfirmPassword}
             onBlur={() => enabledValid && handleValidForm()}
             onEnter={handleAccept}
-            className="mt-2"
             type="password"
             maxLength={25}
             msgError={messages.confirmPassword}
@@ -210,7 +206,6 @@ export const DialogUserEdit = ({
             options={auth.roles}
             value={role}
             setValue={setRole}
-            className="mt-2"
           />
           {loader && <Loader mode="modal" />}
         </div>
