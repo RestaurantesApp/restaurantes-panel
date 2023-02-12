@@ -1,4 +1,4 @@
-# base-react-js
+# restaurantes-app
 
 ## Pasos de instalación
 
