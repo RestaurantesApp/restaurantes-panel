@@ -1,4 +1,4 @@
 export const typesGlobalState = {
-  authLogin: '[user] login',
-  authLogout: '[user] logout',
+  authLogin: '[Auth] - Login',
+  authLogout: '[Auth] - Logout',
 };

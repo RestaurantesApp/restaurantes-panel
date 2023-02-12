@@ -1,20 +1,17 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 
 // Hooks
-import { AuthContext } from './hooks/context';
-import { authReducer } from './hooks/reducer';
+import { AuthProvider } from './context';
 
 // Components
 import { AppRouter } from './components/routes';
 
 const App = () => {
-	const [auth, dispatchAuth] = useReducer(authReducer, {});
-
-	return (
-		<AuthContext.Provider value={{ auth, dispatchAuth }}>
-			<AppRouter isAuth={auth?.isLogin} />
-		</AuthContext.Provider>
-	);
+  return (
+    <AuthProvider>
+      <AppRouter />
+    </AuthProvider>
+  );
 };
 
 export default App;

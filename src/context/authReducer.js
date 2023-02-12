@@ -1,6 +1,6 @@
-import { typesGlobalState } from '../../common/types';
+import { typesGlobalState } from '../common/types';
 
-const initialState = {
+export const AUTH_INITIAL_STATE = {
   isLogin: false,
   personalInfo: null,
   paths: [],
@@ -9,12 +9,11 @@ const initialState = {
   token: '',
 };
 
-const authReducer = (state = initialState, action = null) => {
+export const authReducer = (state, action) => {
   const { type, payload } = action;
-  const { authLogin, authLogout } = typesGlobalState;
   switch (type) {
-    case authLogin:
-      const newState = {
+    case typesGlobalState.authLogin:
+      return {
         ...state,
         isLogin: true,
         personalInfo: payload?.personalInfo,
@@ -23,12 +22,9 @@ const authReducer = (state = initialState, action = null) => {
         roles: payload?.roles,
         token: payload?.token,
       };
-      return newState;
-    case authLogout:
-      return initialState;
+    case typesGlobalState.authLogout:
+      return AUTH_INITIAL_STATE;
     default:
       return state;
   }
 };
-
-export default authReducer;

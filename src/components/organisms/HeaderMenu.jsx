@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 // Hooks
-import { AuthContext } from '../../hooks/context';
+import { AuthContext } from '../../context';
 
 // Components
 import { AppBar, IconButton, Toolbar } from '@mui/material';
@@ -12,8 +12,8 @@ import Avatar from '../../assets/images/Avatar.png';
 import MenuIcon from '@mui/icons-material/Menu';
 
 export const HeaderMenu = ({ drawerWidth, handleDrawerToggle }) => {
-  const { auth } = useContext(AuthContext);
-  const { personalInfo } = auth;
+  const { authState } = useContext(AuthContext);
+  const { personalInfo } = authState;
 
   return (
     <AppBar

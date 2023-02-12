@@ -2,7 +2,7 @@ import React, { memo, useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 // Hooks
-import { AuthContext } from '../../hooks/context';
+import { AuthContext } from '../../context';
 
 // Components
 import { Collapse, List } from '@mui/material';
@@ -28,7 +28,7 @@ const { authLogout } = typesGlobalState;
 const Component = ({ onChange = () => null }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { dispatchAuth } = useContext(AuthContext);
+  const { authDispatch } = useContext(AuthContext);
   const [showComponents1, setShowComponents1] = useState(false);
   const [showComponents2, setShowComponents2] = useState(false);
 
@@ -43,7 +43,7 @@ const Component = ({ onChange = () => null }) => {
   };
 
   const handleLogout = () => {
-    dispatchAuth({ type: authLogout });
+    authDispatch({ type: authLogout });
     onChange();
   };
 

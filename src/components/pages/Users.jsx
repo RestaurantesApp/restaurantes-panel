@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 
 // Hooks
-import { AuthContext } from '../../hooks/context';
+import { AuthContext } from '../../context';
 
 // Components
 import { Divider } from '@mui/material';
@@ -19,7 +19,7 @@ import { apiGetUsers } from '../../services/apis';
 const { tableEdit, tableDelete } = typesTableActions;
 
 export const Users = () => {
-  const { auth } = useContext(AuthContext);
+  const { authState } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [idUser, setIdUser] = useState('');
   const [showAdd, setShowAdd] = useState(false);
@@ -32,7 +32,7 @@ export const Users = () => {
     description: '',
     severity: 'info',
   });
-  const { token } = auth;
+  const { token } = authState;
 
   useEffect(() => {
     loadUsers();

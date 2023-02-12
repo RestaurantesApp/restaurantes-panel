@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 
 // Hooks
-import { AuthContext } from '../../hooks/context';
-import useMessage from '../../hooks/others/useMessage';
+import { useMessage } from '../../hooks';
+import { AuthContext } from '../../context';
 
 // Components
 import {
@@ -23,7 +23,7 @@ import { apiLogin } from '../../services/apis';
 const { authLogin } = typesGlobalState;
 
 export const Login = () => {
-  const { dispatchAuth } = useContext(AuthContext);
+  const { authDispatch } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -65,7 +65,7 @@ export const Login = () => {
           roles: data.roles,
           token: data.token,
         };
-        dispatchAuth({ type: authLogin, payload });
+        authDispatch({ type: authLogin, payload });
         resetForm();
       } else {
         setShowAlert(true);

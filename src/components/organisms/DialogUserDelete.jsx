@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 
 // Hooks
-import { AuthContext } from '../../hooks/context';
+import { AuthContext } from '../../context';
 
 // Components
 import { DialogActions, DialogContent } from '@mui/material';
@@ -17,7 +17,7 @@ export const DialogUserDelete = ({
   setOpen = () => null,
   onDismiss = () => null,
 }) => {
-  const { auth } = useContext(AuthContext);
+  const { authState } = useContext(AuthContext);
   const [loader, setLoader] = useState(false);
   const [name, setName] = useState('');
   const [showAlert, setShowAlert] = useState(false);
@@ -26,7 +26,7 @@ export const DialogUserDelete = ({
     description: '',
     severity: 'info',
   });
-  const { token } = auth;
+  const { token } = authState;
 
   useEffect(() => {
     if (open) {

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 
 // Hooks
-import useMessage from '../../hooks/others/useMessage';
-import { AuthContext } from '../../hooks/context';
+import { useMessage } from '../../hooks';
+import { AuthContext } from '../../context';
 
 // Components
 import { DialogActions, DialogContent } from '@mui/material';
@@ -28,7 +28,7 @@ export const DialogUserEdit = ({
   setOpen = () => null,
   onDismiss = () => null,
 }) => {
-  const { auth } = useContext(AuthContext);
+  const { authState } = useContext(AuthContext);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -48,7 +48,7 @@ export const DialogUserEdit = ({
     password: null,
     confirmPassword: null,
   });
-  const { token } = auth;
+  const { token } = authState;
 
   useEffect(() => {
     if (open) {
@@ -203,7 +203,7 @@ export const DialogUserEdit = ({
           />
           <SelectCustom
             name="Rol"
-            options={auth.roles}
+            options={authState.roles}
             value={role}
             setValue={setRole}
           />

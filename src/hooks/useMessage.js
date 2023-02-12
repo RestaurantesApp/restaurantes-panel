@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useMessage = messageState => {
+export const useMessage = messageState => {
   const [messages, setMessages] = useState(messageState);
 
   const resetMessages = () => {
@@ -13,5 +13,3 @@ const useMessage = messageState => {
     resetMessages,
   };
 };
-
-export default useMessage;
