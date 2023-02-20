@@ -1,4 +1,4 @@
-# restaurante
+# restaurantes
 
 ## Pasos de instalación
 

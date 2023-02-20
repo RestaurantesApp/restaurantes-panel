@@ -1,31 +1,27 @@
 import React, { useState, useEffect, useContext } from 'react'
-
 // Hooks
 import { AuthContext } from '../../context'
-
 // Components
 import { Divider } from '@mui/material'
 import { AlertCustom, ButtonCustom, Loader, TextCustom } from '../atoms'
-import { DialogSessionExpired, DialogUserAdd, DialogUserDelete, DialogUserEdit } from '../organisms'
+import { DialogPermissionsAdd, DialogPermissionsDelete } from '../organisms'
 import { TableCustom } from '../templates'
 
-// Const
-import { columnsUsers } from '../../common/tables'
+//const
+import { columnsPermissions } from '../../common/tables'
 import { typesTableActions } from '../../common/types'
-
 // Services
-import { apiGetUsers } from '../../services/apis'
+import { apiGetPermissions } from '../../services/apis'
 
-const { tableEdit, tableDelete } = typesTableActions
+const { tableDelete } = typesTableActions
 
-export const Users = () => {
+export const Permissions = () => {
+  //Inicialización de las variables useState
   const { authState } = useContext(AuthContext)
-  const [users, setUsers] = useState([])
-  const [idUser, setIdUser] = useState('')
+  const [permissions, setPermissions] = useState([])
+  const [idPermission, setIdPermission] = useState('')
   const [showAdd, setShowAdd] = useState(false)
-  const [showEdit, setShowEdit] = useState(false)
   const [showDelete, setShowDelete] = useState(false)
-  const [showSession, setShowSession] = useState(false)
   const [loader, setLoader] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
   const [alert, setAlert] = useState({
@@ -33,64 +29,54 @@ export const Users = () => {
     description: '',
     severity: 'info',
   })
-  const { token } = authState
+  const { token } = authState //destructuración para traer el token
 
   useEffect(() => {
-    loadUsers()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    //Efecto que carga la funcion pata mostrar los permisos
+    loadPermissions()
   }, [])
 
   const resetForm = () => {
+    //función para resetear el formulario
     setShowAlert(false)
   }
 
-  const loadUsers = async () => {
+  //Función al cargar los usuarios
+  const loadPermissions = async () => {
     resetForm()
     setLoader(true)
     const params = { token }
-    const response = await apiGetUsers(params)
-    const { success, message, data, statusCode } = response
+    const response = await apiGetPermissions(params)
+    const { success, message, data } = response
     if (success) {
-      setUsers(data)
+      setPermissions(data)
     } else {
-
-      if (statusCode === 401) {
-      setShowSession(true)
-      }else {
-        setShowAlert(true)
-      setAlert({
-        title: 'Error',
-        description: message,
-        severity: 'error',
-      })
+      setShowAlert(true)
+      setAlert({ title: 'Error', description: message, severity: 'error' }) //descripció de la alerta
     }
-      }
-      
     setLoader(false)
   }
 
+  //Función de la acciones de la tabla.
   const handleTableActions = (action, id, obj) => {
-    setIdUser(id)
+    setIdPermission(id)
     switch (action) {
-      case tableEdit:
-        setShowEdit(true)
-        break
-      case tableDelete:
+      case tableDelete: //En caso que la acción sea eliminar se abre el modal de eliminar.
         setShowDelete(true)
         break
       default:
-        setIdUser('')
+        setIdPermission('')
         break
     }
   }
 
   return (
     <div className="pb-4 flex flex-col">
-      <TextCustom text="Configuración de usuarios" className="text-3xl" />
+      <TextCustom text="Configuración de Permisos" className="text-3xl" />
       <Divider />
       <div className="flex justify-end">
         <ButtonCustom
-          text="Crear Usuario"
+          text="Crear Permiso"
           className="my-3"
           onClick={() => setShowAdd(true)}
         />
@@ -105,40 +91,28 @@ export const Users = () => {
         />
         <div className="flex flex-col relative">
           <TableCustom
-            data={users}
-            columns={columnsUsers}
-            actions={[tableEdit, tableDelete]}
+            data={permissions}
+            columns={columnsPermissions}
+            actions={[tableDelete]}
             actionClick={handleTableActions}
             identifierSort="name"
             identifierHidden="id"
             identifierAction="id"
+            isSearch
           />
           {loader && <Loader mode="modal" />}
         </div>
       </div>
-      <DialogUserAdd
+      <DialogPermissionsAdd
         open={showAdd}
         setOpen={setShowAdd}
-        onDismiss={loadUsers}
-        sessionExpired={setShowSession}
+        onDismiss={loadPermissions}
       />
-      <DialogSessionExpired
-        open={showSession}
-        setOpen={setShowSession}
-      />
-      <DialogUserEdit
-        idUser={idUser}
-        open={showEdit}
-        setOpen={setShowEdit}
-        onDismiss={loadUsers}
-        sessionExpired={setShowSession}
-      />
-      <DialogUserDelete
-        idUser={idUser}
+      <DialogPermissionsDelete
+        idPermission={idPermission}
         open={showDelete}
         setOpen={setShowDelete}
-        onDismiss={loadUsers}
-        sessionExpired={setShowSession}
+        onDismiss={loadPermissions}
       />
     </div>
   )

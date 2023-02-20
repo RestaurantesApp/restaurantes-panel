@@ -17,6 +17,8 @@ import { ReactComponent as HomeIcon } from '../../assets/icons/HomeIcon.svg'
 import ExtensionIcon from '@mui/icons-material/Extension'
 import ScienceIcon from '@mui/icons-material/Science'
 import PeopleIcon from '@mui/icons-material/People'
+import SettingsIcon from '@mui/icons-material/Settings'
+import { Security } from '@mui/icons-material'
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew'
 
 // Styles
@@ -31,6 +33,7 @@ const Component = ({ onChange = () => null }) => {
   const { authDispatch } = useContext(AuthContext)
   const [showComponents1, setShowComponents1] = useState(false)
   const [showComponents2, setShowComponents2] = useState(false)
+  const [showSecurity, setShowtSecurity] = useState(false)
 
   const handleHome = () => {
     navigate('/dashboard/home')
@@ -39,6 +42,11 @@ const Component = ({ onChange = () => null }) => {
 
   const handleUsers = () => {
     navigate('/dashboard/users')
+    onChange()
+  }
+
+  const handlePermissions = () => {
+    navigate('/dashboard/permissions')
     onChange()
   }
 
@@ -118,6 +126,26 @@ const Component = ({ onChange = () => null }) => {
             icon={<PeopleIcon className="text-white" />}
             isSelected={location.pathname === '/dashboard/users'}
           />
+          <DrawerItem
+            text={'Seguridad'}
+            onClick={() => setShowtSecurity(!showSecurity)}
+            className="py-1"
+            icon={<Security className="text-white" />}
+            isCollapse
+            collapse={showSecurity}
+          />
+          <Collapse in={showSecurity} timeout="auto" unmountOnExit>
+            <List className="flex flex-col gap-1 py-0 ml-2">
+              <DrawerItem
+                text={'Permisos'}
+                onClick={handlePermissions}
+                className="py-1"
+                icon={<SettingsIcon className="text-white" />}
+                isSelected={location.pathname === '/dashboard/permisos'}
+              />
+            </List>
+          </Collapse>
+
           <DrawerItem
             text={'Componentes 1'}
             onClick={() => setShowComponents1(!showComponents1)}

@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect } from 'react'
-
+//Componenete para el modal de eliminar permiso
+import React, { useState, useEffect, useContext } from 'react'
 // Hooks
 import { AuthContext } from '../../context'
 
@@ -9,84 +9,75 @@ import { DialogCustom } from '../templates'
 import { AlertCustom, ButtonCustom, Loader, TextCustom } from '../atoms'
 
 // Services
-import { apiDeleteUser, apiGetUser } from '../../services/apis'
+import { apiDeletePermission, apiGetPermissions } from '../../services/apis'
 
-export const DialogUserDelete = ({
-  idUser = '',
+export const DialogPermissionsDelete = ({
+  idPermission = '',
   open = false,
   setOpen = () => null,
   onDismiss = () => null,
-  sessionExpired = false,
 }) => {
+  //Inicialización de las variables del useState
   const { authState } = useContext(AuthContext)
   const [loader, setLoader] = useState(false)
-  const [name, setName] = useState('')
+  const [path, setPath] = useState('')
   const [showAlert, setShowAlert] = useState(false)
   const [alert, setAlert] = useState({
     title: '',
     description: '',
     severity: 'info',
   })
-  const { token } = authState
+
+  const { token } = authState //Se destructura el token
 
   useEffect(() => {
     if (open) {
-      loadUser()
+      loadPermission()
     } else {
       resetForm()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
   const resetForm = () => {
     setShowAlert()
-    setName('')
+    setPath('')
     setLoader(false)
   }
 
-  const loadUser = async () => {
+  //Trae la data desde la api y la carga
+  const loadPermission = async () => {
     setLoader(true)
-    const params = { idUser, token }
-    const response = await apiGetUser(params)
-    const { success, message, data, statusCode } = response
+    const params = { idPermission, token }
+    const response = await apiGetPermissions(params)
+    const { success, message, data } = response
     if (success) {
-      setName(data.name)
+      setPath(data.path)
     } else {
-
-      if (statusCode === 401) {
-        sessionExpired(true)
-      } else {
-        setShowAlert(true)
-        setAlert({
-          title: 'Error',
-          description: message,
-          severity: 'error',
-        })
-      }
+      setShowAlert(true)
+      setAlert({
+        title: 'Error',
+        description: message,
+        severity: 'warning',
+      })
     }
     setLoader(false)
   }
 
   const handleAccept = async () => {
     setLoader(true)
-    const params = { idUser, token }
-    const response = await apiDeleteUser(params)
-    const { success, message, statusCode } = response
+    const params = { idPermission, token }
+    const response = await apiDeletePermission(params)
+    const { success, message } = response
     if (success) {
       setOpen(false)
       onDismiss()
     } else {
-
-      if (statusCode === 401) {
-        sessionExpired(true)
-      } else {
-        setShowAlert(true)
-        setAlert({
-          title: 'Error',
-          description: message,
-          severity: 'error',
-        })
-      }
+      setShowAlert(true)
+      setAlert({
+        title: 'Error',
+        description: message,
+        severity: 'error',
+      })
     }
     setLoader(false)
   }
@@ -99,7 +90,7 @@ export const DialogUserDelete = ({
     <DialogCustom
       open={open}
       setOpen={setOpen}
-      title="Eliminar Usuario"
+      title="Eliminar Permiso"
       onDismiss={onDismiss}
     >
       <DialogContent>
@@ -112,10 +103,10 @@ export const DialogUserDelete = ({
         />
         <div className="flex flex-col relative items-center mt-4">
           <TextCustom
-            text="¿Esta seguro que desea eliminar este Usuario?"
+            text="¿Está seguro que desea eliminar este Permiso?"
             className="font-normal"
           />
-          <TextCustom text={name} className="font-medium" />
+          <TextCustom text={ path } className="font-medium" />
           <TextCustom
             text="No lo podrá recuperar"
             className="font-normal my-3 text-danger"

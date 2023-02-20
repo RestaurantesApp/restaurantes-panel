@@ -9,6 +9,7 @@ export const formValidAddUser = user => {
       email: '',
       password: '',
       confirmPassword: '',
+      role: '',
     },
   }
   if (!user.name) {
@@ -41,6 +42,10 @@ export const formValidAddUser = user => {
     response.msgValid.confirmPassword = 'Las contraseñas no coinciden.\n'
     response.isValid = false
   }
+  if (!user.role) {
+    response.msgValid.role = 'El Role no ha sido asignado.\n'
+    response.isValid = false
+  }
   return response
 }
 
@@ -52,6 +57,7 @@ export const formValidEditUser = user => {
       email: '',
       password: '',
       confirmPassword: '',
+      role: '',
     },
   }
   if (!user.name) {
@@ -74,6 +80,10 @@ export const formValidEditUser = user => {
     user.password !== user.confirmPassword
   ) {
     response.msgValid.confirmPassword = 'Las contraseñas no coinciden.\n'
+    response.isValid = false
+  }
+  if (!user.role) {
+    response.msgValid.role = 'Rol no ha sido asignado.\n'
     response.isValid = false
   }
   return response

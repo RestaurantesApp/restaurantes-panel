@@ -27,6 +27,7 @@ export const DialogUserEdit = ({
   open = false,
   setOpen = () => null,
   onDismiss = () => null,
+  sessionExpired = false,
 }) => {
   const { authState } = useContext(AuthContext)
   const [name, setName] = useState('')
@@ -47,6 +48,7 @@ export const DialogUserEdit = ({
     email: null,
     password: null,
     confirmPassword: null,
+    role: null,
   })
   const { token } = authState
 
@@ -75,7 +77,7 @@ export const DialogUserEdit = ({
     setLoader(true)
     const params = { idUser, token }
     const response = await apiGetUser(params)
-    const { success, message, data } = response
+    const { success, message, data, statusCode } = response
     if (success) {
       setName(data.name)
       setEmail(data.email)
@@ -83,12 +85,16 @@ export const DialogUserEdit = ({
       setConfirmPassword('')
       setRole(data.role)
     } else {
-      setShowAlert(true)
-      setAlert({
-        title: 'Error',
-        description: message,
-        severity: 'warning',
-      })
+      if (statusCode === 401) {
+        sessionExpired(true)
+      } else {
+        setShowAlert(true)
+        setAlert({
+          title: 'Error',
+          description: message,
+          severity: 'error',
+        })
+      }
     }
     setLoader(false)
   }
@@ -107,17 +113,22 @@ export const DialogUserEdit = ({
         token,
       }
       const response = await apiPatchUser(params)
-      const { success, message } = response
+      const { success, message, statusCode } = response
       if (success) {
         setOpen(false)
         onDismiss()
       } else {
-        setShowAlert(true)
-        setAlert({
-          title: 'Error',
-          description: message,
-          severity: 'error',
-        })
+
+        if (statusCode === 401) {
+          sessionExpired(true)
+        } else {
+          setShowAlert(true)
+          setAlert({
+            title: 'Error',
+            description: message,
+            severity: 'error',
+          })
+        }
       }
       setLoader(false)
     }
@@ -129,6 +140,7 @@ export const DialogUserEdit = ({
       email,
       password,
       confirmPassword,
+      role,
     }
     const response = formValidEditUser(params)
     setMessages(response.msgValid)
@@ -203,9 +215,12 @@ export const DialogUserEdit = ({
           />
           <SelectCustom
             name="Rol"
+            required
             options={authState.roles}
             value={role}
             setValue={setRole}
+            onBlur={() => enabledValid && handleValidForm()}
+            msgError={messages.role}
           />
           {loader && <Loader mode="modal" />}
         </div>

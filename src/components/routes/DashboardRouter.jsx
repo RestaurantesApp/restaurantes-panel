@@ -13,8 +13,11 @@ import {
   ComponentsLoader,
   ComponentsTable,
   ComponentsText,
+  Error404,
   Home,
   Users,
+  Permissions,
+  Profile,
 } from '../pages'
 import { DashboardLayout } from '../templates'
 
@@ -35,6 +38,9 @@ export const DashboardRouter = () => {
         <Route path="/componentsText" element={<ComponentsText />} />
         <Route path="/users" element={<Users />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/page-error" element={<Error404 />} />
+        <Route path="/permissions" element={<Permissions />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<Navigate to="/page-error" replace />} />
       </Routes>
     </DashboardLayout>
