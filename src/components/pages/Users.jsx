@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react'
-
+import { useNavigate } from 'react-router-dom'
 // Hooks
 import { AuthContext } from '../../context'
 
 // Components
 import { Divider } from '@mui/material'
 import { AlertCustom, ButtonCustom, Loader, TextCustom } from '../atoms'
-import { DialogSessionExpired, DialogUserAdd, DialogUserDelete, DialogUserEdit } from '../organisms'
+import {
+  DialogSessionExpired,
+  DialogUserAdd,
+  DialogUserDelete,
+  DialogUserEdit,
+} from '../organisms'
 import { TableCustom } from '../templates'
 
 // Const
@@ -16,7 +21,7 @@ import { typesTableActions } from '../../common/types'
 // Services
 import { apiGetUsers } from '../../services/apis'
 
-const { tableEdit, tableDelete } = typesTableActions
+const { tableView, tableEdit, tableDelete } = typesTableActions
 
 export const Users = () => {
   const { authState } = useContext(AuthContext)
@@ -33,6 +38,7 @@ export const Users = () => {
     description: '',
     severity: 'info',
   })
+  const navigate = useNavigate()
   const { token } = authState
 
   useEffect(() => {
@@ -53,19 +59,18 @@ export const Users = () => {
     if (success) {
       setUsers(data)
     } else {
-
       if (statusCode === 401) {
-      setShowSession(true)
-      }else {
+        setShowSession(true)
+      } else {
         setShowAlert(true)
-      setAlert({
-        title: 'Error',
-        description: message,
-        severity: 'error',
-      })
-    }
+        setAlert({
+          title: 'Error',
+          description: message,
+          severity: 'error',
+        })
       }
-      
+    }
+
     setLoader(false)
   }
 
@@ -77,6 +82,9 @@ export const Users = () => {
         break
       case tableDelete:
         setShowDelete(true)
+        break
+      case tableView:
+        navigate(`/dashboard/usersPermissions/${id}`)
         break
       default:
         setIdUser('')
@@ -107,7 +115,7 @@ export const Users = () => {
           <TableCustom
             data={users}
             columns={columnsUsers}
-            actions={[tableEdit, tableDelete]}
+            actions={[tableView, tableEdit, tableDelete]}
             actionClick={handleTableActions}
             identifierSort="name"
             identifierHidden="id"
@@ -122,10 +130,7 @@ export const Users = () => {
         onDismiss={loadUsers}
         sessionExpired={setShowSession}
       />
-      <DialogSessionExpired
-        open={showSession}
-        setOpen={setShowSession}
-      />
+      <DialogSessionExpired open={showSession} setOpen={setShowSession} />
       <DialogUserEdit
         idUser={idUser}
         open={showEdit}
