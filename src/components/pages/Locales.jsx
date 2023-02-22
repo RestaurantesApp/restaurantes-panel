@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState} from 'react'
 // Components
 import { Divider } from '@mui/material'
 import { AlertCustom, ButtonCustom, Loader, TextCustom } from '../atoms'
@@ -18,10 +18,10 @@ import exampleLocal from '../../common/tables/exampleLocal.json'
 const { tableEdit, tableDelete } = typesTableActions
 export const Locales = () => {
   //Inicialización de las variables useState
-  const [locales, setLocales] = useState([])
-  const [idLocales, setIdLocales] = useState('')
+  // const [locales, setLocales] = useState([])
+  // const [idLocales, setIdLocales] = useState('')
   const [showAdd, setShowAdd] = useState(false)
-  const [showDelete, setShowDelete] = useState(false)
+  // const [showDelete, setShowDelete] = useState(false)
   const [loader, setLoader] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
   const [alert, setAlert] = useState({
