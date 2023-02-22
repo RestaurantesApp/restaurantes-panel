@@ -18,7 +18,7 @@ import ExtensionIcon from '@mui/icons-material/Extension'
 import ScienceIcon from '@mui/icons-material/Science'
 import PeopleIcon from '@mui/icons-material/People'
 import SettingsIcon from '@mui/icons-material/Settings'
-import { Security } from '@mui/icons-material'
+import { LocationOn, Security } from '@mui/icons-material'
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew'
 
 // Styles
@@ -49,7 +49,10 @@ const Component = ({ onChange = () => null }) => {
     navigate('/dashboard/permissions')
     onChange()
   }
-
+  const handleLocales = () => {
+    navigate('/dashboard/locales')
+    onChange()
+  }
   const handleLogout = () => {
     authDispatch({ type: authLogout })
     onChange()
@@ -145,7 +148,13 @@ const Component = ({ onChange = () => null }) => {
               />
             </List>
           </Collapse>
-
+          <DrawerItem
+            text={'Locales'}
+            onClick={handleLocales}
+            className="py-1"
+            icon={<LocationOn className="text-white" />}
+            isSelected={location.pathname === '/dashboard/users'}
+          />
           <DrawerItem
             text={'Componentes 1'}
             onClick={() => setShowComponents1(!showComponents1)}

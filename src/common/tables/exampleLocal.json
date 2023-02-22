@@ -1,0 +1,32 @@
+[
+ {
+  "name" :"Boulevar Morazan",
+  "address": "En un lugar ..",
+  "active": "Activo"
+ },
+ {
+  "name" :"UNAH",
+  "address": "En el boulevar de",
+  "active": "Activo"
+ },
+ {
+  "name" :"UTH",
+  "address": "En un lugar ..",
+  "active": "Inactivo"
+ },
+ {
+  "name" :"El picacho",
+  "address": "En un lugar por ahi ",
+  "active": "Activo"
+ },
+ {
+  "name" :"Parada Marte",
+  "address": "Por los laurales",
+  "active": "Inactivo"
+ },
+ {
+  "name" :"UNITEC",
+  "address": "Cerca de la ",
+  "active": "Activo"
+ }
+]
