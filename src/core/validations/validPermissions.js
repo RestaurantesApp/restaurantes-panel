@@ -1,5 +1,4 @@
 //Codigo para validar los select de permisos (para que no vayan vacios)
-import { typesValidation } from '../../common/types';
 
 //Validaciones para cuando se cree un permiso
 export const formValidAddPermission = permissions => {
@@ -9,14 +8,14 @@ export const formValidAddPermission = permissions => {
       path: '',
       method: '',
     },
-  };
-  if(!permissions.path){
-    response.msgValid.path = 'Path no ha sido asignado.\n';
-    response.isValid = false;
   }
-  if(!permissions.method){
-    response.msgValid.method = 'Metodo no ha sido asignado.\n';
-    response.isValid = false;
+  if (!permissions.path) {
+    response.msgValid.path = 'Path no ha sido asignado.\n'
+    response.isValid = false
   }
-  return response;
+  if (!permissions.method) {
+    response.msgValid.method = 'Metodo no ha sido asignado.\n'
+    response.isValid = false
+  }
+  return response
 }

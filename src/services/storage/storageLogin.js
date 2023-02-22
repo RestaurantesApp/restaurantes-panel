@@ -1,6 +1,7 @@
 //Funcionalidades del localstorage, guardar,traer y remover
 
-export const stSetAuth = data => {//Guardar la información de sesión
+export const stSetAuth = data => {
+  //Guardar la información de sesión
   const response = {
     success: false,
     message: '',
@@ -16,7 +17,8 @@ export const stSetAuth = data => {//Guardar la información de sesión
   return response
 }
 
-export const stGetAuth = () => {//Traer la sesión guardada
+export const stGetAuth = () => {
+  //Traer la sesión guardada
   const response = {
     success: false,
     message: '',
@@ -35,7 +37,8 @@ export const stGetAuth = () => {//Traer la sesión guardada
   return response
 }
 
-export const stRemoveAuth = () => { //Remover o eliminar la sesión
+export const stRemoveAuth = () => {
+  //Remover o eliminar la sesión
   const response = {
     success: false,
     message: '',

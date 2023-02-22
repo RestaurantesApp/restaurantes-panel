@@ -34,6 +34,7 @@ export const Permissions = () => {
   useEffect(() => {
     //Efecto que carga la funcion pata mostrar los permisos
     loadPermissions()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const resetForm = () => {

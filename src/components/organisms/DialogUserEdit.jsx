@@ -118,7 +118,6 @@ export const DialogUserEdit = ({
         setOpen(false)
         onDismiss()
       } else {
-
         if (statusCode === 401) {
           sessionExpired(true)
         } else {

@@ -7,9 +7,6 @@ import { Box } from '@mui/material'
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 
-
-
-
 export const DropdownCustom = ({
   component = null,
   children = null,
@@ -18,7 +15,6 @@ export const DropdownCustom = ({
   setOpen = () => null,
 }) => {
   const ref = useRef(null)
-
 
   useEffect(() => {
     const { current } = ref
@@ -44,8 +40,10 @@ export const DropdownCustom = ({
         {isToogleIcon && (open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />)}
       </Box>
       {open && (
-        <Box className="bg-primary shadow-lg shadow-general/60 rounded-md top-full right-0 absolute z-1000 overflow-hidden" sx={{ width: '20ch' }}>
-
+        <Box
+          className="bg-primary shadow-lg shadow-general/60 rounded-md top-full right-0 absolute z-1000 overflow-hidden"
+          sx={{ width: '20ch' }}
+        >
           {children}
         </Box>
       )}

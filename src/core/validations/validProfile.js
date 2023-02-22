@@ -2,15 +2,15 @@
 import { typesValidation } from '../../common/types'
 import { validInputEmail } from './validateInput'
 
-export const formValidEditProfile = profile =>{
-  const response ={
-    isValid :true,
+export const formValidEditProfile = profile => {
+  const response = {
+    isValid: true,
     msgValid: {
       name: '',
       email: '',
       password: '',
-      confirmPassword: ''
-    }
+      confirmPassword: '',
+    },
   }
   if (!profile.name) {
     response.msgValid.name = 'Nombre  perfil no ha sido asignado.\n'

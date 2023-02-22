@@ -52,7 +52,6 @@ export const DialogUserDelete = ({
     if (success) {
       setName(data.name)
     } else {
-
       if (statusCode === 401) {
         sessionExpired(true)
       } else {
@@ -76,7 +75,6 @@ export const DialogUserDelete = ({
       setOpen(false)
       onDismiss()
     } else {
-
       if (statusCode === 401) {
         sessionExpired(true)
       } else {

@@ -40,6 +40,7 @@ export const DialogPermissionsAdd = ({
     if (!open) {
       resetForm()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
   const resetForm = () => {

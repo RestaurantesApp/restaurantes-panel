@@ -38,7 +38,10 @@ export const DashboardRouter = () => {
         <Route path="/componentsTable" element={<ComponentsTable />} />
         <Route path="/componentsText" element={<ComponentsText />} />
         <Route path="/users" element={<Users />} />
-        <Route path="/usersPermissions/:idUser" element={<UsersPermissions />} />
+        <Route
+          path="/usersPermissions/:idUser"
+          element={<UsersPermissions />}
+        />
         <Route path="/home" element={<Home />} />
         <Route path="/page-error" element={<Error404 />} />
         <Route path="/permissions" element={<Permissions />} />

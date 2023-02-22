@@ -69,10 +69,7 @@ export const UsersPermissions = () => {
       <TextCustom text={name} className="text-2xl" />
       <Divider />
       <Box className="flex justify-end">
-        <ButtonCustom
-          text="Asignar Permiso"
-          className="my-3"
-        />
+        <ButtonCustom text="Asignar Permiso" className="my-3" />
       </Box>
       <Box className="mt-10 flex flex-col relative">
         <AlertCustom

@@ -10,5 +10,5 @@ export const columnsPermissions = [
   {
     Header: 'Acciones',
     accessor: 'method',
-  }
+  },
 ]

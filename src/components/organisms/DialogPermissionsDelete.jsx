@@ -36,6 +36,7 @@ export const DialogPermissionsDelete = ({
     } else {
       resetForm()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
   const resetForm = () => {
@@ -106,7 +107,7 @@ export const DialogPermissionsDelete = ({
             text="¿Está seguro que desea eliminar este Permiso?"
             className="font-normal"
           />
-          <TextCustom text={ path } className="font-medium" />
+          <TextCustom text={path} className="font-medium" />
           <TextCustom
             text="No lo podrá recuperar"
             className="font-normal my-3 text-danger"
