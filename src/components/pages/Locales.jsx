@@ -2,7 +2,11 @@ import React, { useState, useEffect, useContext } from 'react'
 // Components
 import { Divider } from '@mui/material'
 import { AlertCustom, ButtonCustom, Loader, TextCustom } from '../atoms'
-import { DialogPermissionsAdd, DialogPermissionsDelete } from '../organisms'
+import {
+  DialogLocalesAdd,
+  DialogLocalesDelete,
+  DialogLocalesEdit,
+} from '../organisms'
 import { TableCustom } from '../templates'
 
 //const
@@ -53,8 +57,12 @@ export const Locales = () => {
             actions={[tableEdit, tableDelete]}
             isSearch
           />
+          {loader && <Loader mode="modal" />}
         </div>
       </div>
+      <DialogLocalesAdd open={showAdd} setOpen={setShowAdd} />
+      <DialogLocalesEdit />
+      <DialogLocalesDelete />
     </div>
   )
 }
