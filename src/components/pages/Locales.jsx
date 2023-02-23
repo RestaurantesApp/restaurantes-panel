@@ -22,9 +22,9 @@ export const Locales = () => {
   // const [idLocales, setIdLocales] = useState('')
   const [showAdd, setShowAdd] = useState(false)
   // const [showDelete, setShowDelete] = useState(false)
-  const [loader, setLoader] = useState(false)
+  const [loader] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
-  const [alert, setAlert] = useState({
+  const [alert] = useState({
     title: '',
     description: '',
     severity: 'info',

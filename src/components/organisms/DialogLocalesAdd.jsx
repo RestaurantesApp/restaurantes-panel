@@ -1,7 +1,6 @@
 //Componente para agregar un nuevo ruta loca
 import { useState } from 'react'
-// Hooks
-import { useMessage } from '../../hooks'
+
 // Components
 import { DialogActions, DialogContent } from '@mui/material'
 import { DialogCustom } from '../templates'
@@ -13,7 +12,7 @@ import {
 export const DialogLocalesAdd = ({
   open = false,
   setOpen = () => null,
-  onDismiss = () => null,
+  // onDismiss = () => null,
 }) => {
   //Inicialización de variables iniciales
   // const [name, setName] = useState('')
@@ -27,7 +26,7 @@ export const DialogLocalesAdd = ({
   // const [loader, setLoader] = useState(false)
   // const [enabledValid, setEnabledValid] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
-  const [alert, setAlert] = useState({
+  const [alert] = useState({
     title: '',
     description: '',
     severity: 'info',
