@@ -16,7 +16,7 @@ import { typesTableActions } from '../../common/types'
 //Services
 import { apiGetUser } from '../../services/apis'
 
-import { DialogSessionExpired } from '../organisms'
+import { DialogRemovePermission, DialogSessionExpired } from '../organisms'
 
 const { tableDelete } = typesTableActions
 
@@ -25,6 +25,9 @@ export const UsersPermissions = () => {
   const { authState } = useContext(AuthContext)
   const [user, setUser] = useState([])
   const [name, setName] = useState('')
+  const [permission, setPermission] = useState({})
+  const [idPermission, setIdPermission] = useState('')
+  const [showRemove, setShowRemove] = useState(false)
   const [showSession, setShowSession] = useState(false)
   const [loader, setLoader] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
@@ -64,6 +67,19 @@ export const UsersPermissions = () => {
     setLoader(false)
   }
 
+  const handleTableActions = (action, id, obj) => {
+    setIdPermission(id)
+    setPermission(obj)
+    switch (action) {
+      case tableDelete:
+        setShowRemove(true)
+        break
+      default:
+        setIdPermission('')
+        break
+    }
+  }
+
   return (
     <Box className="pb-4 p-5 flex flex-col">
       <TextCustom text={name} className="text-2xl" />
@@ -83,6 +99,7 @@ export const UsersPermissions = () => {
           data={user}
           columns={columnsUsersPermissions}
           actions={[tableDelete]}
+          actionClick={handleTableActions}
           identifierHidden="id"
           identifierAction="id"
           isSearch
@@ -90,6 +107,15 @@ export const UsersPermissions = () => {
         {loader && <Loader mode="modal" />}
       </Box>
       <DialogSessionExpired open={showSession} setOpen={setShowSession} />
+      <DialogRemovePermission
+        idPermission={idPermission}
+        idUser={idUser}
+        name={name}
+        permission={permission}
+        open={showRemove}
+        setOpen={setShowRemove}
+        onDismiss={loadInfo}
+      />
     </Box>
   )
 }
