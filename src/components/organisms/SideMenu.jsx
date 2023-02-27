@@ -18,6 +18,7 @@ import ExtensionIcon from '@mui/icons-material/Extension'
 import ScienceIcon from '@mui/icons-material/Science'
 import PeopleIcon from '@mui/icons-material/People'
 import SettingsIcon from '@mui/icons-material/Settings'
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { LocationOn, Security } from '@mui/icons-material'
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew'
 
@@ -57,7 +58,10 @@ const Component = ({ onChange = () => null }) => {
     authDispatch({ type: authLogout })
     onChange()
   }
-
+  const handleComplements = () => {
+    navigate('/dashboard/complements')
+    onChange()
+  }
   const handleComponentsText = () => {
     navigate('/dashboard/componentsText')
     onChange()
@@ -154,6 +158,13 @@ const Component = ({ onChange = () => null }) => {
             className="py-1"
             icon={<LocationOn className="text-white" />}
             isSelected={location.pathname === '/dashboard/users'}
+          />
+          <DrawerItem
+            text={'Complementos'}
+            onClick={handleComplements}
+            className="py-1"
+            icon={<AddCircleIcon className="text-white" />}
+            isSelected={location.pathname === '/dashboard/complements'}
           />
           <DrawerItem
             text={'Componentes 1'}
