@@ -20,6 +20,7 @@ import {
   UsersPermissions,
   Profile,
   Locales,
+  Complements,
 } from '../pages'
 import { DashboardLayout } from '../templates'
 
@@ -28,6 +29,7 @@ export const DashboardRouter = () => {
     <DashboardLayout>
       <Routes>
         <Route path="/" element={<Navigate to="/dashboard/home" />} />
+        <Route path="/complements" element={<Complements />} />
         <Route path="/componentsAlert" element={<ComponentsAlert />} />
         <Route path="/componentsButton" element={<ComponentsButton />} />
         <Route path="/componentsDialog" element={<ComponentsDialog />} />
