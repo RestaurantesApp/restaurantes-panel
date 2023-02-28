@@ -14,15 +14,25 @@ import { typesTableActions } from '../../common/types'
 
 //Services
 import { apiGetComplements } from '../../services/apis'
-import { DialogComplementsAdd, DialogSessionExpired } from '../organisms'
+import {
+  DialogComplementsAdd,
+  DialogComplementsDelete,
+  DialogSessionExpired,
+} from '../organisms'
+import { DialogComplementsEdit } from '../organisms/DialogComplementsEdit'
 
 const { tableDelete, tableEdit } = typesTableActions
 
 export const Complements = () => {
   const { authState } = useContext(AuthContext)
   const [complements, setComplements] = useState([])
+  const [idComplement, setIdComplement] = useState('')
+  const [name, setName] = useState('')
   const [loader, setLoader] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
+  const [active, setActive] = useState(false)
+  const [showDeativate, setShowDeativate] = useState(false)
+  const [showEdit, setShowEdit] = useState(false)
   const [showAdd, setShowAdd] = useState(false)
   const [showSession, setShowSession] = useState(false)
   const [alert, setAlert] = useState({
@@ -59,6 +69,24 @@ export const Complements = () => {
 
     setLoader(false)
   }
+  const handleTableActions = (action, id, obj) => {
+    setIdComplement(id)
+    setName(obj.name)
+    setActive(obj.active)
+    switch (action) {
+      case tableDelete:
+        setShowDeativate(true)
+        break
+      case tableEdit:
+        setShowEdit(true)
+        break
+      default:
+        setIdComplement('')
+        setName('')
+        setActive(false)
+        break
+    }
+  }
 
   return (
     <Box className="pb-4 p-5 flex flex-col">
@@ -83,6 +111,7 @@ export const Complements = () => {
           data={complements}
           columns={columnsComplements}
           actions={[tableEdit, tableDelete]}
+          actionClick={handleTableActions}
           identifierHidden="id"
           identifierAction="id"
           isSearch
@@ -94,6 +123,22 @@ export const Complements = () => {
         open={showAdd}
         setOpen={setShowAdd}
         onDismiss={loadComplements}
+      />
+      <DialogComplementsDelete
+        idComplement={idComplement}
+        name={name}
+        active={active}
+        open={showDeativate}
+        setOpen={setShowDeativate}
+        onDismiss={loadComplements}
+        sessionExpired={setShowSession}
+      />
+      <DialogComplementsEdit
+        idComplement={idComplement}
+        open={showEdit}
+        setOpen={setShowEdit}
+        onDismiss={loadComplements}
+        sessionExpired={setShowSession}
       />
     </Box>
   )
