@@ -1,16 +1,20 @@
-//Componente modal para desactivar un local 
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
+
 // Hooks
 import { AuthContext } from '../../context'
+
 // Components
 import { DialogActions, DialogContent } from '@mui/material'
 import { DialogCustom } from '../templates'
 import { AlertCustom, ButtonCustom, Loader, TextCustom } from '../atoms'
 
-import { apiDeleteLocal, apiGetLocal } from '../../services/apis'
+// Services
+import { apiDeleteComplement } from '../../services/apis'
 
-export const DialogLocalesDelete = ({
-  idLocal = '',
+export const DialogComplementsDelete = ({
+  idComplement = '',
+  name = '',
+  active = false,
   open = false,
   setOpen = () => null,
   onDismiss = () => null,
@@ -18,7 +22,6 @@ export const DialogLocalesDelete = ({
 }) => {
   const { authState } = useContext(AuthContext)
   const [loader, setLoader] = useState(false)
-  const [name, setName] = useState('')
   const [showAlert, setShowAlert] = useState(false)
   const [alert, setAlert] = useState({
     title: '',
@@ -27,46 +30,10 @@ export const DialogLocalesDelete = ({
   })
   const { token } = authState
 
-  useEffect(() => {
-    if (open) {
-      loadLocal()
-    } else {
-      resetForm()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open])
-
-  const resetForm = () => {
-    setShowAlert()
-    setName('')
-    setLoader(false)
-  }
-
-  const loadLocal = async () => {
-    setLoader(true)
-    const params = { idLocal, token }
-    const response = await apiGetLocal(params)
-    const { success, message, data, statusCode } = response
-    if (success) {
-      setName(data.name)
-    } else {
-      if (statusCode === 401) {
-        sessionExpired(true)
-      } else {
-        setShowAlert(true)
-        setAlert({
-          title: 'Error',
-          description: message,
-          severity: 'error',
-        })
-      }
-    }
-    setLoader(false)
-  }
-
   const handleAccept = async () => {
-    const params = { idLocal, token }
-    const response = await apiDeleteLocal(params)
+    setLoader(true)
+    const params = { idComplement, active, token }
+    const response = await apiDeleteComplement(params)
     const { success, message, statusCode } = response
     if (success) {
       setOpen(false)
@@ -85,15 +52,17 @@ export const DialogLocalesDelete = ({
     }
     setLoader(false)
   }
+
   const handleCancel = () => {
     setOpen(false)
+    setShowAlert(false)
   }
 
   return (
     <DialogCustom
       open={open}
       setOpen={setOpen}
-      title="Desactivar Local"
+      title="Desactivar Complemento"
       onDismiss={onDismiss}
     >
       <DialogContent>
@@ -106,10 +75,10 @@ export const DialogLocalesDelete = ({
         />
         <div className="flex flex-col relative items-center mt-4">
           <TextCustom
-            text="¿Está seguro que desea desactivar este Local?"
+            text="¿Esta seguro que desea desactivar este Complemento?"
             className="font-normal"
           />
-          <TextCustom text={name} className="font-medium" />
+          <TextCustom text={name} className="text-2xl p-3" />
           {loader && <Loader mode="modal" />}
         </div>
       </DialogContent>
@@ -128,4 +97,3 @@ export const DialogLocalesDelete = ({
     </DialogCustom>
   )
 }
-

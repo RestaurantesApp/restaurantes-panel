@@ -19,6 +19,7 @@ import ScienceIcon from '@mui/icons-material/Science'
 import PeopleIcon from '@mui/icons-material/People'
 import SettingsIcon from '@mui/icons-material/Settings'
 import LocalDrinkIcon from '@mui/icons-material/LocalDrink'
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { LocationOn, Security } from '@mui/icons-material'
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew'
 
@@ -63,7 +64,10 @@ const Component = ({ onChange = () => null }) => {
     authDispatch({ type: authLogout })
     onChange()
   }
-
+  const handleComplements = () => {
+    navigate('/dashboard/complements')
+    onChange()
+  }
   const handleComponentsText = () => {
     navigate('/dashboard/componentsText')
     onChange()
@@ -168,6 +172,11 @@ const Component = ({ onChange = () => null }) => {
             className="py-1"
             icon={<LocalDrinkIcon className="text-white" />}
             isSelected={location.pathname === '/dashboard/bebidas'}
+            text={'Complementos'}
+            onClick={handleComplements}
+            className="py-1"
+            icon={<AddCircleIcon className="text-white" />}
+            isSelected={location.pathname === '/dashboard/complements'}
           />
           <Collapse in={showComponents1} timeout="auto" unmountOnExit>
             <List className="flex flex-col gap-1 py-0 ml-2">
