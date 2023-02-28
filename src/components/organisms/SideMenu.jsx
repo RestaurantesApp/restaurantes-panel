@@ -169,14 +169,6 @@ const Component = ({ onChange = () => null }) => {
             icon={<LocalDrinkIcon className="text-white" />}
             isSelected={location.pathname === '/dashboard/bebidas'}
           />
-          <DrawerItem
-            text={'Componentes 1'}
-            onClick={() => setShowComponents1(!showComponents1)}
-            className="py-1"
-            icon={<ScienceIcon className="text-white" />}
-            isCollapse
-            collapse={showComponents1}
-          />
           <Collapse in={showComponents1} timeout="auto" unmountOnExit>
             <List className="flex flex-col gap-1 py-0 ml-2">
               <DrawerItem
