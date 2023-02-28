@@ -18,9 +18,10 @@ const GoogleMapsCustom = ({
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: 'AIzaSyA9X7_abzjoL72GbnuF5k4EUQiabtIN9mY',
+    googleMapsApiKey:`${process.env.REACT_APP_API_KEY_GOOGLE}`,
+    
   })
-
+  
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
