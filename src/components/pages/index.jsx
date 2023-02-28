@@ -1,4 +1,5 @@
 export * from './Bebidas'
+export * from './Complements'
 export * from './ComponentsAlert'
 export * from './ComponentsButton'
 export * from './ComponentsDialog'
