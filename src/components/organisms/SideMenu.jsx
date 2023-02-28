@@ -18,6 +18,7 @@ import ExtensionIcon from '@mui/icons-material/Extension'
 import ScienceIcon from '@mui/icons-material/Science'
 import PeopleIcon from '@mui/icons-material/People'
 import SettingsIcon from '@mui/icons-material/Settings'
+import LocalDrinkIcon from '@mui/icons-material/LocalDrink'
 import { LocationOn, Security } from '@mui/icons-material'
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew'
 
@@ -42,6 +43,11 @@ const Component = ({ onChange = () => null }) => {
 
   const handleUsers = () => {
     navigate('/dashboard/users')
+    onChange()
+  }
+
+  const handleBebidas = () => {
+    navigate('/dashboard/bebidas')
     onChange()
   }
 
@@ -129,6 +135,7 @@ const Component = ({ onChange = () => null }) => {
             icon={<PeopleIcon className="text-white" />}
             isSelected={location.pathname === '/dashboard/users'}
           />
+
           <DrawerItem
             text={'Seguridad'}
             onClick={() => setShowtSecurity(!showSecurity)}
@@ -154,6 +161,13 @@ const Component = ({ onChange = () => null }) => {
             className="py-1"
             icon={<LocationOn className="text-white" />}
             isSelected={location.pathname === '/dashboard/users'}
+          />
+          <DrawerItem
+            text={'Bebidas'}
+            onClick={handleBebidas}
+            className="py-1"
+            icon={<LocalDrinkIcon className="text-white" />}
+            isSelected={location.pathname === '/dashboard/bebidas'}
           />
           <DrawerItem
             text={'Componentes 1'}
