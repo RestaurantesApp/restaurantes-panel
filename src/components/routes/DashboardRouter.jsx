@@ -21,6 +21,7 @@ import {
   Profile,
   Locales,
   Complements,
+  Categories,
 } from '../pages'
 import { DashboardLayout } from '../templates'
 
@@ -51,6 +52,7 @@ export const DashboardRouter = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<Navigate to="/page-error" replace />} />
         <Route path="/locales" element={<Locales />} />
+        <Route path="/categories" element={<Categories />} />
       </Routes>
     </DashboardLayout>
   )
