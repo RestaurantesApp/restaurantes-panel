@@ -172,6 +172,8 @@ const Component = ({ onChange = () => null }) => {
             className="py-1"
             icon={<LocalDrinkIcon className="text-white" />}
             isSelected={location.pathname === '/dashboard/bebidas'}
+            />
+            <DrawerItem
             text={'Complementos'}
             onClick={handleComplements}
             className="py-1"
