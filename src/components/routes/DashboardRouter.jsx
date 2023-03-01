@@ -20,6 +20,7 @@ import {
   UsersPermissions,
   Profile,
   Locales,
+  Bebidas,
   Complements,
   Categories,
 } from '../pages'
@@ -52,6 +53,7 @@ export const DashboardRouter = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<Navigate to="/page-error" replace />} />
         <Route path="/locales" element={<Locales />} />
+        <Route path="/bebidas" element={<Bebidas />} />
         <Route path="/categories" element={<Categories />} />
       </Routes>
     </DashboardLayout>
