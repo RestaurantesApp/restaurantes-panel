@@ -20,7 +20,7 @@ import PeopleIcon from '@mui/icons-material/People'
 import SettingsIcon from '@mui/icons-material/Settings'
 import LocalDrinkIcon from '@mui/icons-material/LocalDrink'
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import { LocationOn, Security } from '@mui/icons-material'
+import { CategoryRounded, LocationOn, Security } from '@mui/icons-material'
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew'
 
 // Styles
@@ -54,6 +54,10 @@ const Component = ({ onChange = () => null }) => {
 
   const handlePermissions = () => {
     navigate('/dashboard/permissions')
+    onChange()
+  }
+  const handleCategories = () => {
+    navigate('/dashboard/categories')
     onChange()
   }
   const handleLocales = () => {
@@ -160,11 +164,18 @@ const Component = ({ onChange = () => null }) => {
             </List>
           </Collapse>
           <DrawerItem
+            text={'Categorias'}
+            onClick={handleCategories}
+            className="py-1"
+            icon={<CategoryRounded className="text-white" />}
+            isSelected={location.pathname === '/dashboard/categories'}
+          />
+          <DrawerItem
             text={'Locales'}
             onClick={handleLocales}
             className="py-1"
             icon={<LocationOn className="text-white" />}
-            isSelected={location.pathname === '/dashboard/users'}
+            isSelected={location.pathname === '/dashboard/locales'}
           />
           <DrawerItem
             text={'Bebidas'}
