@@ -20,8 +20,10 @@ import {
   UsersPermissions,
   Profile,
   Locales,
+  Bebidas,
   Complements,
   Extras,
+  Categories,
 } from '../pages'
 import { DashboardLayout } from '../templates'
 
@@ -53,6 +55,8 @@ export const DashboardRouter = () => {
         <Route path="/extras" element={<Extras />} />
         <Route path="*" element={<Navigate to="/page-error" replace />} />
         <Route path="/locales" element={<Locales />} />
+        <Route path="/bebidas" element={<Bebidas />} />
+        <Route path="/categories" element={<Categories />} />
       </Routes>
     </DashboardLayout>
   )
