@@ -20,6 +20,7 @@ import PeopleIcon from '@mui/icons-material/People'
 import SettingsIcon from '@mui/icons-material/Settings'
 import LocalDrinkIcon from '@mui/icons-material/LocalDrink'
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import PlusOneIcon from '@mui/icons-material/PlusOne';
 import { CategoryRounded, LocationOn, Security } from '@mui/icons-material'
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew'
 
@@ -121,6 +122,10 @@ const Component = ({ onChange = () => null }) => {
     navigate('/dashboard/componentsTable')
     onChange()
   }
+  const handleExtras = () => {
+    navigate('/dashboard/extras')
+    onChange()
+  }
 
   return (
     <div className="flex flex-col h-full p-4">
@@ -190,6 +195,13 @@ const Component = ({ onChange = () => null }) => {
             className="py-1"
             icon={<AddCircleIcon className="text-white" />}
             isSelected={location.pathname === '/dashboard/complements'}
+          />
+          <DrawerItem
+            text={'Extras'}
+            onClick={handleExtras}
+            className="py-1"
+            icon={<PlusOneIcon className="text-white" />}
+            isSelected={location.pathname === '/dashboard/extras'}
           />
            <DrawerItem
             text={'Componentes 1'}

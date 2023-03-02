@@ -17,16 +17,19 @@ import {
 // Const
 import { typesValidation } from '../../common/types'
 //CORE
-import { formValidComplement } from '../../core/validations'
-import { apiPostComplements } from '../../services/apis'
+import { formValidExtra } from '../../core/validations'
+import { apiGetExtra, apiPatchExtra } from '../../services/apis'
 
-export const DialogComplementsAdd = ({
+export const DialogExtrasEdit = ({
+  idExtra = '',
   open = false,
   setOpen = () => null,
   onDismiss = () => null,
+  sessionExpired = false,
 }) => {
   const { authState } = useContext(AuthContext)
   const [name, setName] = useState('')
+  const [price, setPrice] = useState(0)
   const [active, setActive] = useState(true)
   const [loader, setLoader] = useState(false)
   const [enabledValid, setEnabledValid] = useState(false)
@@ -38,12 +41,15 @@ export const DialogComplementsAdd = ({
   })
   const { messages, setMessages, resetMessages } = useMessage({
     name: null,
+    price: null,
   })
 
   const { token, personalInfo } = authState
   const idUser = personalInfo.id
   useEffect(() => {
-    if (!open) {
+    if (open) {
+      loadExtra()
+    } else {
       resetForm()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -51,11 +57,35 @@ export const DialogComplementsAdd = ({
 
   const resetForm = () => {
     setName('')
+    setPrice(0)
     setActive(true)
     setLoader(false)
     setShowAlert(false)
     resetMessages()
     setEnabledValid(false)
+  }
+  const loadExtra = async () => {
+    setLoader(true)
+    const params = { idExtra, token }
+    const response = await apiGetExtra(params)
+    const { success, message, data, statusCode } = response
+    if (success) {
+      setName(data.name)
+      setActive(data.active)
+      setPrice(data.price)
+    } else {
+      if (statusCode === 401) {
+        sessionExpired(true)
+      } else {
+        setShowAlert(true)
+        setAlert({
+          title: 'Error',
+          description: message,
+          severity: 'error',
+        })
+      }
+    }
+    setLoader(false)
   }
 
   const handleAccept = async () => {
@@ -63,8 +93,8 @@ export const DialogComplementsAdd = ({
     setEnabledValid(true)
     if (handleValidForm()) {
       setLoader(true)
-      const params = { idUser, name, active, token }
-      const response = await apiPostComplements(params)
+      const params = { idUser, idExtra, name, active, price, token }
+      const response = await apiPatchExtra(params)
       const { success, message } = response
       if (success) {
         setOpen(false)
@@ -84,8 +114,9 @@ export const DialogComplementsAdd = ({
   const handleValidForm = () => {
     const params = {
       name,
+      price,
     }
-    const response = formValidComplement(params)
+    const response = formValidExtra(params)
     setMessages(response.msgValid)
     return response.isValid
   }
@@ -99,12 +130,11 @@ export const DialogComplementsAdd = ({
     setOpen(false)
     resetForm()
   }
-
   return (
     <DialogCustom
       open={open}
       setOpen={setOpen}
-      title="Crear Complemento"
+      title="Actualizar Extra"
       onDismiss={handleDismiss}
     >
       <DialogContent>
@@ -117,7 +147,7 @@ export const DialogComplementsAdd = ({
         />
         <Box className="flex flex-col gap-4 relative mt-4">
           <TextInputCustom
-            name="Nombre del Complemento"
+            name="Nombre del Extra"
             value={name}
             setValue={setName}
             onBlur={() => enabledValid && handleValidForm()}
@@ -126,6 +156,16 @@ export const DialogComplementsAdd = ({
             required
             typesValidation={typesValidation.onlyLettersExtend}
             msgError={messages.name}
+          />
+          <TextInputCustom
+            value={price}
+            setValue={setPrice}
+            onBlur={() => enabledValid && handleValidForm()}
+            onEnter={handleAccept}
+            name="Precio"
+            type="number"
+            required
+            msgError={messages.price}
           />
 
           {loader && <Loader mode="modal" />}
