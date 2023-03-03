@@ -1,29 +1,153 @@
-//Componente para agregar una nueva categoria
-import { DialogActions, DialogContent } from '@mui/material'
+import React, { useState, useEffect, useContext } from 'react'
+// Hooks
+import { useMessage } from '../../hooks'
+import { AuthContext } from '../../context'
+// Components
+import { Box, DialogActions, DialogContent } from '@mui/material'
 import { DialogCustom } from '../templates'
-import { ButtonCustom } from '../atoms'
+import {
+  AlertCustom,
+  ButtonCustom,
+  ControlLabelCustom,
+  Loader,
+  SwitchCustom,
+  TextInputCustom,
+} from '../atoms'
 
+// Const
+import { typesValidation } from '../../common/types'
+//CORE
+import { formValidCategories } from '../../core/validations'
+import { apiPostCategories } from '../../services/apis'
 export const DialogCategoriesAdd = ({
-  idCategory = '',
   open = false,
   setOpen = () => null,
+  onDismiss = () => null,
 }) => {
+  const { authState } = useContext(AuthContext)
+  const [name, setName] = useState('')
+  const [position, setPosition] = useState('')
+  const [active, setActive] = useState(true)
+  const [loader, setLoader] = useState(false)
+  const [enabledValid, setEnabledValid] = useState(false)
+  const [showAlert, setShowAlert] = useState(false)
+  const [alert, setAlert] = useState({
+    title: '',
+    description: '',
+    severity: 'info',
+  })
+  const { messages, setMessages, resetMessages } = useMessage({
+    name: null,
+    position: null,
+  })
+
+  const { token, personalInfo } = authState
+  const idUser = personalInfo.id
+  useEffect(() => {
+    if (!open) {
+      resetForm()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open])
+
+  const resetForm = () => {
+    setName('')
+    setPosition('')
+    setActive(true)
+    setLoader(false)
+    setShowAlert(false)
+    resetMessages()
+    setEnabledValid(false)
+  }
+
+  const handleAccept = async () => {
+    setShowAlert(false)
+    setEnabledValid(true)
+    if (handleValidForm()) {
+      setLoader(true)
+      const params = { idUser, name, active, position, token }
+      const response = await apiPostCategories(params)
+      const { success, message } = response
+      if (success) {
+        setOpen(false)
+        onDismiss()
+      } else {
+        setShowAlert(true)
+        setAlert({
+          title: 'Error',
+          description: message,
+          severity: 'error',
+        })
+      }
+      setLoader(false)
+    }
+  }
+
+  const handleValidForm = () => {
+    const params = {
+      name,
+      position,
+    }
+    const response = formValidCategories(params)
+    setMessages(response.msgValid)
+    return response.isValid
+  }
+
   const handleCancel = () => {
     setOpen(false)
-    // resetForm()
+    resetForm()
   }
+
   const handleDismiss = () => {
     setOpen(false)
-    // resetForm()
+    resetForm()
   }
   return (
     <DialogCustom
       open={open}
       setOpen={setOpen}
-      title="Crear Categoria"
+      title="Crear Categoría"
       onDismiss={handleDismiss}
     >
-      <DialogContent></DialogContent>
+      <DialogContent>
+        <AlertCustom
+          title={alert.title}
+          description={alert.description}
+          open={showAlert}
+          setOpen={setShowAlert}
+          severity={alert.severity}
+        />
+        <Box className="flex flex-col gap-4 relative mt-4">
+          <TextInputCustom
+            name="Nombre de la categoría"
+            value={name}
+            setValue={setName}
+            onBlur={() => enabledValid && handleValidForm()}
+            onEnter={handleAccept}
+            maxLength={20}
+            required
+            typesValidation={typesValidation.onlyLettersExtend}
+            msgError={messages.name}
+          />
+          <TextInputCustom
+            value={position}
+            setValue={setPosition}
+            onBlur={() => enabledValid && handleValidForm()}
+            onEnter={handleAccept}
+            name="Posición"
+            type="number"
+            required
+            msgError={messages.position}
+          />
+
+          {loader && <Loader mode="modal" />}
+        </Box>
+        <Box className="flex flex-col gap-4 relative mt-4">
+          <ControlLabelCustom name={'Activo'} align="top">
+            <SwitchCustom value={active} setValue={setActive} />
+          </ControlLabelCustom>
+        </Box>
+      </DialogContent>
       <DialogActions>
         <ButtonCustom
           text="Cancelar"
@@ -33,7 +157,7 @@ export const DialogCategoriesAdd = ({
         <ButtonCustom
           text="Guardar"
           typeColor="primary"
-          // onClick={handleAccept}
+          onClick={handleAccept}
         />
       </DialogActions>
     </DialogCustom>

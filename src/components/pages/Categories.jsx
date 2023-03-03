@@ -84,11 +84,11 @@ export const Categories = () => {
   }
   return (
     <div className="pb-4 flex flex-col">
-      <TextCustom text="Configuración de categorias" className="text-3xl" />
+      <TextCustom text="Configuración de categorías" className="text-3xl" />
       <Divider />
       <div className="flex justify-end">
         <ButtonCustom
-          text="Crear Categoria"
+          text="Crear Categoría"
           className="my-3"
           onClick={() => setShowAdd(true)}
         />

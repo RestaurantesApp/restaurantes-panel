@@ -64,9 +64,9 @@ export const apiPatchCategory = async params => {
   }
   const request = {
     name: params.name,
-    position: params.position,
+    position: Number(params.position),
     active: params.active,
-    updateBy: params.updateBy,
+    updateBy: params.idUser,
   }
 
   try {
@@ -101,9 +101,9 @@ export const apiPostCategories = async params => {
   }
   const request = {
     name: params.name,
-    position: params.position,
+    position: Number(params.position),
     active: params.active,
-    createBy: params.createBy,
+    createBy: params.idUser,
   }
 
   try {
