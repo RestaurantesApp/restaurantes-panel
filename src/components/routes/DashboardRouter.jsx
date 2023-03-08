@@ -13,8 +13,17 @@ import {
   ComponentsLoader,
   ComponentsTable,
   ComponentsText,
+  Error404,
   Home,
   Users,
+  Permissions,
+  UsersPermissions,
+  Profile,
+  Locales,
+  Bebidas,
+  Complements,
+  Extras,
+  Categories,
 } from '../pages'
 import { DashboardLayout } from '../templates'
 
@@ -23,6 +32,7 @@ export const DashboardRouter = () => {
     <DashboardLayout>
       <Routes>
         <Route path="/" element={<Navigate to="/dashboard/home" />} />
+        <Route path="/complements" element={<Complements />} />
         <Route path="/componentsAlert" element={<ComponentsAlert />} />
         <Route path="/componentsButton" element={<ComponentsButton />} />
         <Route path="/componentsDialog" element={<ComponentsDialog />} />
@@ -34,8 +44,19 @@ export const DashboardRouter = () => {
         <Route path="/componentsTable" element={<ComponentsTable />} />
         <Route path="/componentsText" element={<ComponentsText />} />
         <Route path="/users" element={<Users />} />
+        <Route
+          path="/usersPermissions/:idUser"
+          element={<UsersPermissions />}
+        />
         <Route path="/home" element={<Home />} />
+        <Route path="/page-error" element={<Error404 />} />
+        <Route path="/permissions" element={<Permissions />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/extras" element={<Extras />} />
         <Route path="*" element={<Navigate to="/page-error" replace />} />
+        <Route path="/locales" element={<Locales />} />
+        <Route path="/bebidas" element={<Bebidas />} />
+        <Route path="/categories" element={<Categories />} />
       </Routes>
     </DashboardLayout>
   )

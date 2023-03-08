@@ -16,6 +16,7 @@ export const DialogUserDelete = ({
   open = false,
   setOpen = () => null,
   onDismiss = () => null,
+  sessionExpired = false,
 }) => {
   const { authState } = useContext(AuthContext)
   const [loader, setLoader] = useState(false)
@@ -47,16 +48,20 @@ export const DialogUserDelete = ({
     setLoader(true)
     const params = { idUser, token }
     const response = await apiGetUser(params)
-    const { success, message, data } = response
+    const { success, message, data, statusCode } = response
     if (success) {
       setName(data.name)
     } else {
-      setShowAlert(true)
-      setAlert({
-        title: 'Error',
-        description: message,
-        severity: 'warning',
-      })
+      if (statusCode === 401) {
+        sessionExpired(true)
+      } else {
+        setShowAlert(true)
+        setAlert({
+          title: 'Error',
+          description: message,
+          severity: 'error',
+        })
+      }
     }
     setLoader(false)
   }
@@ -65,17 +70,21 @@ export const DialogUserDelete = ({
     setLoader(true)
     const params = { idUser, token }
     const response = await apiDeleteUser(params)
-    const { success, message } = response
+    const { success, message, statusCode } = response
     if (success) {
       setOpen(false)
       onDismiss()
     } else {
-      setShowAlert(true)
-      setAlert({
-        title: 'Error',
-        description: message,
-        severity: 'error',
-      })
+      if (statusCode === 401) {
+        sessionExpired(true)
+      } else {
+        setShowAlert(true)
+        setAlert({
+          title: 'Error',
+          description: message,
+          severity: 'error',
+        })
+      }
     }
     setLoader(false)
   }

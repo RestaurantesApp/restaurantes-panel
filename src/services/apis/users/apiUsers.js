@@ -158,3 +158,37 @@ export const apiDeleteUser = async params => {
   }
   return dataResponse
 }
+
+export const apiRemovePermission = async params => {
+  const url = `${process.env.REACT_APP_API}users/${params.idUser}/removePermission`
+  const dataResponse = {
+    success: false,
+    statusCode: 0,
+    message: '',
+    data: [],
+  }
+  const request = {
+    idPermission: params.idPermission,
+  }
+
+  try {
+    const response = await axios.patch(
+      url,
+      request,
+      buildToken('es', params.token),
+    )
+    const { status, data } = response
+    dataResponse.success = true
+    dataResponse.data = data.data
+    dataResponse.statusCode = status
+  } catch (error) {
+    dataResponse.data = error
+    if (!error.response?.status || !error.response?.data.message) {
+      dataResponse.message = `Error inesperado. Código: ${error.code}`
+      return dataResponse
+    }
+    dataResponse.message = error.response.data.message
+    dataResponse.statusCode = error.response.status
+  }
+  return dataResponse
+}

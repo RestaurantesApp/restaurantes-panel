@@ -1,4 +1,5 @@
 import { typesGlobalState } from '../common/types'
+import { stSetAuth, stRemoveAuth } from '../services/storage'
 
 export const AUTH_INITIAL_STATE = {
   isLogin: false,
@@ -11,9 +12,11 @@ export const AUTH_INITIAL_STATE = {
 
 export const authReducer = (state, action) => {
   const { type, payload } = action
+  let statusChanged = {} //Inicializacion de variable que almacenara la información del usuario
   switch (type) {
     case typesGlobalState.authLogin:
-      return {
+      statusChanged = {
+        //Se le asigna las propiedades que trae la data
         ...state,
         isLogin: true,
         personalInfo: payload?.personalInfo,
@@ -22,7 +25,11 @@ export const authReducer = (state, action) => {
         roles: payload?.roles,
         token: payload?.token,
       }
-    case typesGlobalState.authLogout:
+      stSetAuth(statusChanged) //la función actualiza la variable del localstorage
+      return statusChanged //Se retorna
+
+    case typesGlobalState.authLogout: //En el caso que no este logueado,se deslogueara y se removera la variable del localstorage
+      stRemoveAuth()
       return AUTH_INITIAL_STATE
     default:
       return state

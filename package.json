@@ -1,6 +1,6 @@
 {
-  "name": "restaurantes-app",
-  "version": "0.1.0",
+  "name": "restaurantes",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@date-io/dayjs": "2.15.0",
@@ -9,6 +9,7 @@
     "@mui/icons-material": "5.10.3",
     "@mui/material": "5.10.3",
     "@mui/x-date-pickers": "5.0.0",
+    "@react-google-maps/api": "^2.18.1",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.3.0",
     "@testing-library/user-event": "13.5.0",

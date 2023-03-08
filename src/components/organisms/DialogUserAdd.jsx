@@ -26,6 +26,7 @@ export const DialogUserAdd = ({
   open = false,
   setOpen = () => null,
   onDismiss = () => null,
+  sessionExpired = false,
 }) => {
   const { authState } = useContext(AuthContext)
   const [name, setName] = useState('')
@@ -46,6 +47,7 @@ export const DialogUserAdd = ({
     email: null,
     password: null,
     confirmPassword: null,
+    role: null,
   })
   const { token } = authState
 
@@ -81,17 +83,21 @@ export const DialogUserAdd = ({
         token,
       }
       const response = await apiPostUser(params)
-      const { success, message } = response
+      const { success, message, statusCode } = response
       if (success) {
         setOpen(false)
         onDismiss()
       } else {
-        setShowAlert(true)
-        setAlert({
-          title: 'Error',
-          description: message,
-          severity: 'error',
-        })
+        if (statusCode === 401) {
+          sessionExpired(true)
+        } else {
+          setShowAlert(true)
+          setAlert({
+            title: 'Error',
+            description: message,
+            severity: 'error',
+          })
+        }
       }
       setLoader(false)
     }
@@ -103,6 +109,7 @@ export const DialogUserAdd = ({
       email,
       password,
       confirmPassword,
+      role,
     }
     const response = formValidAddUser(params)
     setMessages(response.msgValid)
@@ -182,6 +189,8 @@ export const DialogUserAdd = ({
             options={authState.roles}
             value={role}
             setValue={setRole}
+            required
+            msgError={messages.role}
           />
           {loader && <Loader mode="modal" />}
         </div>

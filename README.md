@@ -1,4 +1,4 @@
-# restaurantes-app
+# restaurantes
 
 ## Pasos de instalación
 
